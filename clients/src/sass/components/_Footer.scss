@@ -1,0 +1,39 @@
+.footer-container {
+    width: 100%;
+    border-top: 4vh solid $purple-4;
+    display: flex;
+    padding: 2vh;
+    background-color: $white;
+
+    & .footer-left-part {
+        width: 30%;
+        padding: 1vh;
+        filter: saturate(0.1);
+
+
+        & img {
+            width: 20vh;
+        }
+
+        & p {
+            width: 40vh;
+        }
+    }
+
+    & .footer-right-part {
+        width: 70%;
+        padding: 2vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & ul {
+            width: 75%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+    }
+}

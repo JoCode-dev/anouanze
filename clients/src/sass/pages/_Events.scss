@@ -1,0 +1,175 @@
+.events-container {
+
+    .event-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 5vh;
+
+        & img {
+            width: 20vh;
+        }
+
+        & h1 {
+            color: $blue-1;
+        }
+    }
+
+    .events-blocks-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 2vh;
+        width: 100%;
+
+        .event-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 95%;
+            height: 40vh;
+            background-color: $white;
+            box-shadow: 0 1px 25px hsla(258, 89%, 41%, 0.2);
+            padding: 12px 10px;
+            margin-top: 2vh;
+            border-radius: 2vh;
+
+        }
+
+        .event-poster {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            height: 80%;
+            overflow: hidden;
+            border-radius: 2vh;
+            padding: 1vh;
+            margin-right: 1vh;
+            box-shadow: 0 1px 25px hsla(258, 89%, 41%, 0.2);
+
+            & img {
+                width: 40vh;
+            }
+        }
+
+        .event-details {
+            padding: 3vh;
+            width: 80%;
+            height: 90%;
+
+            & .event-title {
+                color: $blue-1;
+                padding: 1vh;
+                font-weight: bold;
+                font-size: 3vh;
+
+            }
+
+            & .event-description {
+                display: flex;
+                align-items: center;
+                padding: 1vh;
+                width: 80%;
+                height: 60%
+            }
+
+            & .event-sub {
+                padding: 1vh;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 80%;
+
+                & .event-date {
+                    text-align: center;
+                    border-right: 3px solid $purple-1;
+                    border-radius: 2vh;
+                    width: 20%;
+
+                }
+
+                & .event-time {
+                    border-right: 3px solid $purple-1;
+                    border-radius: 2vh;
+                    text-align: center;
+                    width: 30%;
+
+                }
+
+                & .event-organizer {
+                    width: 40%;
+
+                }
+
+            }
+        }
+
+        /* From uiverse.io by @mrhyddenn */
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 95%;
+            height: 30vh;
+            border-radius: 2vh;
+            background: #ffff;
+            box-shadow: 0 1px 25px hsla(258, 89%, 41%, 0.2);
+            padding: 12px 10px;
+            margin-top: 2vh;
+        }
+
+        .card_load {
+            width: 20vh;
+            height: 20vh;
+            position: relative;
+            float: left;
+            background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+            border-radius: 50%;
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            animation: load89234 2s infinite;
+        }
+
+        .card_load-content {
+            width: 80%;
+            height: 90%;
+
+        }
+
+        .card_load_extreme_title {
+            width: 100%;
+            height: 4vh;
+            position: relative;
+            float: right;
+            border-radius: 5px;
+            background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            animation: load89234 2s infinite;
+        }
+
+        .card_load_extreme_descripion {
+            width: 100%;
+            height: 18vh;
+            position: relative;
+            float: right;
+            border-radius: 5px;
+            background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+            margin-top: 10px;
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            animation: load89234 2s infinite;
+        }
+
+        @keyframes load89234 {
+            100% {
+                background-position: -100% 0;
+            }
+        }
+    }
+
+
+}

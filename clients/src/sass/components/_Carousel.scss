@@ -1,0 +1,41 @@
+.carousel-container {
+    width: 95%;
+    padding: 1vh;
+
+    .header-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & h3 {
+            color: $blue-1
+        }
+
+        .header-see-more {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20vh;
+
+            & img {
+                width: 4vh;
+                height: 4vh;
+                filter: invert(44%) sepia(95%) saturate(420%) hue-rotate(145deg) brightness(101%) contrast(93%);
+            }
+        }
+    }
+
+    & img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 2vh;
+        height: 100vh;
+    }
+
+    .swiper-container {
+        margin: 2vh auto;
+        border-radius: 2vh;
+        overflow: hidden;
+        height: 100vh;
+    }
+}

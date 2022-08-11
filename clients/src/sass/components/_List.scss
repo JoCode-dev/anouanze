@@ -1,0 +1,38 @@
+.list-paroisses-container {
+    width: 100%;
+    height: 90%;
+
+    .list-paroisse-element {
+        padding: 1vh;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        margin-top: 1vh;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2vh;
+        box-shadow: 0 1px 25px hsla(258, 89%, 41%, 0.2);
+        cursor: pointer;
+
+        .paroisse-element-right {
+            width: 80%;
+            padding: 1vh;
+
+        }
+
+        .paroisse-element-left {
+            width: 9vh;
+            height: 9vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            box-shadow: 0 1px 25px hsla(197, 89%, 41%, 0.2);
+            overflow: hidden;
+
+            & img {
+                width: calc(100% + 2vh);
+            }
+        }
+    }
+}

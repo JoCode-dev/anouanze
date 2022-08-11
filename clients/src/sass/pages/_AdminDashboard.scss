@@ -1,0 +1,15 @@
+.admin-dashboard-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: #f0f7ff;
+
+    .admin-dashboard-left {
+        width: 20%;
+    }
+
+    .admin-dashboard-center {
+        width: 80%;
+    }
+}

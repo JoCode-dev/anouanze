@@ -1,0 +1,53 @@
+.Log-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: appear 1s ease-in-out;
+
+
+    .log-logo-container {
+        position: relative;
+        height: 20%;
+
+        img {
+            width: 30vh;
+        }
+    }
+
+    .switch-log {
+        padding: 1vh;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        div {
+            display: flex;
+            width: 40vh;
+            justify-content: center;
+            align-items: center;
+            transition: width 0.2s ease-in-out;
+
+            p {
+                color: $purple-1;
+                font-family: $sofiaMedium;
+                font-weight: 900;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1
+    }
+}

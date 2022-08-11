@@ -1,0 +1,85 @@
+form {
+    width: 100%;
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .inputs-group {
+        width: 100%;
+        margin: 1vh auto;
+
+        .input-form {
+            border: 1px solid $gray;
+            height: 5vh;
+            width: 100%;
+            margin: 1vh auto;
+            padding: 1vh;
+            border-radius: 1vh;
+            background-color: $white;
+
+            &:hover {
+                background-color: $white;
+                box-shadow: 0px 0px 0px 0.7vh $purple-1;
+                transition: all 0.2s ease-in-out;
+            }
+
+            &:focus {
+                border: 1px solid $white;
+                box-shadow: 0px 0px 0px 0.7vh $purple-1;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        & input[type="submit"] {
+            width: 100%;
+            height: 6vh;
+        }
+    }
+}
+
+.sign-in-container {
+    width: 70vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+
+    h1 {
+        text-align: center;
+        font-size: 6vh;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.sign-up-container {
+    width: 70vh;
+    height: auto;
+    // height: 78vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+
+    h1 {
+        text-align: center;
+        font-size: 5vh;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .inputs-group {
+        margin: 0;
+        height: 11vh;
+    }
+
+    .input-form {
+        margin: 0;
+    }
+
+}
