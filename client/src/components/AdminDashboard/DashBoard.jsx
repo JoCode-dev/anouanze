@@ -1,7 +1,11 @@
 import React from "react";
 
 const DashBoard = () => {
-  return <div>DashBoard</div>;
+  return (
+    <div>
+      <h1>DashBoard</h1>
+    </div>
+  );
 };
 
 export default DashBoard;
