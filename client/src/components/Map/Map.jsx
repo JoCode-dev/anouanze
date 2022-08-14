@@ -52,34 +52,6 @@ const Map = () => {
     dispatch(getNearParoisses(coords));
   }, [coordinates]);
 
-  //const google = window.google;
-
-  /*   const apiIsLoaded = (map, maps) => {
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-
-    directionsService.route(
-      {
-        origin: coordinates,
-        destination: paroisseCoords,
-        travelMode: google.maps.TravelMode.DRIVING,
-      },
-      (response, status) => {
-        if (status === "OK") {
-          directionsRenderer.setDirections(response);
-          console.log(response.routes[0].overview_path, "Ruta");
-          const routePolyline = new google.maps.Polyline({
-            path: response.routes[0].overview_path,
-          });
-          routePolyline.setMap(map);
-        } else {
-          window.alert("Directions request failed due to " + status);
-        }
-      }
-    );
-  }; */
-
   const handleParoisseCoords = (coords) => {
     setParoisseCoords({ lat: coords[0], lng: coords[1] });
   };

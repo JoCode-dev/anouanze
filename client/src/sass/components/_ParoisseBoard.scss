@@ -168,7 +168,7 @@
         height: 90%;
         background-color: $white;
         border-radius: 5vh;
-        overflow: scroll;
+
 
         .container-header {
             padding: 2vh;
@@ -195,6 +195,106 @@
                 &:hover {
                     background-color: $purple-2;
                     color: $white;
+                }
+            }
+        }
+
+        .form-elements-container {
+            height: 79vh;
+            overflow: scroll;
+
+            form {
+                .form-group {
+                    padding: 1vh;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        font-size: 2.5vh;
+                        font-family: $sofiaMedium;
+                        margin-bottom: 1vh;
+                    }
+
+                    input {
+                        border: 1.8px solid #cdcdcd;
+                        background-color: transparent;
+                        padding: 1vh;
+                        height: 5.5vh;
+                        border-radius: 1vh;
+                        text-transform: capitalize;
+                        transition: all 0.3s ease-out;
+
+                        &:focus {
+                            border: 3px solid $blue-1;
+                        }
+                    }
+
+                    textarea {
+                        border: 1.8px solid #cdcdcd;
+                        background-color: transparent;
+                        font-family: $sofiaRegular;
+                        padding: 1vh;
+                        height: 50vh;
+                        border-radius: 1vh;
+                        text-transform: capitalize;
+                        transition: all 0.3s ease-out;
+
+                        &:focus {
+                            border: 3px solid $blue-1;
+                        }
+
+                    }
+                }
+
+                .form-group-group {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+
+                    .form-group {
+                        label {
+                            font-size: 2.5vh;
+                            font-family: $sofiaMedium;
+                            margin-bottom: 1vh;
+                        }
+
+                        input {
+                            border: 1.8px solid #cdcdcd;
+                            background-color: transparent;
+                            padding: 1vh;
+                            height: 5.5vh;
+                            border-radius: 1vh;
+                            text-transform: capitalize;
+                            transition: all 0.3s ease-out;
+
+                            &:focus {
+                                border: 3px solid $blue-1;
+                            }
+                        }
+                    }
+
+                }
+
+                .location-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    height: 70vh;
+                    width: 98%;
+
+                    h1 {
+                        width: 98%;
+                    }
+
+                    .location-map-container {
+                        height: 60vh;
+                        width: 98%;
+                        border-radius: 2vh;
+                        overflow: hidden;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    }
                 }
             }
         }
