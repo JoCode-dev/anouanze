@@ -28,9 +28,15 @@
     src: url(./assets/fonts/Sofia-Pro-Regular.ttf);
 }
 
+@font-face {
+    font-family: "Sofia-Pro-Semi-Bold";
+    src: url(./assets/fonts/Sofia-Pro-Semi-Bold.ttf);
+}
+
 $sofiaBlack: "Sofia-Pro-Black";
 $sofiaMedium: "Sofia-Pro-Medium";
 $sofiaRegular: "Sofia-Pro-Regular";
+$sofiaSemiBold: "Sofia-Pro-Semi-Bold";
 $sofiaLight: "Sofia-Pro-Light";
 $sofiaExtraLight: "Sofia-Pro-ExtraLight";
 

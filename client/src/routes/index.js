@@ -26,6 +26,9 @@ import AdminDashboard from "../pages/AdminDashboard";
 // Moderator
 import ModDashboard from "../pages/ModDashboard";
 
+// Évènement
+import Actu from "../pages/Actu";
+
 const index = () => {
   return (
     <BrowserRouter>
@@ -40,6 +43,7 @@ const index = () => {
         <Route path="/paroisses" element={<Paroisses />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/mod-dashboard" element={<ModDashboard />} />
+        <Route path="/actu/:id" element={<Actu />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,108 @@
+.actu-container {
+    display: flex;
+    flex-direction: column;
+    border-top: 3vh solid $purple-1;
+
+    .actu-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 5vh;
+
+        & img {
+            width: 20vh;
+        }
+
+        & h1 {
+            color: $blue-1;
+        }
+    }
+
+    .actu-details-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1vh 5vh;
+        width: 100%;
+
+
+        & img {
+            width: 70%;
+        }
+
+        .actu-title {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            font-size: 4.4vh;
+            font-family: $sofiaBlack;
+            color: #657283;
+            width: 70%;
+        }
+
+        .actu-description {
+            width: 70%;
+            font-size: 3vh;
+            color: #55606e;
+            padding: 2vh 0;
+
+            & p {
+                width: 90%;
+            }
+        }
+
+        .actu-address {
+            width: 70%;
+            font-size: 3vh;
+            color: $blue-1;
+            padding: 2vh 0;
+            font-family: $sofiaMedium;
+            font-weight: 600;
+        }
+
+        .actu-sub-details {
+            width: 70%;
+            height: 10vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .actu-date {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-right: 0.4vh solid $blue-1;
+                width: 35vh;
+                height: 100%;
+                text-transform: capitalize;
+                font-size: 3vh;
+                font-family: $sofiaMedium;
+                color: $blue-1;
+
+                & img {
+                    width: 10vh;
+                }
+            }
+
+            .actu-time {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 35vh;
+                font-size: 3vh;
+                font-family: $sofiaMedium;
+                color: $blue-1;
+
+                & img {
+                    width: 10vh;
+                }
+            }
+
+
+
+        }
+    }
+}

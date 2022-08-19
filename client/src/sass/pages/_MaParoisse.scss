@@ -1,0 +1,200 @@
+.MaParoisse-container {
+    width: 95%;
+    padding: 1vh;
+
+    h1 {
+        font-family: $sofiaMedium;
+        color: $blue-1;
+    }
+
+    .MaParoisse-infos-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .MaParoisse-infos-left {
+            padding: 1vh;
+            width: 45%;
+            height: 53vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5vh;
+            box-shadow: 0px 0px 10px #c57eff,
+                0px 0px 10px #da9fff;
+            overflow: hidden;
+
+            & img {
+                width: 120%;
+                object-fit: fill;
+            }
+        }
+
+        .MaParoisse-infos-right {
+            width: 55%;
+            padding: 1vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            h1 {
+                font-family: $sofiaBlack;
+                text-transform: uppercase;
+                color: $purple-1;
+            }
+
+            .MaParoisse-program {
+                width: 100%;
+
+                .MaParoisse-program-title {
+                    padding: 2vh;
+                    height: 3vh;
+                    background-color: $blue-1;
+                    color: $white;
+                    display: flex;
+                    align-items: center;
+                    font-size: 2.5vh;
+                    text-transform: uppercase;
+                }
+
+                .MaParoisse-program-switch {
+                    padding: 1vh;
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .switch {
+                        width: 50%;
+                        height: 5vh;
+                        margin-right: 1vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 20vh;
+                        background-color: $blue-1;
+                        color: $white;
+                        font-size: 2vh;
+                        cursor: pointer;
+
+                        &.active {
+                            background-color: #137c99;
+                        }
+                    }
+
+                }
+
+                .MaParoisse-program-messes {
+                    height: 20vh;
+                    width: 60%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .messe-box {
+                        width: 45%;
+                        height: 3vh;
+                        border-radius: 1vh;
+                        margin-top: 1vh;
+                        margin-right: 1vh;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding: 1vh;
+
+
+                        h3 {
+                            color: #471d70;
+                            font-family: $sofiaSemiBold;
+                        }
+                    }
+                }
+
+                .MaParoisse-program-confess {
+                    height: 20vh;
+                    width: 60%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .confess-box {
+                        width: 45%;
+                        height: 3vh;
+                        border-radius: 1vh;
+                        margin-top: 1vh;
+                        margin-right: 1vh;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding: 1vh;
+
+
+                        h3 {
+                            color: #471d70;
+                            font-family: $sofiaSemiBold;
+                        }
+                    }
+                }
+            }
+
+            .MaParoisse-actus {
+                width: 100%;
+                margin-top: 2vh;
+
+                .MaParoisse-actus-title {
+                    padding: 2vh;
+                    height: 3vh;
+                    background-color: $purple-1;
+                    color: $white;
+                    display: flex;
+                    align-items: center;
+                    font-size: 2.5vh;
+                    text-transform: uppercase;
+                }
+
+                .MaParoisse-actus-container {
+                    width: 100%;
+                    height: 25vh;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                    white-space: nowrap;
+
+                    &.active {
+                        cursor: pointer;
+                        cursor: -webkit-grabbing;
+                        transform: scale(1);
+                    }
+
+                    .actu-box {
+                        width: 150vh;
+                        height: 20vh;
+                        margin-left: 1vh;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+
+                        .box-img {
+                            width: 30vh;
+                            height: 15vh;
+                            overflow: hidden;
+                            border-radius: 2vh;
+
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+    }
+}

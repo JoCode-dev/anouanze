@@ -275,11 +275,9 @@ export const unChooseParoisse = async (req, res) => {
     );
 
     await UserModel.findByIdAndUpdate(userId, { _paroisse: "" }, { new: true });
-    res
-      .status(200)
-      .json({
-        message: `User ${userId} successfully unchoosed paroisse ${id}`,
-      });
+    res.status(200).json({
+      message: `User ${userId} successfully unchoosed paroisse ${id}`,
+    });
   } catch (error) {
     res.status(404).json({ message: error });
   }
