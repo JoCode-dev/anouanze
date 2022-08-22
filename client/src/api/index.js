@@ -97,3 +97,10 @@ export const addConfessions = (id, data) =>
   axios.patch(`${url}/paroisse/add-confession/${id}`, data);
 export const removeConfessions = (id, confessionId) =>
   axios.patch(`${url}/paroisse/remove-confession/${id}`, confessionId);
+
+// Demandes
+export const addDemande = (data) => axios.post(`${url}/demandes`, data);
+export const updateDemande = (id) => axios.patch(`${url}/demandes/${id}`);
+export const getDemandsByParoisse = (id) =>
+  axios.get(`${url}/demandes/paroisse`, id);
+export const getDemand = (id) => axios.get(`${url}/demandes/${id}`);

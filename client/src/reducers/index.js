@@ -12,6 +12,8 @@ import message from "./message";
 import paroisse from "./paroisse";
 import paroisses from "./paroisses";
 import nearParoisses from "./nearParoisses";
+import demande from "./demande";
+import demandes from "./demandes";
 
 export default combineReducers({
   auth,
@@ -26,4 +28,6 @@ export default combineReducers({
   paroisse,
   paroisses,
   nearParoisses,
+  demande,
+  demandes,
 });

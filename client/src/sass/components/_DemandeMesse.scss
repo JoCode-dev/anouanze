@@ -1,0 +1,68 @@
+.demande-messes-container {
+    width: 100%;
+    padding: 1vh;
+    display: flex;
+    justify-content: center;
+
+    .demande-messes-left {
+        width: 45%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 70vh;
+        }
+
+    }
+
+    .demande-messes-right {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .demande-messes-title {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            height: 40%;
+
+            h1 {
+                color: $blue-1;
+                font-size: 13vh;
+                line-height: 5vh;
+            }
+
+            h2 {
+                color: $blue-1;
+                font-size: 9vh;
+            }
+        }
+
+        .demande-messes-text {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            height: 20%;
+            font-size: 3vh;
+            width: 70%;
+
+        }
+
+        .demande-messes-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 10%;
+            width: 70%;
+            padding: 1vh;
+            background-color: $blue-1;
+            border-radius: 2vh;
+            font-size: 3.4vh;
+            color: $white;
+        }
+    }
+}
