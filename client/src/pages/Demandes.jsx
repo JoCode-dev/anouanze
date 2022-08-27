@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getParoisse, getAllParoisse } from "../actions/paroisse";
 import { isEmpty } from "../components/utils/index";
+import { NavLink } from "react-router-dom";
 
 const Demandes = () => {
   const [isInfos, setIsInfos] = useState(false);
@@ -31,15 +32,7 @@ const Demandes = () => {
   const paroisses = useSelector((state) => state.paroisses);
 
   useEffect(() => {
-    if (!isEmpty(user)) {
-      if (user?._paroisse !== null) {
-        dispatch(getParoisse(user._paroisse));
-      } else {
-        dispatch(getAllParoisse());
-      }
-    } else {
-      dispatch(getAllParoisse());
-    }
+    dispatch(getAllParoisse());
 
     if (idChoosen) {
       paroisse = {};
@@ -87,8 +80,9 @@ const Demandes = () => {
         <select
           onChange={(e) => chooseParoisse(e)}
           value={demandeDatas?.paroisseName}
+          defaultValue={"default"}
         >
-          <option selected="true" disabled="disabled">
+          <option value={"default"} selected="true" disabled="disabled">
             Choisir paroisse *
           </option>
           {paroisses.map((e) => (
@@ -162,7 +156,9 @@ const Demandes = () => {
       }}
     >
       <div className="demandes-header">
-        <img src={process.env.PUBLIC_URL + "imgs/icon.png"} alt="icon" />
+        <NavLink to="/">
+          <img src={process.env.PUBLIC_URL + "imgs/icon.png"} alt="icon" />
+        </NavLink>
         <h1>Demande de messe</h1>
         <h3>
           Votre demande sera directement envoyée à la paroisse choisie ou aux
@@ -330,9 +326,7 @@ const Demandes = () => {
                   src={process.env.PUBLIC_URL + "/imgs/icons/pin-paroisse.png"}
                   alt="pin"
                 />
-                {!isEmpty(user)
-                  ? handleParoissesList()
-                  : handleAllParoisseList()}
+                {handleAllParoisseList()}
               </div>
 
               {!isEmpty(paroisse) &&
