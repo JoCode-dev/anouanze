@@ -9,6 +9,7 @@ export const addDemande = async (req, res) => {
 
   const newDemande = new DemandeModel({
     name,
+    number,
     textDemand,
     dayMesse,
     dayHour,

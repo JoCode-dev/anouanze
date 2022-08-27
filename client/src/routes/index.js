@@ -26,8 +26,11 @@ import AdminDashboard from "../pages/AdminDashboard";
 // Moderator
 import ModDashboard from "../pages/ModDashboard";
 
-// Évènement
+// Actualité
 import Actu from "../pages/Actu";
+
+// Demande de messe
+import Demandes from "../pages/Demandes";
 
 const index = () => {
   return (
@@ -44,6 +47,7 @@ const index = () => {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/mod-dashboard" element={<ModDashboard />} />
         <Route path="/actu/:id" element={<Actu />} />
+        <Route path="/demande" element={<Demandes />} />
       </Routes>
     </BrowserRouter>
   );

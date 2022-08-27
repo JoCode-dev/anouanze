@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const demandeSchema = mongoose.Schema({
   name: String,
+  number: String,
   textDemand: String,
   isValid: {
     type: Boolean,

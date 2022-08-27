@@ -63,6 +63,11 @@
             border-radius: 2vh;
             font-size: 3.4vh;
             color: $white;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                filter: brightness(120%);
+            }
         }
     }
 }

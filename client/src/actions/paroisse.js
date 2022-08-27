@@ -21,7 +21,6 @@ export const createParoisse = (data) => async (dispatch) => {
 export const getAllParoisse = () => async (dispatch) => {
   try {
     const { data } = await api.getParoisses();
-    console.log(data);
     dispatch({ type: GET_ALL_PAROISSE, payload: data });
   } catch (error) {}
 };
@@ -30,7 +29,6 @@ export const getParoisse = (id) => async (dispatch) => {
   try {
     const { data } = await api.getParoisse(id);
     dispatch({ type: GET_PAROISSE, payload: data });
-    console.log(data);
   } catch (error) {}
 };
 

@@ -18,8 +18,8 @@ const DemandeMesses = () => {
           défunts...
         </div>
 
-        <NavLink to="/paroisses" className="demande-messes-button">
-          Choisir une paroisse
+        <NavLink to="/demande" className="demande-messes-button">
+          Faire une demande ✝️
         </NavLink>
       </div>
     </div>
