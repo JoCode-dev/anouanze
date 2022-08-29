@@ -78,15 +78,14 @@ const Demandes = () => {
     if (!isEmpty(paroisses)) {
       return (
         <select
-          onChange={(e) => chooseParoisse(e)}
-          value={demandeDatas?.paroisseName}
-          defaultValue={"default"}
+          onChange={(e) => chooseParoisse(e) || null}
+          value={demandeDatas?.paroisseName || ""}
         >
-          <option value={"default"} selected="true" disabled="disabled">
+          <option value="" disabled>
             Choisir paroisse *
           </option>
           {paroisses.map((e) => (
-            <option key={e._id} data-key={e._id}>
+            <option key={e._id} data-key={e._id} value={e.name}>
               {e.name}
             </option>
           ))}
@@ -339,10 +338,10 @@ const Demandes = () => {
                   />
                   <>
                     <select
-                      onChange={(e) => chooseDay(e)}
-                      value={demandeDatas.dayMesse}
+                      onChange={(e) => chooseDay(e) || null}
+                      value={demandeDatas.dayMesse || ""}
                     >
-                      <option selected="true" disabled="disabled">
+                      <option value="" disabled="disabled">
                         Choisir le jour
                       </option>
                       {paroisse?.messes.map((e, idx) => (
@@ -370,10 +369,10 @@ const Demandes = () => {
                   />
                   <>
                     <select
-                      onChange={(e) => chooseHour(e)}
-                      value={demandeDatas.hourMesse}
+                      onChange={(e) => chooseHour(e) || null}
+                      value={demandeDatas.hourMesse || ""}
                     >
-                      <option selected="true" disabled="disabled">
+                      <option value="" disabled="disabled">
                         Choisir l'heure
                       </option>
                       {dayChoosen.map((e, idx) => (

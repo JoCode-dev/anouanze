@@ -168,8 +168,8 @@ const ParoissesBoard = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
-        setCoordinates({ lat: latitude, lng: longitude });
         setUserCoords({ lat: latitude, lng: longitude });
+        setCoordinates({ lat: latitude, lng: longitude });
       }
     );
   }, []);
@@ -268,7 +268,7 @@ const ParoissesBoard = () => {
     e.preventDefault();
     console.log("====================================");
     console.log(formData);
-    console.log(days);
+    //console.log(days);
     console.log("====================================");
   };
 
@@ -396,8 +396,9 @@ const ParoissesBoard = () => {
                   <div className="location-map-container">
                     <GoogleMapReact
                       bootstrapURLKeys={{ key: apiKey }}
-                      defaultCenter={defaultProps.center}
-                      defaultZoom={defaultProps.zoom}
+                      defaultCenter={coordinates}
+                      center={coordinates}
+                      defaultZoom={17}
                       margin={[50, 50, 50, 50]}
                       options={{
                         disableDefaultUI: true,
@@ -469,6 +470,15 @@ const ParoissesBoard = () => {
                   </div>
                 </div>
 
+                {/** Pictures */}
+                <div className="pictures">
+                  <div className="pictures-title">
+                    <h3>Pictures</h3>
+                  </div>
+                  <div className="pictures-content"></div>
+                </div>
+                {/** Clergy */}
+
                 <div className="btn-group">
                   <input type="submit" value="Save" />
                   <input type="reset" value="Annuler" />
@@ -521,6 +531,7 @@ const ParoissesBoard = () => {
                   <NavLink
                     to={`/paroisse/${element._id}`}
                     className="footer-view"
+                    target="_blank"
                   >
                     <img
                       src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}

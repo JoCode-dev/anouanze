@@ -18,10 +18,11 @@ export const createParoisse = (data) => async (dispatch) => {
   } catch (error) {}
 };
 
-export const getAllParoisse = () => async (dispatch) => {
+export const getAllParoisse = (num) => async (dispatch) => {
   try {
     const { data } = await api.getParoisses();
-    dispatch({ type: GET_ALL_PAROISSE, payload: data });
+    const newArray = data.slice(0, num);
+    dispatch({ type: GET_ALL_PAROISSE, payload: newArray });
   } catch (error) {}
 };
 

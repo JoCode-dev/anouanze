@@ -17,9 +17,6 @@ const MaParoisse = ({ id }) => {
     if (loadEvent) {
       dispatch(getParoisse(id));
       dispatch(getActuByID(id));
-      console.log("====================================");
-      console.log(actus);
-      console.log("====================================");
     }
   }, [dispatch, id, loadEvent]);
 
@@ -38,7 +35,19 @@ const MaParoisse = ({ id }) => {
     <>
       {!isEmpty(paroisse) && (
         <div className="MaParoisse-container">
-          <h1>Ma Paroisse</h1>
+          <div className="MaParoisse-header">
+            <NavLink to={`/paroisse/${paroisse._id}`}>
+              <h1>Ma Paroisse</h1>
+            </NavLink>
+
+            <NavLink to={`/paroisses`} className="MaParoisse-header-right">
+              <h2>Paroisses</h2>
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/icons/arrow-right.png"}
+                alt="arrow-right"
+              />
+            </NavLink>
+          </div>
 
           <div className="MaParoisse-infos-container">
             <div className="MaParoisse-infos-left">
