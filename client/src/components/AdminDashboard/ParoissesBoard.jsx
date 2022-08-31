@@ -107,6 +107,28 @@ const ParoissesBoard = () => {
     confessionProgram: [],
   });
 
+  const [files, setFiles] = useState([]);
+
+  const fileSelectedHandler = (e) => {
+    const files = e.target.files;
+    setFiles(files);
+    //setFiles({ files: [...files, ...e.target.files] });
+  };
+
+  const renderFiles = () => {
+    const filesArray = Object.values(files);
+
+    console.log("====================================");
+    console.log(filesArray);
+    console.log("====================================");
+
+    return filesArray.map((e) => (
+      <div className="picture-block">
+        <h2>Test</h2>
+      </div>
+    ));
+  };
+
   const dispatch = useDispatch();
   const paroisses = useSelector((state) => state.paroisses);
 
@@ -267,8 +289,10 @@ const ParoissesBoard = () => {
     });
     e.preventDefault();
     console.log("====================================");
-    console.log(formData);
+    //console.log(formData);
     //console.log(days);
+    console.log(files.length);
+
     console.log("====================================");
   };
 
@@ -475,7 +499,16 @@ const ParoissesBoard = () => {
                   <div className="pictures-title">
                     <h3>Pictures</h3>
                   </div>
-                  <div className="pictures-content"></div>
+                  <div className="pictures-content">
+                    <div className="pictures-blocks-container">
+                      {files.length > 0 && <>{renderFiles()}</>}
+                    </div>
+                    <input
+                      type="file"
+                      multiple
+                      onChange={(e) => fileSelectedHandler(e)}
+                    />
+                  </div>
                 </div>
                 {/** Clergy */}
 
