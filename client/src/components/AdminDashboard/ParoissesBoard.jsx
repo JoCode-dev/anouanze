@@ -8,6 +8,8 @@ import { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "../Map/Marker";
 
+import { createParoisse, getAllParoisse } from "../../actions/paroisse";
+
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
@@ -99,6 +101,7 @@ const ParoissesBoard = () => {
     contact: "",
     email: "",
     history: "",
+    pictures: [],
     location: {
       lat: null,
       lng: null,
@@ -110,23 +113,34 @@ const ParoissesBoard = () => {
   const [files, setFiles] = useState([]);
 
   const fileSelectedHandler = (e) => {
-    const files = e.target.files;
-    setFiles(files);
-    //setFiles({ files: [...files, ...e.target.files] });
+    const filesSelected = URL.createObjectURL(e.target.files[0]);
+
+    setFiles([...files, filesSelected]);
+    setFormData({ ...formData, pictures: [...files, filesSelected] });
+
+    console.log(files);
+  };
+
+  const removeBlock = (idx) => {
+    let arr = [...files];
+    arr.splice(idx, 1);
+
+    setFiles(arr);
+    setFormData({ ...formData, pictures: arr });
   };
 
   const renderFiles = () => {
-    const filesArray = Object.values(files);
-
-    console.log("====================================");
-    console.log(filesArray);
-    console.log("====================================");
-
-    return filesArray.map((e) => (
-      <div className="picture-block">
-        <h2>Test</h2>
-      </div>
-    ));
+    return files.map((e, idx) => {
+      console.log(e);
+      return (
+        <div className="picture-block" key={idx}>
+          <img src={e} alt={idx} />
+          <div className="close-btn" onClick={() => removeBlock(idx)}>
+            Close
+          </div>
+        </div>
+      );
+    });
   };
 
   const dispatch = useDispatch();
@@ -281,19 +295,29 @@ const ParoissesBoard = () => {
     console.log(daysConf);
   }
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     setFormData({
       ...formData,
       messeProgram: [days],
       confessionProgram: [daysConf],
     });
     e.preventDefault();
-    console.log("====================================");
-    //console.log(formData);
-    //console.log(days);
-    console.log(files.length);
 
     console.log("====================================");
+    console.log(formData);
+    console.log("====================================");
+
+    if (formData.name) {
+      const data = new FormData();
+      data.append(formData);
+
+      await dispatch(createParoisse(data));
+      dispatch(getAllParoisse());
+
+      cancelPost();
+    } else {
+      alert("Veuillez entrer le nom de la paroisse !");
+    }
   };
 
   const cancelForm = () => {
@@ -306,12 +330,15 @@ const ParoissesBoard = () => {
       contact: "",
       email: "",
       history: "",
+      pictures: [],
       location: {
         lat: null,
         lng: null,
       },
       messeProgram: [],
     });
+
+    setToggleForm(!toggleForm);
   };
 
   return (
@@ -501,13 +528,17 @@ const ParoissesBoard = () => {
                   </div>
                   <div className="pictures-content">
                     <div className="pictures-blocks-container">
-                      {files.length > 0 && <>{renderFiles()}</>}
+                      {!isEmpty(files) && <>{renderFiles()}</>}
+
+                      <div className="file-upload">
+                        <input
+                          type="file"
+                          onChange={(e) => fileSelectedHandler(e)}
+                          accept=".jpg, .jpeg, .png"
+                        />
+                        <i class="fa fa-arrow-up"></i>
+                      </div>
                     </div>
-                    <input
-                      type="file"
-                      multiple
-                      onChange={(e) => fileSelectedHandler(e)}
-                    />
                   </div>
                 </div>
                 {/** Clergy */}
