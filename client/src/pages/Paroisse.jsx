@@ -94,13 +94,14 @@ const Paroisse = () => {
                       <h2>PROGRAMME DES MESSES : </h2>
                     </div>
                     <div className="paroisse-program-content">
-                      {paroisse?.messes.map((messe, idx) => (
-                        <>
-                          <div key={idx}>
-                            {messe.dayName} : {putDashes(messe?.dayHour)}
-                          </div>
-                        </>
-                      ))}
+                      {!isEmpty(paroisse?.messes[0]?.dayHour) &&
+                        paroisse?.messes.map((messe, idx) => (
+                          <>
+                            <div key={idx}>
+                              {messe.dayName} : {putDashes(messe?.dayHour)}
+                            </div>
+                          </>
+                        ))}
                     </div>
                   </div>
 

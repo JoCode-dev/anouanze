@@ -14,10 +14,19 @@ const __dirname = path.dirname(__filename);
 
 // CREATE
 export const createParoisse = async (req, res) => {
-  const paroisse = req.body;
-
   let fileName;
   let filesNames = [];
+
+  const {
+    name,
+    province,
+    diocese,
+    pictures,
+    address,
+    contact,
+    email,
+    history,
+  } = req.body;
 
   if (req.files !== null) {
     try {
@@ -50,14 +59,37 @@ export const createParoisse = async (req, res) => {
       res.status(404).json({ message: error });
       console.log(error);
     }
-    paroisse.pictures = filesNames;
   }
 
-  const newParoisse = new ParoisseModel(paroisse);
+  let location = req.body.location;
+  location.coordinates = location.coordinates.split(",").map(function (item) {
+    return parseFloat(item);
+  });
+
+  let messes = req.body.messes;
+  messes = JSON.parse(messes);
+
+  let confessions = req.body.confessions;
+  confessions = JSON.parse(confessions);
+
+  const newParoisse = new ParoisseModel({
+    name,
+    province,
+    diocese,
+    location,
+    pictures: filesNames,
+    address,
+    contact,
+    email,
+    history,
+    messes,
+    confessions,
+  });
 
   try {
-    await newParoisse.save();
+     await newParoisse.save();
     res.status(201).json({ result: newParoisse });
+    console.log(newParoisse);
   } catch (error) {
     res.status(401).json({ message: error });
     console.log("====================================");
@@ -95,7 +127,6 @@ export const updateParoisse = async (req, res) => {
   if (!mongoose.isValidObjectId(id))
     return res.status(500).json({ message: `Invalid ${id}` });
 
-  const paroisse = req.body;
   let fileName;
   let filesNames = [];
 
@@ -130,12 +161,50 @@ export const updateParoisse = async (req, res) => {
       res.status(404).json({ message: error });
       console.log(error);
     }
-    paroisse.pictures = filesNames;
   }
 
+  const {
+    name,
+    province,
+    diocese,
+    pictures,
+    address,
+    contact,
+    email,
+    history,
+  } = req.body;
+
+  let location = req.body.location;
+  location.coordinates = location.coordinates.split(",").map(function (item) {
+    return parseFloat(item);
+  });
+
+  let messes = req.body.messes;
+  messes = JSON.parse(messes);
+
+  let confessions = req.body.confessions;
+  confessions = JSON.parse(confessions);
+
   try {
-    await ParoisseModel.findByIdAndUpdate(id, paroisse);
-    res.status(200).json({ resutl: paroisse });
+    await ParoisseModel.findByIdAndUpdate(id, {
+      name,
+      province,
+      diocese,
+      location,
+      pictures:
+        req.files !== null
+          ? filesNames.map((e) => {
+              return e;
+            })
+          : "",
+      address,
+      contact,
+      email,
+      history,
+      messes,
+      confessions,
+    });
+    res.status(200).json({ messages: `Paroise ${id} successfully uploaded` });
   } catch (error) {
     res.status(404).json({ message: error });
   }

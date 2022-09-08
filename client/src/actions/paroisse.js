@@ -15,7 +15,11 @@ import {
 export const createParoisse = (data) => async (dispatch) => {
   try {
     await api.createParoisse(data);
-  } catch (error) {}
+  } catch (error) {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
+  }
 };
 
 export const getAllParoisse = (num) => async (dispatch) => {

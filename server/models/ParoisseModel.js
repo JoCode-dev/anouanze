@@ -19,7 +19,7 @@ const paroisseSchema = mongoose.Schema(
     location: {
       type: {
         type: String,
-        default: ["Point"],
+        default: "Point",
         required: true,
       },
       coordinates: {
@@ -35,11 +35,9 @@ const paroisseSchema = mongoose.Schema(
     },
     contact: {
       type: String,
-      minlength: 8,
     },
     email: {
       type: String,
-      validate: [validator.isEmail],
     },
     history: {
       type: String,
@@ -56,6 +54,7 @@ const paroisseSchema = mongoose.Schema(
     messes: {
       type: [
         {
+          id: Number,
           dayName: String,
           dayHour: {
             type: [String],
@@ -66,6 +65,7 @@ const paroisseSchema = mongoose.Schema(
     confessions: {
       type: [
         {
+          id: Number,
           dayName: String,
           dayHour: {
             type: [String],

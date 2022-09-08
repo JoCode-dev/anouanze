@@ -8,7 +8,7 @@ import { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "../Map/Marker";
 
-import { createParoisse, getAllParoisse } from "../../actions/paroisse";
+import { createParoisse } from "../../actions/paroisse";
 
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -16,83 +16,90 @@ import makeAnimated from "react-select/animated";
 const animatedComponents = makeAnimated();
 
 const ParoissesBoard = () => {
+  // Afficher / Cacher le formulaire
   const [toggleForm, setToggleForm] = useState(false);
+
+  // Coordonees pour la carte
   const [userCoords, setUserCoords] = useState({});
   const [coordinates, setCoordinates] = useState({});
+
+  // Jours - Heures / Messes & Confessions
   const [days, setDays] = useState([
     {
       id: 1,
-      name: "Lundi",
-      hours: [],
+      dayName: "Lundi",
+      dayHour: [],
     },
     {
       id: 2,
-      name: "Mardi",
-      hours: [],
+      dayName: "Mardi",
+      dayHour: [],
     },
     {
       id: 3,
-      name: "Mercredi",
-      hours: [],
+      dayName: "Mercredi",
+      dayHour: [],
     },
     {
       id: 4,
-      name: "Jeudi",
-      hours: [],
+      dayName: "Jeudi",
+      dayHour: [],
     },
     {
       id: 5,
-      name: "Vendredi",
-      hours: [],
+      dayName: "Vendredi",
+      dayHour: [],
     },
     {
       id: 6,
-      name: "Samedi",
-      hours: [],
+      dayName: "Samedi",
+      dayHour: [],
     },
     {
       id: 7,
-      name: "Dimanche",
-      hours: [],
+      dayName: "Dimanche",
+      dayHour: [],
     },
   ]);
   const [daysConf, setDaysConf] = useState([
     {
       id: 1,
-      name: "Lundi",
-      hours: [],
+      dayName: "Lundi",
+      dayHour: [],
     },
     {
       id: 2,
-      name: "Mardi",
-      hours: [],
+      dayName: "Mardi",
+      dayHour: [],
     },
     {
       id: 3,
-      name: "Mercredi",
-      hours: [],
+      dayName: "Mercredi",
+      dayHour: [],
     },
     {
       id: 4,
-      name: "Jeudi",
-      hours: [],
+      dayName: "Jeudi",
+      dayHour: [],
     },
     {
       id: 5,
-      name: "Vendredi",
-      hours: [],
+      dayName: "Vendredi",
+      dayHour: [],
     },
     {
       id: 6,
-      name: "Samedi",
-      hours: [],
+      dayName: "Samedi",
+      dayHour: [],
     },
     {
       id: 7,
-      name: "Dimanche",
-      hours: [],
+      dayName: "Dimanche",
+      dayHour: [],
     },
   ]);
+
+  // Données formulaire
   const [formData, setFormData] = useState({
     name: "",
     province: "",
@@ -103,35 +110,55 @@ const ParoissesBoard = () => {
     history: "",
     pictures: [],
     location: {
-      lat: null,
-      lng: null,
+      type: "Point",
+      coordinates: [null, null],
     },
-    messeProgram: [],
-    confessionProgram: [],
+    messes: [],
+    confessions: [],
   });
 
+  // Fichiers données
   const [files, setFiles] = useState([]);
+  const [fileSet, setFileSet] = useState([]);
+
+  // Avant / Après validation
+  const [isOk, setIsOk] = useState(false);
+
+  // Données paroisse - édition
+  const [paroisseEdit, setParoisseEdit] = useState({});
+
+  // Mode édition
+  const [isEdit, setIsEdit] = useState(false);
+
+  // Values for Select
+  const [vals, setVals] = useState([]);
 
   const fileSelectedHandler = (e) => {
-    const filesSelected = URL.createObjectURL(e.target.files[0]);
+    const filesParsed = URL.createObjectURL(e.target.files[0]);
+    const filesSelected = e.target.files[0];
 
-    setFiles([...files, filesSelected]);
-    setFormData({ ...formData, pictures: [...files, filesSelected] });
+    setFiles([...files, filesParsed]);
+    setFileSet([...fileSet, filesSelected]);
+    setFormData({ ...formData, pictures: [...fileSet, filesSelected] });
 
-    console.log(files);
+    //console.log(files);
   };
 
   const removeBlock = (idx) => {
-    let arr = [...files];
+    let arr = [...fileSet];
+    let newArr = [...files];
     arr.splice(idx, 1);
+    newArr.splice(idx, 1);
 
-    setFiles(arr);
+    setFileSet(arr);
+    setFiles(newArr);
     setFormData({ ...formData, pictures: arr });
+    console.log(fileSet);
   };
 
   const renderFiles = () => {
     return files.map((e, idx) => {
-      console.log(e);
+      // console.log(e);
       return (
         <div className="picture-block" key={idx}>
           <img src={e} alt={idx} />
@@ -230,33 +257,33 @@ const ParoissesBoard = () => {
     });
 
     if (idx === 1) {
-      days[0].hours = transit;
+      days[0].dayHour = transit;
     }
 
     if (idx === 2) {
-      days[1].hours = transit;
+      days[1].dayHour = transit;
     }
     if (idx === 3) {
-      days[2].hours = transit;
+      days[2].dayHour = transit;
     }
     if (idx === 4) {
-      days[3].hours = transit;
+      days[3].dayHour = transit;
     }
     if (idx === 5) {
-      days[4].hours = transit;
+      days[4].dayHour = transit;
     }
     if (idx === 6) {
-      days[5].hours = transit;
+      days[5].dayHour = transit;
     }
     if (idx === 7) {
-      days[6].hours = transit;
+      days[6].dayHour = transit;
     }
     /* 
     let newArr = [];
     days.forEach((day) => {
-      newArr.push(day.hours);
+      newArr.push(day.dayHour);
     }); */
-    console.log(days);
+    //  console.log(days);
   }
 
   function handleSelectConfessions(data, idx) {
@@ -266,61 +293,86 @@ const ParoissesBoard = () => {
     });
 
     if (idx === 1) {
-      daysConf[0].hours = transit;
+      daysConf[0].dayHour = transit;
     }
 
     if (idx === 2) {
-      daysConf[1].hours = transit;
+      daysConf[1].dayHour = transit;
     }
     if (idx === 3) {
-      daysConf[2].hours = transit;
+      daysConf[2].dayHour = transit;
     }
     if (idx === 4) {
-      daysConf[3].hours = transit;
+      daysConf[3].dayHour = transit;
     }
     if (idx === 5) {
-      daysConf[4].hours = transit;
+      daysConf[4].dayHour = transit;
     }
     if (idx === 6) {
-      daysConf[5].hours = transit;
+      daysConf[5].dayHour = transit;
     }
     if (idx === 7) {
-      daysConf[6].hours = transit;
+      daysConf[6].dayHour = transit;
     }
     /* 
     let newArr = [];
     days.forEach((day) => {
-      newArr.push(day.hours);
+      newArr.push(day.dayHour);
     }); */
-    console.log(daysConf);
+    // console.log(daysConf);
   }
 
   const submitForm = async (e) => {
+    setIsOk(true);
     setFormData({
       ...formData,
-      messeProgram: [days],
-      confessionProgram: [daysConf],
+      messes: days,
+      confessions: daysConf,
     });
     e.preventDefault();
 
-    console.log("====================================");
-    console.log(formData);
-    console.log("====================================");
-
     if (formData.name) {
       const data = new FormData();
-      data.append(formData);
+      data.append("name", formData.name);
+      data.append("province", formData.province);
+      data.append("diocese", formData.diocese);
+      data.append("location[type]", formData.location.type);
+      data.append("location[coordinates]", formData.location.coordinates);
 
-      await dispatch(createParoisse(data));
-      dispatch(getAllParoisse());
+      formData.pictures.forEach((file) => {
+        data.append("pictures[]", file);
+      });
+      data.append("address", formData.address);
+      data.append("contact", formData.contact);
+      data.append("email", formData.email);
+      data.append("history", formData.history);
+      data.append("messes", JSON.stringify(formData.messes));
+      data.append("confessions", JSON.stringify(formData.confessions));
 
-      cancelPost();
+      console.log(...data);
+
+      await dispatch(createParoisse(data))
+        .then(() => {
+          setIsOk(false);
+          dispatch(getAllParoisse());
+
+          cancelForm();
+          console.log("OK");
+          setToggleForm(!toggleForm);
+          return true;
+        })
+        .catch((error) => {
+          console.log("====================================");
+          console.log(error);
+          console.log("====================================");
+        });
     } else {
       alert("Veuillez entrer le nom de la paroisse !");
     }
   };
 
   const cancelForm = () => {
+    setIsOk(false);
     setFormData({
       ...formData,
       name: "",
@@ -335,8 +387,64 @@ const ParoissesBoard = () => {
         lat: null,
         lng: null,
       },
-      messeProgram: [],
+      messes: [],
+      confessions: [],
     });
+
+    setFiles([]);
+
+    setToggleForm(!toggleForm);
+  };
+
+  /* 
+  useEffect(() => {
+    console.log("====================================");
+    console.log(paroisseEdit);
+    console.log("====================================");
+  }, [paroisseEdit]); */
+
+  useEffect(() => {
+    console.log("====================================");
+    console.log(formData);
+    console.log("====================================");
+  }, [formData]);
+
+  const editParoisse = (idx) => {
+    setParoisseEdit(paroisses[idx]);
+
+    const newDatas = {};
+
+    setFormData({
+      name: paroisses[idx].name,
+      province: paroisses[idx].province,
+      diocese: paroisses[idx].diocese,
+      address: paroisses[idx].address,
+      contact: paroisses[idx].contact,
+      email: paroisses[idx].email,
+      history: paroisses[idx].history,
+      pictures: paroisses[idx].pictures,
+      location: {
+        lat: paroisses[idx].location?.coordinates[0],
+        lng: paroisses[idx].location?.coordinates[1],
+      },
+      messes: paroisses[idx].messes,
+      confessions: paroisses[idx].confessions,
+    });
+
+    setCoordinates({
+      lat: paroisses[idx].location?.coordinates[0],
+      lng: paroisses[idx].location?.coordinates[1],
+    });
+
+    setUserCoords({
+      lat: paroisses[idx].location?.coordinates[0],
+      lng: paroisses[idx].location?.coordinates[1],
+    });
+
+    if (!isEmpty(paroisses[idx].messes)) {
+      setDays(paroisses[idx].messes);
+    }
+    console.log(days);
 
     setToggleForm(!toggleForm);
   };
@@ -447,7 +555,7 @@ const ParoissesBoard = () => {
                   <div className="location-map-container">
                     <GoogleMapReact
                       bootstrapURLKeys={{ key: apiKey }}
-                      defaultCenter={coordinates}
+                      defaultCenter={defaultProps.center}
                       center={coordinates}
                       defaultZoom={17}
                       margin={[50, 50, 50, 50]}
@@ -461,8 +569,8 @@ const ParoissesBoard = () => {
                         setFormData({
                           ...formData,
                           location: {
-                            lat: coordinates.lat,
-                            lng: coordinates.lng,
+                            type: "Point",
+                            coordinates: [coordinates.lat, coordinates.lng],
                           },
                         });
                       }}
@@ -485,7 +593,7 @@ const ParoissesBoard = () => {
                     <div className="programme-content">
                       {days.map((day, idx) => (
                         <div className="day-block">
-                          <h3 className="day-title">{day.name}</h3>
+                          <h3 className="day-title">{day.dayName}</h3>
                           <Select
                             className="select-element"
                             options={dayOptions}
@@ -493,6 +601,7 @@ const ParoissesBoard = () => {
                             components={animatedComponents}
                             isMulti
                             onChange={(e) => handleSelectMesses(e, day.id)}
+                            defaultValue={[dayOptions[0]]}
                           />
                         </div>
                       ))}
@@ -506,7 +615,7 @@ const ParoissesBoard = () => {
                     <div className="programme-content">
                       {days.map((day, idx) => (
                         <div className="day-block">
-                          <h3 className="day-title">{day.name}</h3>
+                          <h3 className="day-title">{day.dayName}</h3>
                           <Select
                             className="select-element"
                             options={dayOptions}
@@ -533,10 +642,11 @@ const ParoissesBoard = () => {
                       <div className="file-upload">
                         <input
                           type="file"
+                          name="file"
                           onChange={(e) => fileSelectedHandler(e)}
                           accept=".jpg, .jpeg, .png"
                         />
-                        <i class="fa fa-arrow-up"></i>
+                        <i className="fa fa-arrow-up"></i>
                       </div>
                     </div>
                   </div>
@@ -545,7 +655,13 @@ const ParoissesBoard = () => {
 
                 <div className="btn-group">
                   <input type="submit" value="Save" />
-                  <input type="reset" value="Annuler" />
+                  {isOk === true && <i className="fa fa-spinner fa-spin"></i>}
+
+                  <input
+                    type="reset"
+                    value="Annuler"
+                    onClick={() => cancelForm()}
+                  />
                 </div>
               </form>
             </div>
@@ -602,7 +718,7 @@ const ParoissesBoard = () => {
                       alt={"edit"}
                     />
                   </NavLink>{" "}
-                  <div className="footer-edit">
+                  <div className="footer-edit" onClick={() => editParoisse(i)}>
                     <img
                       src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
                       alt={"edit"}
