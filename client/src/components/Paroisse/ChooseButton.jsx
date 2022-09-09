@@ -1,52 +1,92 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { chooseParoisse, unchooseParoisse } from "../../actions/paroisse";
 import { UidContext } from "../AppContext";
 
 const ChooseButton = ({ paroisse }) => {
   const [isChoosen, setIsChoosen] = useState(false);
+  const [onLoading, setOnLoading] = useState(false);
+  const [isParoissed, setIsParoissed] = useState(false);
   const uid = useContext(UidContext);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user?.user);
 
   const Pid = paroisse?._id;
 
-  const choose = () => {
-    dispatch(chooseParoisse(Pid, uid));
+  const choose = async () => {
+    setOnLoading(true);
+    await dispatch(chooseParoisse(Pid, uid));
     setIsChoosen(true);
+    setOnLoading(false);
     console.log(uid);
+    window.location.reload();
   };
 
-  const unChoose = () => {
-    dispatch(unchooseParoisse(Pid, uid));
+  const unChoose = async () => {
+    setOnLoading(true);
+    await dispatch(unchooseParoisse(Pid, uid));
     setIsChoosen(false);
+    setOnLoading(false);
     console.log(uid);
+    window.location.reload();
   };
 
   useEffect(() => {
-    if (paroisse.paroissiens.includes(uid)) {
+    if (paroisse?.paroissiens.includes(uid)) {
       setIsChoosen(true);
-    } else setIsChoosen(false);
-  }, [paroisse.paroissiens, uid, isChoosen]);
+      setIsParoissed(true);
+    }
+
+    if (user?._paroisse !== "" && !paroisse.paroissiens.includes(uid)) {
+      setIsChoosen(true);
+      setIsParoissed(false);
+    }
+
+    if (user?._paroisse === "") {
+      setIsChoosen(false);
+      setIsParoissed(false);
+    }
+  }, [paroisse]);
 
   return (
     <div>
-      {uid !== "" && isChoosen === true && (
-        <button className="choose-paroisse-container" onClick={unChoose}>
-          <p>Paroisse déjà choisie</p>{" "}
+      {uid !== "" && isChoosen === true && isParoissed === true && (
+        <button
+          className="choose-paroisse-container"
+          onClick={() => unChoose()}
+        >
+          <p>Paroisse choisie</p>{" "}
           <img
             src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
             alt="heart"
           />
+          {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
         </button>
       )}
 
+      {uid !== "" && isChoosen === true && isParoissed === false && (
+        <>
+          <button
+            className="choose-paroisse-container"
+            onClick={() => alert("Une paroisse est déjà selectionnée")}
+          >
+            <p>Une autre paroisse a déja été choisie</p>{" "}
+            <img
+              src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
+              alt="heart"
+            />
+            {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
+          </button>
+        </>
+      )}
       {uid !== "" && isChoosen === false && (
-        <button className="choose-paroisse-container" onClick={choose}>
+        <button className="choose-paroisse-container" onClick={() => choose()}>
           <p>Choisir comme ma paroisse</p>{" "}
           <img
             src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
             alt="heart"
           />
+          {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
         </button>
       )}
     </div>

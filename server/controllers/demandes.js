@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 import DemandeModel from "../models/DemandeModel.js";
 
 export const addDemande = async (req, res) => {
-  const { name, textDemand, _idParoisse } = req.body;
-  if (!mongoose.isValidObjectId(_idParoisse)) {
+  const { name, number, textDemand, dayMesse, dayHour, _idParoisse } = req.body;
+  var ObjectId = mongoose.Types.ObjectId(_idParoisse)
+  if (!mongoose.isValidObjectId(ObjectId)) {
     return res.status(500).send(`Invalid id provided`);
   }
 

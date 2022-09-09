@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import NavBar from "../components/NavBar/NavBar";
 import Carousel from "../components/Carousel/Carousel";
@@ -9,16 +10,14 @@ import DemandeMesses from "../components/DemandeMesses/DemandeMesses";
 import VerseDay from "../components/VerseDay/VerseDay";
 
 const Home = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("jwt")));
+  const user = useSelector((state) => state.user.user);
   return (
     <div className="home-container">
       <NavBar />
-      <VerseDay />
+      {/*<VerseDay />*/}
       <Carousel />
       <MapComponent />
-      {user?.result?._paroisse !== "" && (
-        <MaParoisse id={user?.result?._paroisse} />
-      )}
+      {user?._paroisse !== "" && <MaParoisse id={user?._paroisse} />}
 
       <DemandeMesses />
       <Footer dot="" />

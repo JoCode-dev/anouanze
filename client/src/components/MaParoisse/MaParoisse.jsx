@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getParoisse } from "../../actions/paroisse";
 import { getActuByID } from "../../actions/actus";
 import { isEmpty } from "../utils/index";
 import { NavLink } from "react-router-dom";
+import { UidContext } from "../AppContext";
 
 const MaParoisse = ({ id }) => {
   const [loadEvent, setLoadEvent] = useState(true);
   const [isSwith, setIsSwith] = useState(false);
-  const paroisse = useSelector((state) => state.paroisse);
-  const actus = useSelector((state) => state.actu);
+  const uid = useContext(UidContext);
 
   const dispatch = useDispatch();
 
@@ -19,6 +19,9 @@ const MaParoisse = ({ id }) => {
       dispatch(getActuByID(id));
     }
   }, [dispatch, id, loadEvent]);
+
+  const paroisse = useSelector((state) => state.paroisse);
+  const actus = useSelector((state) => state.actu);
 
   const toggleProgram = (id) => {
     id === 1 ? setIsSwith(false) : setIsSwith(true);
@@ -33,7 +36,7 @@ const MaParoisse = ({ id }) => {
 
   return (
     <>
-      {!isEmpty(paroisse) && (
+      {!isEmpty(paroisse) && paroisse?.paroissiens?.includes(uid) && (
         <div className="MaParoisse-container">
           <div className="MaParoisse-header">
             <NavLink to={`/paroisse/${paroisse._id}`}>

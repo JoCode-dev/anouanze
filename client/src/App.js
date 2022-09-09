@@ -16,7 +16,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getUser(userId));
     dispatch(getFirstThreeEvents());
-    console.log(userId);
 
     setTimeout(() => {
       setOnLoading(false);

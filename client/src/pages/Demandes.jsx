@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getParoisse, getAllParoisse } from "../actions/paroisse";
+import { addDemande } from "../actions/demandes";
 import { isEmpty } from "../components/utils/index";
 import { NavLink } from "react-router-dom";
 
@@ -24,6 +25,8 @@ const Demandes = () => {
     _idParoisse: "",
     paroisseName: "",
   });
+
+  const [isValid, setIsvalid] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
@@ -145,6 +148,30 @@ const Demandes = () => {
 
     //elements[dataKey - 1].classList.add("active");
     elements[e - 1].classList.add("active");
+  };
+
+  const handleDemand = async () => {
+    setIsvalid(true);
+    const finalDatas = {
+      name: demandeDatas?.isAnonymous ? "Un anonyme" : demandeDatas.name,
+      number: demandeDatas.number,
+      textDemand: demandeDatas.textDemand,
+      dayMesse: demandeDatas.dayMesse,
+      dayHour: demandeDatas.hourMesse,
+      _idParoisse: demandeDatas._idParoisse,
+    };
+
+    await dispatch(addDemande(finalDatas));
+
+    setIsvalid(false);
+
+    const bloc = document.querySelector(".demand-valid");
+    bloc.classList.add("active");
+
+    setTimeout(() => {
+      bloc.classList.remove("active");
+      window.location = "/";
+    }, 2000);
   };
 
   return (
@@ -436,17 +463,23 @@ const Demandes = () => {
             </div>
 
             {isInfos && isIntention && isChoosen && (
-              <div className="btns-container">
-                <div className="btn-prec" onClick={() => changeKey(3)}>
-                  Précédent
+              <>
+                <div className="btns-container">
+                  <div className="btn-prec" onClick={() => changeKey(3)}>
+                    Précédent
+                  </div>
+                  <div className="btn-next" onClick={() => handleDemand()}>
+                    Finaliser
+                    {isValid === true && (
+                      <i className="fa fa-spinner fa-spin"></i>
+                    )}
+                  </div>
                 </div>
-                <div
-                  className="btn-next"
-                  onClick={() => console.log(demandeDatas)}
-                >
-                  Finaliser
+
+                <div className="demand-valid">
+                  <h2>Demande validée !</h2>
                 </div>
-              </div>
+              </>
             )}
           </div>
         )}

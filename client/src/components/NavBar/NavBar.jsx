@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { logout } from "../../actions/auth";
 
 const NavBar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("jwt")));
+  const user = useSelector((state) => state.user.user);
 
   const setClassActive = (e) => {
     const li = document.querySelectorAll("li");
@@ -20,16 +20,13 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("jwt")));
-
-    console.log(user?.result);
+    console.log(user);
   }, []);
 
   const handleLogout = async () => {
     dispatch(logout());
     localStorage.clear();
     window.location = "/";
-    setUser(null);
   };
   return (
     <nav className="navbar-container">
@@ -56,7 +53,7 @@ const NavBar = () => {
       <div className="navbar-right-part">
         {user ? (
           <>
-            {user.result.adminType === true && (
+            {user.adminType === true && (
               <NavLink to="/admin-dashboard" className="admin-btn">
                 <img
                   src={process.env.PUBLIC_URL + "/imgs/icons/community.png"}
@@ -64,7 +61,7 @@ const NavBar = () => {
                 />
               </NavLink>
             )}
-            {user.result.moderatorType === true && (
+            {user.moderatorType === true && (
               <div className="mode-btn">Mode</div>
             )}
 
