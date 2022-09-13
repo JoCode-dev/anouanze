@@ -140,8 +140,6 @@ const ParoissesBoard = () => {
     setFiles([...files, filesParsed]);
     setFileSet([...fileSet, filesSelected]);
     setFormData({ ...formData, pictures: [...fileSet, filesSelected] });
-
-    //console.log(files);
   };
 
   const removeBlock = (idx) => {
@@ -153,12 +151,10 @@ const ParoissesBoard = () => {
     setFileSet(arr);
     setFiles(newArr);
     setFormData({ ...formData, pictures: arr });
-    console.log(fileSet);
   };
 
   const renderFiles = () => {
     return files.map((e, idx) => {
-      // console.log(e);
       return (
         <div className="picture-block" key={idx}>
           <img src={e} alt={idx} />
@@ -396,19 +392,6 @@ const ParoissesBoard = () => {
     setToggleForm(!toggleForm);
   };
 
-  /* 
-  useEffect(() => {
-    console.log("====================================");
-    console.log(paroisseEdit);
-    console.log("====================================");
-  }, [paroisseEdit]); */
-
-  useEffect(() => {
-    console.log("====================================");
-    console.log(formData);
-    console.log("====================================");
-  }, [formData]);
-
   const editParoisse = (idx) => {
     setParoisseEdit(paroisses[idx]);
 
@@ -444,7 +427,33 @@ const ParoissesBoard = () => {
     if (!isEmpty(paroisses[idx].messes)) {
       setDays(paroisses[idx].messes);
     }
-    console.log(days);
+    console.log(dayOptions[0]);
+    console.log(paroisses[idx].messes[0]);
+
+    let tesy = [];
+
+    paroisses[idx].messes.forEach((messe) => {
+      const a = { ...messe.dayHour };
+      tesy.push(a);
+    });
+
+    let tesy2 = [];
+    let labels = [];
+
+    tesy.forEach((e, idx) => {
+      tesy2.push({ ...e });
+    });
+
+    /* labels.forEach((el, idx) => {
+      const a = {
+        id: idx,
+        label: el,
+        value: el,
+      };
+      tesy2.push(a);
+    }); */
+
+    console.log(tesy);
 
     setToggleForm(!toggleForm);
   };
@@ -601,7 +610,7 @@ const ParoissesBoard = () => {
                             components={animatedComponents}
                             isMulti
                             onChange={(e) => handleSelectMesses(e, day.id)}
-                            defaultValue={[dayOptions[0]]}
+                            // defaultValue={[dayOptions[0]]}
                           />
                         </div>
                       ))}
