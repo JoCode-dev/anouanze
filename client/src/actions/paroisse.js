@@ -16,9 +16,6 @@ export const createParoisse = (data) => async (dispatch) => {
   try {
     await api.createParoisse(data);
   } catch (error) {
-    console.log("====================================");
-    console.log(error);
-    console.log("====================================");
   }
 };
 

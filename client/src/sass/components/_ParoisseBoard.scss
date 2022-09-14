@@ -340,11 +340,13 @@
 
                 .pictures {
                     width: 98%;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    padding: 1vh;
 
                     .pictures-title {}
 
                     .pictures-content {
-                        border: 1px solid orange;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
                         .file-upload {
                             height: 15vh;
@@ -388,7 +390,6 @@
                         }
 
                         .pictures-blocks-container {
-                            border: 1px solid rebeccapurple;
                             padding: 1vh;
                             display: flex;
                             align-items: center;

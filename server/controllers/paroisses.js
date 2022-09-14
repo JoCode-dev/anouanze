@@ -87,7 +87,7 @@ export const createParoisse = async (req, res) => {
   });
 
   try {
-     await newParoisse.save();
+    await newParoisse.save();
     res.status(201).json({ result: newParoisse });
     console.log(newParoisse);
   } catch (error) {
@@ -123,7 +123,9 @@ export const getParoisse = async (req, res) => {
 
 // UPDATE
 export const updateParoisse = async (req, res) => {
+  
   const { id } = req.params;
+  
   if (!mongoose.isValidObjectId(id))
     return res.status(500).json({ message: `Invalid ${id}` });
 
@@ -156,7 +158,7 @@ export const updateParoisse = async (req, res) => {
           )
         );
       });
-      // res.status(200).json({ message: "OK" });
+     // res.status(200).json({ message: "OK" });
     } catch (error) {
       res.status(404).json({ message: error });
       console.log(error);

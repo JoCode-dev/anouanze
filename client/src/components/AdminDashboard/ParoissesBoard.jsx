@@ -8,7 +8,11 @@ import { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "../Map/Marker";
 
-import { createParoisse } from "../../actions/paroisse";
+import {
+  createParoisse,
+  updateParoisse,
+  deleteParoisse,
+} from "../../actions/paroisse";
 
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -129,6 +133,8 @@ const ParoissesBoard = () => {
 
   // Mode édition
   const [isEdit, setIsEdit] = useState(false);
+  const [arrFinal, setArrFinal] = useState([]);
+  const [arrConfFinal, setArrConfFinal] = useState([]);
 
   // Values for Select
   const [vals, setVals] = useState([]);
@@ -274,12 +280,10 @@ const ParoissesBoard = () => {
     if (idx === 7) {
       days[6].dayHour = transit;
     }
-    /* 
-    let newArr = [];
-    days.forEach((day) => {
-      newArr.push(day.dayHour);
-    }); */
-    //  console.log(days);
+    setFormData({
+      ...formData,
+      messes: days,
+    });
   }
 
   function handleSelectConfessions(data, idx) {
@@ -310,12 +314,10 @@ const ParoissesBoard = () => {
     if (idx === 7) {
       daysConf[6].dayHour = transit;
     }
-    /* 
-    let newArr = [];
-    days.forEach((day) => {
-      newArr.push(day.dayHour);
-    }); */
-    // console.log(daysConf);
+    setFormData({
+      ...formData,
+      confessions: daysConf,
+    });
   }
 
   const submitForm = async (e) => {
@@ -347,21 +349,35 @@ const ParoissesBoard = () => {
 
       console.log(...data);
 
-      await dispatch(createParoisse(data))
-        .then(() => {
-          setIsOk(false);
-          dispatch(getAllParoisse());
+      isEdit
+        ? await dispatch(updateParoisse(paroisseEdit._id, data))
+            .then(() => {
+              setIsOk(false);
+              dispatch(getAllParoisse());
 
-          cancelForm();
-          console.log("OK");
-          setToggleForm(!toggleForm);
-          return true;
-        })
-        .catch((error) => {
-          console.log("====================================");
-          console.log(error);
-          console.log("====================================");
-        });
+              cancelForm();
+              setToggleForm(!toggleForm);
+              return true;
+            })
+            .catch((error) => {
+              console.log("====================================");
+              console.log(error);
+              console.log("====================================");
+            })
+        : await dispatch(createParoisse(data))
+            .then(() => {
+              setIsOk(false);
+              dispatch(getAllParoisse());
+
+              cancelForm();
+              setToggleForm(!toggleForm);
+              return true;
+            })
+            .catch((error) => {
+              console.log("====================================");
+              console.log(error);
+              console.log("====================================");
+            });
     } else {
       alert("Veuillez entrer le nom de la paroisse !");
     }
@@ -392,6 +408,19 @@ const ParoissesBoard = () => {
     setToggleForm(!toggleForm);
   };
 
+  const convertArray = (arr) => {
+    const result = [];
+    arr.forEach((el, idx) => {
+      const a = {
+        id: idx + 1,
+        value: el,
+        label: el,
+      };
+      result.push(a);
+    });
+    return result;
+  };
+
   const editParoisse = (idx) => {
     setParoisseEdit(paroisses[idx]);
 
@@ -414,6 +443,8 @@ const ParoissesBoard = () => {
       confessions: paroisses[idx].confessions,
     });
 
+    setFiles(paroisses[idx].pictures);
+
     setCoordinates({
       lat: paroisses[idx].location?.coordinates[0],
       lng: paroisses[idx].location?.coordinates[1],
@@ -427,35 +458,79 @@ const ParoissesBoard = () => {
     if (!isEmpty(paroisses[idx].messes)) {
       setDays(paroisses[idx].messes);
     }
+
+    let arrIntermediate = [];
+    let arrConfIntermediate = [];
+
+    paroisses[idx]?.messes.forEach((messe) => {
+      const a = messe?.dayHour;
+      arrIntermediate.push(a);
+    });
+
+    paroisses[idx]?.confessions.forEach((confession) => {
+      const a = confession?.dayHour;
+      arrConfIntermediate.push(a);
+    });
+
+    setArrFinal([]);
+    setArrConfFinal([]);
+    setIsEdit(true);
+
+    const newArr = [];
+    const newArr2 = [];
+
+    arrIntermediate.forEach((e) => {
+      newArr.push(convertArray(e));
+    });
+
+    arrConfIntermediate.forEach((e) => {
+      newArr2.push(convertArray(e));
+    });
+
+    console.log("*************");
+    setArrFinal(newArr);
+    setArrConfFinal(newArr2);
+    console.log(newArr2);
     console.log(dayOptions[0]);
-    console.log(paroisses[idx].messes[0]);
-
-    let tesy = [];
-
-    paroisses[idx].messes.forEach((messe) => {
-      const a = { ...messe.dayHour };
-      tesy.push(a);
-    });
-
-    let tesy2 = [];
-    let labels = [];
-
-    tesy.forEach((e, idx) => {
-      tesy2.push({ ...e });
-    });
-
-    /* labels.forEach((el, idx) => {
-      const a = {
-        id: idx,
-        label: el,
-        value: el,
-      };
-      tesy2.push(a);
-    }); */
-
-    console.log(tesy);
-
     setToggleForm(!toggleForm);
+  };
+
+  const renderArrFinal = (arr, i) => {
+    if (!isEmpty(arr)) {
+      switch (arr[i].length) {
+        case 1:
+          return [arr[i][0]];
+
+        case 2:
+          return [arr[i][0], arr[i][1]];
+
+        case 3:
+          return [arr[i][0], arr[i][1], arr[i][2]];
+
+        case 4:
+          return [arr[i][0], arr[i][1], arr[i][2], arr[i][3]];
+
+        case 5:
+          return [arr[i][0], arr[i][1], arr[i][2], arr[i][3], arr[i][4]];
+
+        default:
+          break;
+      }
+    }
+  };
+
+  const deleteParoisses = async (i) => {
+    const id = paroisses[i]._id;
+
+    var answer = window.confirm("Are you sure you want to delete this item?");
+    if (answer) {
+      await dispatch(deleteParoisse(id))
+        .then(() => {
+          dispatch(getAllParoisse());
+        })
+        .catch(() => {});
+      console.log(id);
+    } else console.log("Canceled!");
   };
 
   return (
@@ -610,7 +685,9 @@ const ParoissesBoard = () => {
                             components={animatedComponents}
                             isMulti
                             onChange={(e) => handleSelectMesses(e, day.id)}
-                            // defaultValue={[dayOptions[0]]}
+                            defaultValue={
+                              isEdit && renderArrFinal(arrFinal, idx)
+                            }
                           />
                         </div>
                       ))}
@@ -632,6 +709,9 @@ const ParoissesBoard = () => {
                             components={animatedComponents}
                             isMulti
                             onChange={(e) => handleSelectConfessions(e, day.id)}
+                            defaultValue={
+                              isEdit && renderArrFinal(arrConfFinal, idx)
+                            }
                           />
                         </div>
                       ))}
@@ -733,7 +813,10 @@ const ParoissesBoard = () => {
                       alt={"edit"}
                     />
                   </div>
-                  <div className="footer-delete">
+                  <div
+                    className="footer-delete"
+                    onClick={() => deleteParoisses(i)}
+                  >
                     <img
                       src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
                       alt={"delete"}
