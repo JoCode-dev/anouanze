@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../utils/index";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import dayjs from "dayjs";
 
 const EventsBoard = () => {
   // Afficher / Cacher le formulaire
@@ -12,6 +13,22 @@ const EventsBoard = () => {
   const [files, setFiles] = useState([]);
 
   const [isOk, setIsOk] = useState(false);
+  const [count, setCount] = useState([1]);
+  const [countHours, setCountHours] = useState([1, 2]);
+
+  const [formData, setFormData] = useState({
+    poster: "",
+    title: "",
+    description: "",
+    address: "",
+    begin: "00:00",
+    end: "00:00",
+    startAt: null,
+    endAt: null,
+    dateEvent: [],
+    organizer: "",
+    posterId: "",
+  });
 
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events);
@@ -20,9 +37,107 @@ const EventsBoard = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+
+    console.log("====================================");
+    console.log(formData);
+    console.log("====================================");
   };
 
-  const cancelForm = () => {};
+  const cancelForm = () => {
+    setFormData({
+      poster: "",
+      title: "",
+      description: "",
+      address: "",
+      startAt: 1663570800,
+      endAt: 1663570800,
+      dateEvent: [],
+      organizer: "",
+      posterId: "",
+    });
+  };
+
+  const renderHoursComponent = () => {
+    let ele = document.querySelectorAll(".hourpicker-container");
+    const [hours, minutes] = ele[0]?.childNodes[0].value.split(":");
+    const hour1 = new Date(hours, minutes);
+
+    const [hours2, minutes2] = ele[1]?.childNodes[0].value.split(":");
+    const hour2 = new Date(hours2, minutes2);
+
+    const checkHour = (e) => {
+      switch (e) {
+        case 1:
+          return formData?.begin;
+
+        case 2:
+          return formData?.end;
+      }
+    };
+
+    return countHours.map((el) => (
+      <div className="hourpicker-container">
+        <input
+          type="time"
+          className="datepicker-input"
+          value={checkHour(el)}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              startAt: hour1.getTime(),
+              endAt: hour2.getTime(),
+            });
+          }}
+        />
+      </div>
+    ));
+  };
+
+  useEffect(() => {
+    console.log("====================================");
+    console.log(formData);
+    console.log("====================================");
+  }, [formData]);
+
+  const plusHoursButton = () => {
+    const a = [1, 2];
+    const element = (
+      <div className="plus-button" onClick={() => setCountHours(a)}>
+        <img src={process.env.PUBLIC_URL + "/imgs/icons/plus.png"} alt="Plus" />
+      </div>
+    );
+    switch (countHours.length) {
+      case 1:
+        return element;
+        break;
+      default:
+        break;
+    }
+  };
+
+  const renderDatesComponent = () => {
+    return count.map((el) => (
+      <div className="datepicker-container">
+        <input type="date" className="datepicker-input" />
+      </div>
+    ));
+  };
+
+  const plusButton = () => {
+    const a = [1, 2];
+    const element = (
+      <div className="plus-button" onClick={() => setCount(a)}>
+        <img src={process.env.PUBLIC_URL + "/imgs/icons/plus.png"} alt="Plus" />
+      </div>
+    );
+    switch (count.length) {
+      case 1:
+        return element;
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <>
@@ -45,17 +160,61 @@ const EventsBoard = () => {
               <form onSubmit={(e) => submitForm(e)}>
                 <div className="form-group">
                   <label htmlFor="title">Titre</label>
-                  <input htmlFor="title" placeholder="Titre" />
+                  <input
+                    htmlFor="title"
+                    placeholder="Titre"
+                    value={formData.title}
+                    onChange={(e) =>
+                      setFormData({ ...formData, title: e.target.value })
+                    }
+                  />
                 </div>
                 <div className="form-group-group">
                   <div className="form-group">
                     <label htmlFor="address">Lieu</label>
-                    <input htmlFor="address" placeholder="Lieu" />
+                    <input
+                      htmlFor="address"
+                      placeholder="Lieu"
+                      value={formData.address}
+                      onChange={(e) =>
+                        setFormData({ ...formData, address: e.target.value })
+                      }
+                    />
                   </div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="description">Description</label>
-                  <textarea htmlFor="description" placeholder="Description" />
+                  <textarea
+                    htmlFor="description"
+                    placeholder="Description"
+                    value={formData.description}
+                    onChange={(e) =>
+                      setFormData({ ...formData, description: e.target.value })
+                    }
+                  />
+                </div>
+
+                {/** Date & Hour */}
+                <div className="dates-group">
+                  <h2>Date</h2>
+                  {renderDatesComponent()}
+                  {plusButton()}
+                  <h2>Heure</h2>
+                  {renderHoursComponent()}
+                  {plusHoursButton()}
+                </div>
+
+                {/** Organisateur */}
+                <div className="form-group">
+                  <label htmlFor="organizer">Organisateur</label>
+                  <input
+                    htmlFor="organizer"
+                    placeholder="Organisateur"
+                    value={formData.organizer}
+                    onChange={(e) =>
+                      setFormData({ ...formData, organizer: e.target.value })
+                    }
+                  />
                 </div>
 
                 {/** Picture */}
@@ -79,7 +238,6 @@ const EventsBoard = () => {
                     </div>
                   </div>
                 </div>
-                {/** Clergy */}
 
                 <div className="btn-group">
                   <input type="submit" value="Save" />

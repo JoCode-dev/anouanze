@@ -245,6 +245,74 @@
                         }
 
                     }
+
+                }
+
+                .dates-group {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding: 1vh;
+
+                    h2 {
+                        margin: auto 1vh;
+                    }
+
+                    .datepicker-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 1vh;
+                        width: 20vh;
+                        height: 4vh;
+                        margin-left: 1vh;
+                        border: 2px solid $gray;
+                        border-radius: 1vh;
+
+                        input[type="date"] {
+                            font-family: $sofiaRegular;
+                            font-size: 1.6vh;
+                            color: #282828;
+                        }
+                    }
+
+                    .hourpicker-container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 1vh;
+                        width: 20vh;
+                        height: 4vh;
+                        margin-left: 1vh;
+                        border: 2px solid $gray;
+                        border-radius: 1vh;
+
+                        input[type="time"] {
+                            font-family: $sofiaRegular;
+                            font-size: 1.6vh;
+                            color: #282828;
+                        }
+                    }
+
+                    .plus-button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 100%;
+                        width: 5vh;
+                        height: 5vh;
+                        background-color: $blue-1;
+                        color: white;
+                        margin: auto 1vh;
+                        cursor: pointer;
+                        transition: all 0.2s ease-in-out;
+
+                        img {
+                            width: 3vh;
+                            filter: brightness(1) invert(1);
+
+                        }
+                    }
                 }
 
                 .form-group-group {
