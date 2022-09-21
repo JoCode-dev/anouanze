@@ -4,17 +4,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../utils/index";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import dayjs from "dayjs";
+import { createEvent } from "../../actions/event";
 
 const EventsBoard = () => {
+  const dispatch = useDispatch();
+  const events = useSelector((state) => state.events);
+  const user = useSelector((state) => state.user.user);
+
   // Afficher / Cacher le formulaire
   const [toggleForm, setToggleForm] = useState(true);
 
+  // Fichiers données
   const [files, setFiles] = useState([]);
+  const [fileSet, setFileSet] = useState([]);
 
   const [isOk, setIsOk] = useState(false);
   const [count, setCount] = useState([1]);
   const [countHours, setCountHours] = useState([1, 2]);
+
+  const [isSetForm, setIsSetForm] = useState(false);
 
   const [formData, setFormData] = useState({
     poster: "",
@@ -26,21 +34,29 @@ const EventsBoard = () => {
     startAt: null,
     endAt: null,
     dateEvent: [],
+    dateBegin: "2022-01-01",
+    dateEnd: "2022-01-01",
     organizer: "",
-    posterId: "",
+    posterId: user._id,
   });
-
-  const dispatch = useDispatch();
-  const events = useSelector((state) => state.events);
-
-  const renderFiles = () => {};
 
   const submitForm = (e) => {
     e.preventDefault();
+    setIsOk(true);
 
-    console.log("====================================");
-    console.log(formData);
-    console.log("====================================");
+    const data = new FormData();
+    data.append("poster", formData.poster);
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("address", formData.address);
+    data.append("startAt", formData.startAt);
+    data.append("endAt", formData.endAt);
+    data.append("dateEvent", formData.dateEvent);
+    data.append("organizer", formData.organizer);
+    data.append("posterId", formData.posterId);
+
+    dispatch(createEvent(data));
+    setIsOk(false);
   };
 
   const cancelForm = () => {
@@ -59,13 +75,8 @@ const EventsBoard = () => {
 
   const renderHoursComponent = () => {
     let ele = document.querySelectorAll(".hourpicker-container");
-    const [hours, minutes] = ele[0]?.childNodes[0].value.split(":");
-    const hour1 = new Date(hours, minutes);
 
-    const [hours2, minutes2] = ele[1]?.childNodes[0].value.split(":");
-    const hour2 = new Date(hours2, minutes2);
-
-    const checkHour = (e) => {
+    const valueByEl = (e) => {
       switch (e) {
         case 1:
           return formData?.begin;
@@ -75,18 +86,42 @@ const EventsBoard = () => {
       }
     };
 
+    const selectHour = (e, el) => {
+      const [hours, minutes] = ele[0]?.childNodes[0]?.value.split(":");
+      const hour1 = new Date("2022", "10", "10", hours, minutes);
+
+      const [hours2, minutes2] = ele[1]?.childNodes[0]?.value.split(":");
+      const hour2 = new Date("2022", "10", "10", hours2, minutes2);
+
+      switch (e) {
+        case 1:
+          setFormData({
+            ...formData,
+            startAt: hour1,
+            begin: el,
+            endAt: hour2,
+          });
+          break;
+
+        case 2:
+          setFormData({
+            ...formData,
+            startAt: hour1,
+            end: el,
+            endAt: hour2,
+          });
+          break;
+      }
+    };
+
     return countHours.map((el) => (
       <div className="hourpicker-container">
         <input
           type="time"
           className="datepicker-input"
-          value={checkHour(el)}
+          value={valueByEl(el)}
           onChange={(e) => {
-            setFormData({
-              ...formData,
-              startAt: hour1.getTime(),
-              endAt: hour2.getTime(),
-            });
+            selectHour(el, e.target.value);
           }}
         />
       </div>
@@ -94,31 +129,61 @@ const EventsBoard = () => {
   };
 
   useEffect(() => {
-    console.log("====================================");
-    console.log(formData);
-    console.log("====================================");
+    setIsSetForm(true);
+
+    if (isSetForm) {
+      setFormData({
+        ...formData,
+      });
+      setIsSetForm(false);
+    }
   }, [formData]);
 
-  const plusHoursButton = () => {
-    const a = [1, 2];
-    const element = (
-      <div className="plus-button" onClick={() => setCountHours(a)}>
-        <img src={process.env.PUBLIC_URL + "/imgs/icons/plus.png"} alt="Plus" />
-      </div>
-    );
-    switch (countHours.length) {
-      case 1:
-        return element;
-        break;
-      default:
-        break;
-    }
-  };
-
   const renderDatesComponent = () => {
+    const datesElement = document.querySelectorAll(".datepicker-container");
+    const selectDate = (idx, date) => {
+      const date1 = new Date(datesElement[0]?.childNodes[0]?.value);
+      const date2 = new Date(datesElement[1]?.childNodes[0]?.value);
+
+      const arr = [];
+      switch (count.length) {
+        case 1:
+          arr.push(date1);
+          setFormData({
+            ...formData,
+            dateBegin: datesElement[0]?.childNodes[0]?.value,
+            dateEvent: arr,
+          });
+          break;
+        case 2:
+          arr.push(date1);
+          arr.push(date2);
+
+          setFormData({
+            ...formData,
+            dateBegin: datesElement[0]?.childNodes[0]?.value,
+            dateEnd: datesElement[1]?.childNodes[0]?.value,
+            dateEvent: arr,
+          });
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    const dateValueByCount = (idx) => {
+      return idx === 1 ? formData.dateBegin : formData.dateEnd;
+    };
+
     return count.map((el) => (
       <div className="datepicker-container">
-        <input type="date" className="datepicker-input" />
+        <input
+          type="date"
+          className="datepicker-input"
+          value={dateValueByCount(el)}
+          onChange={(e) => selectDate(el, e.target.value)}
+        />
       </div>
     ));
   };
@@ -126,7 +191,15 @@ const EventsBoard = () => {
   const plusButton = () => {
     const a = [1, 2];
     const element = (
-      <div className="plus-button" onClick={() => setCount(a)}>
+      <div
+        className="plus-button"
+        onClick={() => {
+          setFormData({
+            ...formData,
+          });
+          setCount(a);
+        }}
+      >
         <img src={process.env.PUBLIC_URL + "/imgs/icons/plus.png"} alt="Plus" />
       </div>
     );
@@ -137,6 +210,39 @@ const EventsBoard = () => {
       default:
         break;
     }
+  };
+
+  const fileSelectedHandler = (e) => {
+    const filesParsed = URL.createObjectURL(e.target.files[0]);
+    const filesSelected = e.target.files[0];
+
+    setFiles([...files, filesParsed]);
+    setFileSet([...fileSet, filesSelected]);
+    setFormData({ ...formData, poster: filesSelected });
+  };
+
+  const removeBlock = (idx) => {
+    let arr = [...fileSet];
+    let newArr = [...files];
+    arr.splice(idx, 1);
+    newArr.splice(idx, 1);
+
+    setFileSet(arr);
+    setFiles(newArr);
+    setFormData({ ...formData, poster: arr });
+  };
+
+  const renderFiles = () => {
+    return files.map((e, idx) => {
+      return (
+        <div className="picture-block" key={idx}>
+          <img src={e} alt={idx} />
+          <div className="close-btn" onClick={() => removeBlock(idx)}>
+            Supprimer
+          </div>
+        </div>
+      );
+    });
   };
 
   return (
@@ -201,7 +307,6 @@ const EventsBoard = () => {
                   {plusButton()}
                   <h2>Heure</h2>
                   {renderHoursComponent()}
-                  {plusHoursButton()}
                 </div>
 
                 {/** Organisateur */}
@@ -226,15 +331,17 @@ const EventsBoard = () => {
                     <div className="pictures-blocks-container">
                       {!isEmpty(files) && <>{renderFiles()}</>}
 
-                      <div className="file-upload">
-                        <input
-                          type="file"
-                          name="file"
-                          //onChange={(e) => fileSelectedHandler(e)}
-                          accept=".jpg, .jpeg, .png"
-                        />
-                        <i className="fa fa-arrow-up"></i>
-                      </div>
+                      {files.length < 1 && (
+                        <div className="file-upload">
+                          <input
+                            type="file"
+                            name="file"
+                            onChange={(e) => fileSelectedHandler(e)}
+                            accept=".jpg, .jpeg, .png"
+                          />
+                          <i className="fa fa-arrow-up"></i>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

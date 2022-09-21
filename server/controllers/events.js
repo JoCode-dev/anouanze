@@ -43,12 +43,18 @@ export const createEvent = async (req, res) => {
     title,
     description,
     address,
-    startAt,
-    endAt,
-    dateEvent,
     organizer,
     posterId,
   } = req.body;
+
+  let startAt = req.body.startAt;
+  //startAt = parseInt(startAt, 10);
+
+  let endAt = req.body.endAt;
+  //endAt = parseInt(endAt, 10);
+
+  let dateEvent = req.body.dateEvent;
+  dateEvent = dateEvent.split(",");
 
   const newEvent = new EventModel({
     poster,
@@ -63,6 +69,7 @@ export const createEvent = async (req, res) => {
   });
   try {
     await newEvent.save();
+    console.log("OK");
     res.status(200).json(newEvent);
   } catch (error) {
     res.status(404).send(error);
@@ -126,8 +133,7 @@ export const updateEvent = async (req, res) => {
       } catch (error) {
         res.status(500).json(error);
       }
-      
-        
+
       fileName = req.body.posterId + Date.now() + ".jpg";
 
       await pipeline(
