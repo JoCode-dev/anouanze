@@ -54,7 +54,7 @@ const Event = () => {
             </NavLink>
           </header>
           <div className="event-details-container">
-            <img src={"." + event.poster} alt="event-poster" width="500px" />
+            <img src={process.env.PUBLIC_URL + event.poster} alt="event-poster" width="500px" />
 
             <div className="event-title">
               <p>{event.title}</p>
@@ -88,13 +88,8 @@ const Event = () => {
                     ) : (
                       <>
                         <p>
-                          {dayjs(event.dateEvent[0]).format(
-                            "dddd DD MMMM YYYY"
-                          )}{" "}
-                          -{" "}
-                          {dayjs(event.dateEvent[1]).format(
-                            "dddd DD MMMM YYYY"
-                          )}
+                          {dayjs(event.dateEvent[0]).format("DD MMMM YYYY")} -{" "}
+                          {dayjs(event.dateEvent[1]).format("DD MMMM YYYY")}
                         </p>
                       </>
                     )}
@@ -124,7 +119,7 @@ const Event = () => {
                   alt="clock"
                 />
 
-                <p>Organisé par la communauté : {event.organizer}</p>
+                <p>Organisé par : {event.organizer}</p>
               </div>
             </div>
           </div>

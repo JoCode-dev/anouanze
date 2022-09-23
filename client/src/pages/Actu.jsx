@@ -90,9 +90,8 @@ const Actu = () => {
                     ) : (
                       <>
                         <p>
-                          {dayjs(actu.dateEvent[0]).format("dddd DD MMMM YYYY")}{" "}
-                          -{" "}
-                          {dayjs(actu.dateEvent[1]).format("dddd DD MMMM YYYY")}
+                          {dayjs(actu.dateEvent[0]).format("DD MMMM YYYY")} -{" "}
+                          {dayjs(actu.dateEvent[1]).format("DD MMMM YYYY")}
                         </p>
                       </>
                     )}

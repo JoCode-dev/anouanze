@@ -7,16 +7,6 @@ import { logout } from "../../actions/auth";
 const NavBar = () => {
   const user = useSelector((state) => state.user.user);
 
-  const setClassActive = (e) => {
-    const li = document.querySelectorAll("li");
-
-    li.forEach((el) => {
-      el.classList.remove("active");
-    });
-
-    e.target.className = "active";
-  };
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,12 +31,18 @@ const NavBar = () => {
 
       <div className="navbar-center-part">
         <ul>
-          <li onClick={(e) => setClassActive(e)} className="active">
-            Accueil
-          </li>
-          <li onClick={(e) => setClassActive(e)}>Près de chez vous</li>
-          <li onClick={(e) => setClassActive(e)}>Ma Paroisse</li>
-          <li onClick={(e) => setClassActive(e)}>Demande de messe</li>
+          <NavLink to="/">
+            <li className="active">Accueil</li>
+          </NavLink>
+          <NavLink to="/events">
+            <li>Évènements</li>
+          </NavLink>
+          <NavLink to="/paroisses">
+            <li>Paroisses</li>
+          </NavLink>
+          <NavLink to="/demande">
+            <li>Demande de messe</li>
+          </NavLink>
         </ul>
       </div>
 

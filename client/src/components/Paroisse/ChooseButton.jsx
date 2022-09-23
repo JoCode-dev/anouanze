@@ -46,11 +46,12 @@ const ChooseButton = ({ paroisse }) => {
       setIsChoosen(false);
       setIsParoissed(false);
     }
+ 
   }, [paroisse]);
 
   return (
     <div>
-      {uid !== "" && isChoosen === true && isParoissed === true && (
+      {uid !== undefined && isChoosen === true && isParoissed === true && (
         <button
           className="choose-paroisse-container"
           onClick={() => unChoose()}
@@ -64,7 +65,7 @@ const ChooseButton = ({ paroisse }) => {
         </button>
       )}
 
-      {uid !== "" && isChoosen === true && isParoissed === false && (
+      {uid !== undefined && isChoosen === true && isParoissed === false && (
         <>
           <button
             className="choose-paroisse-container"
@@ -79,7 +80,7 @@ const ChooseButton = ({ paroisse }) => {
           </button>
         </>
       )}
-      {uid !== "" && isChoosen === false && (
+      {uid !== undefined && isChoosen === false && (
         <button className="choose-paroisse-container" onClick={() => choose()}>
           <p>Choisir comme ma paroisse</p>{" "}
           <img

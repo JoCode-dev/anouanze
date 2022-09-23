@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getParoisse } from "../actions/paroisse";
 import { getActuByID } from "../actions/actus";
@@ -140,12 +140,15 @@ const Paroisse = () => {
                   >
                     {actus.data.map((act) => (
                       <SwiperSlide key={act._id} className="paroisse-actu">
-                        <div className="paroisse-actu-img-container">
+                        <NavLink
+                          to={`/actu/${act._id}`}
+                          className="paroisse-actu-img-container"
+                        >
                           <img
                             src={process.env.PUBLIC_URL + act.poster}
                             alt={act.title}
                           />
-                        </div>
+                        </NavLink>
                         <h3>{act.title}</h3>
                       </SwiperSlide>
                     ))}
