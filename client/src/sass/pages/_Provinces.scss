@@ -1,0 +1,188 @@
+.provinces-container {
+    width: 100%;
+
+
+    .provinces-container-head {
+        width: 100%;
+        padding: 1vh;
+
+        h1 {
+            font-size: 6vh;
+            font-family: $sofiaSemiBold;
+            color: $blue-1;
+        }
+    }
+
+    .provinces-grid {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 1vh;
+
+        .provinces-grid-abidjan::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: $green-1;
+            opacity: 0.5;
+        }
+
+        .provinces-grid-abidjan {
+            width: 49%;
+            height: 48vh;
+            margin: 1vh;
+            position: relative;
+            background-image: url('../assets/provinces/abidjan.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.04);
+                z-index: 10;
+            }
+        }
+
+        .provinces-grid-bouake::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: $yellow;
+            opacity: 0.5;
+        }
+
+        .provinces-grid-bouake {
+            width: 49%;
+            height: 48vh;
+            margin: 1vh;
+            position: relative;
+            background-image: url('../assets/provinces/bouake.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.04);
+                z-index: 10;
+            }
+        }
+
+        .provinces-grid-korhogo::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: $purple-1;
+            opacity: 0.5;
+        }
+
+        .provinces-grid-korhogo {
+            width: 49%;
+            height: 48vh;
+            margin: 1vh;
+            position: relative;
+            background-image: url('../assets/provinces/korhogo.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.04);
+                z-index: 10;
+            }
+        }
+
+        .provinces-grid-gagnoa::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: $blue-1;
+            opacity: 0.5;
+
+        }
+
+        .provinces-grid-gagnoa {
+            width: 49%;
+            height: 48vh;
+            margin: 1vh;
+            position: relative;
+            background-image: url('../assets/provinces/gagnoa.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.04);
+                z-index: 10;
+            }
+        }
+
+        .province-details {
+            background-image: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .province-name {
+                background-image: none;
+                width: 60%;
+
+                h3 {
+                    font-size: 5vh;
+                    color: $white;
+                    line-height: 0vh;
+                    font-family: $sofiaLight;
+                    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                        0px 8px 13px rgba(0, 0, 0, 0.1),
+                        0px 18px 23px rgba(0, 0, 0, 0.1);
+
+                }
+
+                h1 {
+                    font-size: 8vh;
+                    color: $white;
+                    font-family: $sofiaSemiBold;
+                    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                        0px 8px 13px rgba(0, 0, 0, 0.1),
+                        0px 18px 23px rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            .province-dioceses {
+                background-image: none;
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    font-size: 2.5vh;
+                    color: $white;
+                    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                        0px 8px 13px rgba(0, 0, 0, 0.1),
+                        0px 18px 23px rgba(0, 0, 0, 0.1);
+                }
+
+            }
+        }
+    }
+}

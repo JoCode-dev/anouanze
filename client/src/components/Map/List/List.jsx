@@ -1,15 +1,23 @@
 import React from "react";
 import { isEmpty } from "../../utils/index";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const List = ({ paroisses }) => {
+  const user = useSelector((state) => state.user);
+
+  const requireAuth = (id) => {
+    return !isEmpty(user) ? `/paroisse/${id}` : "/login";
+  };
+
   return (
     <div className="list-paroisses-container">
       {!isEmpty(paroisses) &&
         paroisses.map((paroisse) => {
           return (
             <NavLink
-              to={`/paroisse/${paroisse._id}`}
+              to={requireAuth(paroisse._id)}
               className="list-paroisse-element"
             >
               <div className="paroisse-element-left">

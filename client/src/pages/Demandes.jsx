@@ -8,6 +8,13 @@ import { isEmpty } from "../components/utils/index";
 import { NavLink } from "react-router-dom";
 
 const Demandes = () => {
+  const user = useSelector((state) => state.user.user);
+  useEffect(() => {
+    if (user === undefined) {
+      window.location.href = "/login";
+    }
+  }, [user]);
+
   const [isInfos, setIsInfos] = useState(false);
   const [isIntention, setIsIntention] = useState(false);
   const [isChoosen, setIsChoosen] = useState(false);
@@ -29,7 +36,6 @@ const Demandes = () => {
   const [isValid, setIsvalid] = useState(false);
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
 
   let paroisse = useSelector((state) => state.paroisse);
   const paroisses = useSelector((state) => state.paroisses);

@@ -13,7 +13,7 @@ const Home = () => {
   const user = useSelector((state) => state.user.user);
   return (
     <div className="home-container">
-      <NavBar />
+      <NavBar value={"Accueil"} />
       {/*<VerseDay />*/}
       <Carousel />
       <MapComponent />

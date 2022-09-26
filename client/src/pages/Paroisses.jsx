@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { isEmpty } from "../components/utils";
 import { getAllParoisse } from "../actions/paroisse";
 import Loader from "../components/Loader/Loader";
+import NavBar from "../components/NavBar/NavBar";
 
 const Paroisses = () => {
   const dispatch = useDispatch();
@@ -66,73 +67,75 @@ const Paroisses = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="paroisses-container">
-          <header className="paroisses-header">
-            <NavLink to="/">
-              <img src="../imgs/icon.png" alt="logo" />
-            </NavLink>
-            <h1>Paroisses</h1>
-          </header>
+        <>
+          <NavBar value={"Paroisses"} />
+          <div className="paroisses-container">
+            <header className="paroisses-header">
+              <h1>Paroisses</h1>
+            </header>
 
-          <div className="paroisses-blocks-container">
-            {isEmpty(paroisses[0]) || onPlaceholder ? (
-              <>
-                {holder.map((holder, idx) => (
-                  <div className="card" key={idx}>
-                    <div className="card_load"></div>
-                    <div className="card_load-content">
-                      <div className="card_load_extreme_title"></div>
-                      <div className="card_load_extreme_descripion"></div>
+            <div className="paroisses-blocks-container">
+              {isEmpty(paroisses[0]) || onPlaceholder ? (
+                <>
+                  {holder.map((holder, idx) => (
+                    <div className="card" key={idx}>
+                      <div className="card_load"></div>
+                      <div className="card_load-content">
+                        <div className="card_load_extreme_title"></div>
+                        <div className="card_load_extreme_descripion"></div>
+                      </div>
                     </div>
+                  ))}
+                </>
+              ) : (
+                <>
+                  <div className="search-container">
+                    <input
+                      type="text"
+                      value={searchText}
+                      onChange={(e) => searchParoisse(e.target.value)}
+                      placeholder="Chercher une Paroisse..."
+                    />
                   </div>
-                ))}
-              </>
-            ) : (
-              <>
-                <div className="search-container">
-                  <input
-                    type="text"
-                    value={searchText}
-                    onChange={(e) => searchParoisse(e.target.value)}
-                    placeholder="Chercher une Paroisse..."
-                  />
-                </div>
-                {paroissesGroupe.map((paroisse) => (
-                  <>
-                    <NavLink
-                      to={`/paroisse/${paroisse._id}`}
-                      className="paroisse-card"
-                      key={paroisse._id}
-                    >
-                      <div className="paroisse-card-img">
-                        {paroisse?.pictures[0] ? (
-                          <img
-                            src={process.env.PUBLIC_URL + paroisse.pictures[0]}
-                            alt={paroisse.name}
-                          />
-                        ) : (
-                          <img
-                            src={process.env.PUBLIC_URL + "/imgs/icon.png"}
-                            alt={paroisse.name}
-                          />
-                        )}{" "}
-                      </div>
-                      <div className="paroisse-card-content">
-                        <div className="paroisse-card-title">
-                          {paroisse.name}
+                  {paroissesGroupe.map((paroisse) => (
+                    <>
+                      <NavLink
+                        to={`/paroisse/${paroisse._id}`}
+                        className="paroisse-card"
+                        key={paroisse._id}
+                      >
+                        <div className="paroisse-card-img">
+                          {paroisse?.pictures[0] ? (
+                            <img
+                              src={
+                                process.env.PUBLIC_URL + paroisse.pictures[0]
+                              }
+                              alt={paroisse.name}
+                            />
+                          ) : (
+                            <img
+                              src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                              alt={paroisse.name}
+                            />
+                          )}{" "}
                         </div>
-                        <div className="paroisse-card-descripion">
-                          <div>Province : {paroisse.province}</div>
-                          <div>Diocèse : {paroisse.diocese}</div>
+                        <div className="paroisse-card-content">
+                          <div className="paroisse-card-title">
+                            {paroisse.name}
+                          </div>
+                          <div className="paroisse-card-descripion">
+                            <div>Province : {paroisse.province}</div>
+                            <div>Diocèse : {paroisse.diocese}</div>
+                          </div>
                         </div>
-                      </div>
-                    </NavLink>
-                  </>
-                ))}
-              </>
-            )}
+                      </NavLink>
+                    </>
+                  ))}
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

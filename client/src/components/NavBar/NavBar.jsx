@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logout } from "../../actions/auth";
+import { isEmpty } from "../utils";
 
-const NavBar = () => {
+const NavBar = ({ value }) => {
   const user = useSelector((state) => state.user.user);
 
   const dispatch = useDispatch();
@@ -18,6 +19,11 @@ const NavBar = () => {
     localStorage.clear();
     window.location = "/";
   };
+
+  const requireAuth = (el) => {
+    return isEmpty(user) ? "/login" : `/${el}`;
+  };
+
   return (
     <nav className="navbar-container">
       <div className="navbar-left-part">
@@ -32,16 +38,24 @@ const NavBar = () => {
       <div className="navbar-center-part">
         <ul>
           <NavLink to="/">
-            <li className="active">Accueil</li>
+            <li className={value === "Accueil" && "active"}>Accueil</li>
           </NavLink>
-          <NavLink to="/events">
-            <li>Évènements</li>
+          <NavLink to={requireAuth("events")}>
+            <li className={value === "Évènements" && "active"}>Évènements</li>
           </NavLink>
-          <NavLink to="/paroisses">
-            <li>Paroisses</li>
+          <NavLink to={requireAuth("provinces")}>
+            <li
+              className={
+                (value === "Paroisses" || value === "Provinces") && "active"
+              }
+            >
+              Paroisses
+            </li>
           </NavLink>
-          <NavLink to="/demande">
-            <li>Demande de messe</li>
+          <NavLink to={requireAuth("demande")}>
+            <li className={value === "Demande" && "active"}>
+              Demande de messe
+            </li>
           </NavLink>
         </ul>
       </div>

@@ -16,6 +16,12 @@ import Events from "../pages/Events";
 // Paroisse
 import Paroisse from "../pages/Paroisse";
 
+// Provinces
+import Provinces from "../pages/Provinces";
+
+// Diocèse
+import Diocese from "../pages/Diocese";
+
 // Paroisses
 import Paroisses from "../pages/Paroisses";
 
@@ -42,6 +48,8 @@ const index = () => {
         <Route path="/event/:id" element={<Event />} />
         <Route path="/events" element={<Events />} />
         <Route path="/event" element={<Events />} />
+        <Route path="/provinces" element={<Provinces />} />
+        <Route path="/diocese/:name" element={<Diocese />} />
         <Route path="/paroisse/:id" element={<Paroisse />} />
         <Route path="/paroisses" element={<Paroisses />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />

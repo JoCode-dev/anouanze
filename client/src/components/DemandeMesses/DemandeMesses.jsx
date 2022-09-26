@@ -1,7 +1,15 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const DemandeMesses = () => {
+  const user = useSelector((state) => state.user.user);
+
+  const requireAuth = () => {
+    return user !== undefined ? "/demande" : "/login";
+  };
+
   return (
     <div className="demande-messes-container">
       <div className="demande-messes-left">
@@ -18,7 +26,7 @@ const DemandeMesses = () => {
           défunts...
         </div>
 
-        <NavLink to="/demande" className="demande-messes-button">
+        <NavLink to={requireAuth()} className="demande-messes-button">
           Faire une demande ✝️
         </NavLink>
       </div>
