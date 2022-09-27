@@ -5,6 +5,8 @@ import users from "./users";
 import user from "./user";
 import events from "./events";
 import threeEvents from "./threeEvents";
+import premiumEvents from "./premiumEvents";
+import othersEvent from "./othersEvent";
 import event from "./event";
 import actu from "./actu";
 import actus from "./actus";
@@ -22,6 +24,8 @@ export default combineReducers({
   event,
   events,
   threeEvents,
+  premiumEvents,
+  othersEvent,
   actu,
   actus,
   message,

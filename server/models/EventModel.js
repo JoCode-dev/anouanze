@@ -30,7 +30,11 @@ const eventSchema = mongoose.Schema(
     },
     posterId: {
       type: String,
-    }
+    },
+    isPremium: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

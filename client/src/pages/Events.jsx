@@ -10,10 +10,16 @@ import "dayjs/locale/fr";
 import Loader from "../components/Loader/Loader";
 
 const Events = () => {
+  const dispatch = useDispatch();
+
   const [onLoading, setOnLoading] = useState(true);
   const [onPlaceholder, setOnPlaceholder] = useState(true);
+  useEffect(() => {
+    if (onLoading) {
+      dispatch(getAllEvents());
+    }
+  }, [dispatch, onLoading]);
 
-  const dispatch = useDispatch();
   const events = useSelector((state) => state.events);
 
   dayjs.locale("fr");
@@ -24,12 +30,6 @@ const Events = () => {
   const minuteParser = (date) => {
     return dayjs(date).format("mm");
   };
-
-  useEffect(() => {
-    if (onLoading) {
-      dispatch(getAllEvents());
-    }
-  }, [dispatch, onLoading]);
 
   useEffect(() => {
     if (!isEmpty(events)) {

@@ -37,6 +37,7 @@ const EventsBoard = () => {
     dateBegin: "2022-01-01",
     dateEnd: "2022-01-01",
     organizer: "",
+    isPremium: false,
     posterId: user._id,
   });
 
@@ -53,6 +54,7 @@ const EventsBoard = () => {
     data.append("endAt", formData.endAt);
     data.append("dateEvent", formData.dateEvent);
     data.append("organizer", formData.organizer);
+    data.append("isPremium", formData.isPremium);
     data.append("posterId", formData.posterId);
 
     dispatch(createEvent(data));
@@ -129,6 +131,7 @@ const EventsBoard = () => {
   };
 
   useEffect(() => {
+    console.log(formData);
     setIsSetForm(true);
 
     if (isSetForm) {
@@ -320,6 +323,25 @@ const EventsBoard = () => {
                       setFormData({ ...formData, organizer: e.target.value })
                     }
                   />
+                  {/** Premium */}
+                  <div className="form-group-premium">
+                    <label htmlFor="isPremium">Premium</label>
+                    <div className="toogle-premium">
+                      <input
+                        type="checkbox"
+                        name="isPremium"
+                        value={formData.isPremium}
+                        id="isPremium"
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            isPremium: e.target.checked,
+                          })
+                        }
+                      />
+                      <label htmlFor="isPremium"></label>
+                    </div>
+                  </div>
                 </div>
 
                 {/** Picture */}

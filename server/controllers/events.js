@@ -38,14 +38,12 @@ export const createEvent = async (req, res) => {
     );
   }
 
-  const {
-    poster = req.file !== null ? "/uploads/events/" + fileName : "",
-    title,
-    description,
-    address,
-    organizer,
-    posterId,
-  } = req.body;
+  const { title, description, address, organizer, posterId } = req.body;
+
+  let poster = req.body.poster;
+  if (req.file !== null) {
+    poster = "/uploads/events/" + fileName;
+  } else poster = "/uploads/events/default-event.jpg";
 
   let startAt = req.body.startAt;
   //startAt = parseInt(startAt, 10);
@@ -56,6 +54,11 @@ export const createEvent = async (req, res) => {
   let dateEvent = req.body.dateEvent;
   dateEvent = dateEvent.split(",");
 
+  let isPremium = req.body.isPremium;
+  if (isPremium.toLowerCase() === "true") {
+    isPremium = true;
+  } else isPremium = false;
+
   const newEvent = new EventModel({
     poster,
     title,
@@ -65,11 +68,12 @@ export const createEvent = async (req, res) => {
     endAt,
     dateEvent,
     organizer,
+    isPremium,
     posterId,
   });
   try {
     await newEvent.save();
-    console.log("OK");
+    console.log(poster);
     res.status(200).json(newEvent);
   } catch (error) {
     res.status(404).send(error);
@@ -94,6 +98,24 @@ export const getEvent = async (req, res) => {
 
   try {
     const event = await EventModel.findById(id);
+    res.status(200).json(event);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+};
+
+export const getPremiumEvents = async (req, res) => {
+  try {
+    const event = await EventModel.find({ isPremium: true });
+    res.status(200).json(event);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+};
+
+export const getOthersEvents = async (req, res) => {
+  try {
+    const event = await EventModel.find({ isPremium: false });
     res.status(200).json(event);
   } catch (error) {
     res.status(404).send(error);

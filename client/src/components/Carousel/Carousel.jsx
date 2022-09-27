@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,15 +11,27 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
+//Actions
+import { getPremiumEvents } from "../../actions/event";
+
 // Import Redux Modules
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // Import tools
 import { isEmpty } from "../utils";
 
 const Carousel = () => {
-  const events = useSelector((state) => state.threeEvents);
+  const events = useSelector((state) => state.premiumEvents);
+
+  useEffect(() => {
+    dispatch(getPremiumEvents());
+    console.log("====================================");
+    console.log(events);
+    console.log("====================================");
+  }, []);
+
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const requireAuth = () => {
     return isEmpty(user) ? "/login" : "/events";
@@ -59,7 +71,7 @@ const Carousel = () => {
           keyboard={true}
           modules={[Autoplay, Pagination, Navigation, Keyboard]}
         >
-          {events.length === 3 ? (
+          {events.length >= 1 ? (
             events.map((event) => (
               <SwiperSlide key={event._id}>
                 <NavLink to={requireAuthV2(event._id)}>

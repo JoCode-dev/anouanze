@@ -5,6 +5,8 @@ import {
   GET_EVENT,
   UPDATE_EVENT,
   GET_THREE_FIRST_EVENTS,
+  GET_PREMIUM_EVENTS,
+  GET_OTHERS_EVENTS,
   DELETE_EVENT,
 } from "../constants/reducers";
 
@@ -33,6 +35,20 @@ export const getFirstThreeEvents = () => async (dispatch) => {
     const { data } = await api.getAllEvents();
     const newArr = data.slice(0, 3);
     dispatch({ type: GET_THREE_FIRST_EVENTS, payload: newArr });
+  } catch (error) {}
+};
+
+export const getPremiumEvents = () => async (dispatch) => {
+  try {
+    const { data } = await api.getPremiumEvents();
+    dispatch({ type: GET_PREMIUM_EVENTS, payload: data });
+  } catch (error) {}
+};
+
+export const getOthersEvents = () => async (dispatch) => {
+  try {
+    const { data } = await api.getOthersEvents();
+    dispatch({ type: GET_OTHERS_EVENTS, payload: data });
   } catch (error) {}
 };
 

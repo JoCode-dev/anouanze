@@ -73,6 +73,8 @@ export const updateEvent = (id, data) =>
 export const deleteEvent = (id) => axios.delete(`${url}/event/${id}`);
 export const getAllEvents = () => axios.get(`${url}/event`);
 export const getEvent = (id) => axios.get(`${url}/event/${id}`);
+export const getPremiumEvents = () => axios.get(`${url}/event/premium-events`);
+export const getOthersEvents = () => axios.get(`${url}/event/others-events`);
 
 // Actu
 export const createActu = (data) => axios.post(`${url}/actus`, data);
