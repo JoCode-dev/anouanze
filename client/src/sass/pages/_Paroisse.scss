@@ -166,6 +166,24 @@
                     color: $purple-1;
                     font-weight: 900;
                 }
+
+                .priest-discover {
+                    width: 15vh;
+                    height: 4vh;
+                    display: flex;
+                    align-items: center;
+                    padding: 1vh;
+                    color: $white;
+                    background-color: $purple-1;
+                    border-radius: 0.7vh;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: $purple-3;
+
+                    }
+                }
             }
         }
     }

@@ -35,19 +35,38 @@ const ChooseButton = ({ paroisse }) => {
     if (paroisse?.paroissiens.includes(uid)) {
       setIsChoosen(true);
       setIsParoissed(true);
+      console.log(isChoosen);
     }
 
-    if (user?._paroisse !== "" && !paroisse.paroissiens.includes(uid)) {
+    if (user?._paroisse !== undefined && !paroisse.paroissiens.includes(uid)) {
       setIsChoosen(true);
       setIsParoissed(false);
     }
 
-    if (user?._paroisse === "") {
+    if (user?._paroisse === "" || user?._paroisse === undefined) {
       setIsChoosen(false);
       setIsParoissed(false);
+      console.log(isChoosen);
     }
- 
   }, [paroisse]);
+
+  const otherParoisseChoosen = () => {
+    if (uid !== undefined && isChoosen === true && isParoissed === false) {
+      return (
+        <button
+          className="choose-paroisse-container"
+          onClick={() => alert("Une paroisse est déjà selectionnée")}
+        >
+          <p>Une autre paroisse a déja été choisie</p>{" "}
+          <img
+            src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
+            alt="heart"
+          />
+          {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
+        </button>
+      );
+    }
+  };
 
   return (
     <div>
@@ -65,21 +84,7 @@ const ChooseButton = ({ paroisse }) => {
         </button>
       )}
 
-      {uid !== undefined && isChoosen === true && isParoissed === false && (
-        <>
-          <button
-            className="choose-paroisse-container"
-            onClick={() => alert("Une paroisse est déjà selectionnée")}
-          >
-            <p>Une autre paroisse a déja été choisie</p>{" "}
-            <img
-              src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
-              alt="heart"
-            />
-            {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
-          </button>
-        </>
-      )}
+      {otherParoisseChoosen()}
       {uid !== undefined && isChoosen === false && (
         <button className="choose-paroisse-container" onClick={() => choose()}>
           <p>Choisir comme ma paroisse</p>{" "}

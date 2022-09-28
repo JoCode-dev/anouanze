@@ -48,6 +48,7 @@ const paroisseSchema = mongoose.Schema(
           priestName: String,
           priestRole: String,
           priestPicture: String,
+          priestBio: String,
         },
       ],
     },

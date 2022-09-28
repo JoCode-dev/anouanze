@@ -1,28 +1,40 @@
 import { AUTH, LOGOUT, SET_MESSAGE } from "../constants/reducers";
 import * as api from "../api";
 
-export const signup = (userData) => async (dispatch) => {
+export const signup = (userData, bool) => async (dispatch) => {
   try {
     await api.register(userData).then((res) => {
       dispatch({ type: AUTH, user: res.data });
       window.location = "/";
     });
   } catch (error) {
+    if (bool === false) {
+      await api.login(userData).then((res) => {
+        dispatch({ type: AUTH, user: res.data });
+        window.location = "/";
+      });
+    } else {
+      dispatch({ type: SET_MESSAGE, payload: error?.response?.data?.message });
+    }
     dispatch({ type: SET_MESSAGE, payload: error?.response?.data?.message });
   }
 };
 
-export const login = (userData) => async (dispatch) => {
+export const login = (userData, bool) => async (dispatch) => {
   try {
     await api.login(userData).then((res) => {
       dispatch({ type: AUTH, user: res.data });
       window.location = "/";
     });
   } catch (error) {
-    console.log("====================================");
-    console.log(error);
-    console.log("====================================");
-    dispatch({ type: SET_MESSAGE, payload: error?.response?.data?.message });
+    if (bool === true) {
+      await api.register(userData).then((res) => {
+        dispatch({ type: AUTH, user: res.data });
+        window.location = "/";
+      });
+    } else {
+      dispatch({ type: SET_MESSAGE, payload: error?.response?.data?.message });
+    }
   }
 };
 

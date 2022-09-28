@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { GoogleLogin } from "@react-oauth/google";
 
 import { signup } from "../../../actions/auth";
+import jwtDecode from "jwt-decode";
 
 const SignUpForm = () => {
   const [userData, setUserData] = useState({
@@ -19,6 +21,36 @@ const SignUpForm = () => {
     e.preventDefault();
     dispatch(signup(userData));
     console.log(userData);
+  };
+
+  const googleSuccess = async (res) => {
+    const decoded = jwtDecode(res.credential);
+    const googleUser = {
+      email: decoded?.email,
+      password: decoded?.sub,
+      confirmPassword: decoded?.sub,
+      name: decoded?.given_name,
+      lastName: decoded?.family_name,
+    };
+
+    setUserData({
+      ...userData,
+      email: decoded?.email,
+      password: decoded?.sub,
+      name: decoded?.given,
+      lastName: decoded?.family_name,
+      confirmPassword: decoded?.sub,
+    });
+
+    const bool = false;
+    dispatch(signup(googleUser, bool));
+  };
+  const googleFailure = (error) => {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
+
+    console.log("Google Sign In was unsuccessful. Try Again later.");
   };
 
   return (
@@ -104,6 +136,11 @@ const SignUpForm = () => {
         <div className="inputs-group">
           <input type="submit" value="Inscription" />
         </div>
+        <GoogleLogin
+          onSuccess={googleSuccess}
+          onError={googleFailure}
+          size="large"
+        />
       </form>
     </div>
   );
