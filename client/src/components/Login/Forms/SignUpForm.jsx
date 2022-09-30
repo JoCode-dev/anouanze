@@ -9,6 +9,7 @@ const SignUpForm = () => {
   const [userData, setUserData] = useState({
     name: "",
     lastName: "",
+    contact: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,6 +31,7 @@ const SignUpForm = () => {
       password: decoded?.sub,
       confirmPassword: decoded?.sub,
       name: decoded?.given_name,
+      contact: userData.contact,
       lastName: decoded?.family_name,
     };
 
@@ -37,6 +39,7 @@ const SignUpForm = () => {
       ...userData,
       email: decoded?.email,
       password: decoded?.sub,
+      contact: userData.contact,
       name: decoded?.given,
       lastName: decoded?.family_name,
       confirmPassword: decoded?.sub,
@@ -86,6 +89,20 @@ const SignUpForm = () => {
             value={userData.lastName}
             onChange={(e) =>
               setUserData({ ...userData, lastName: e.target.value })
+            }
+          />
+        </div>
+        <div className="inputs-group">
+          <label htmlFor="contact">Contact</label>
+          <br />
+          <input
+            type="text"
+            required
+            name="contact"
+            className="input-form"
+            value={userData.contact}
+            onChange={(e) =>
+              setUserData({ ...userData, contact: e.target.value })
             }
           />
         </div>

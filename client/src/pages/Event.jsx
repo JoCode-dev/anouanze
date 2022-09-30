@@ -54,7 +54,11 @@ const Event = () => {
             </NavLink>
           </header>
           <div className="event-details-container">
-            <img src={process.env.PUBLIC_URL + event.poster} alt="event-poster" width="500px" />
+            <img
+              src={process.env.PUBLIC_URL + event.poster}
+              alt="event-poster"
+              width="500px"
+            />
 
             <div className="event-title">
               <p>{event.title}</p>
@@ -68,16 +72,11 @@ const Event = () => {
 
             <div className="event-sub-details">
               <div className="event-date">
-                <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/agenda.png"}
-                  alt="clock"
-                />
-
                 {isEmpty(event) ? (
                   <></>
                 ) : (
                   <>
-                    {event?.dateEvent[0] === event?.dateEvent[1] ? (
+                    {event?.dateEvent.length === 1 ? (
                       <>
                         <p>
                           {dayjs(event.dateEvent[0]).format(
@@ -97,10 +96,6 @@ const Event = () => {
                 )}
               </div>
               <div className="event-time">
-                <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/clock.png"}
-                  alt="clock"
-                />
                 <p>
                   {hourParser(event.startAt) +
                     "H" +
@@ -114,11 +109,6 @@ const Event = () => {
                 </p>
               </div>
               <div className="event-organizer">
-                <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/community.png"}
-                  alt="clock"
-                />
-
                 <p>Organisé par : {event.organizer}</p>
               </div>
             </div>
