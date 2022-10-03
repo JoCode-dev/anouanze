@@ -1,0 +1,70 @@
+.bloc-diocese-container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: linear-gradient(90deg, rgb(168, 200, 43), rgb(168, 200, 43), rgba(255, 255, 255, 0));
+
+}
+
+.bloc-diocese-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 130vh;
+    background-image: url('../assets/provinces/gagnoa.jpeg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15vh;
+
+    h1 {
+        position: relative;
+        color: white;
+        font-size: 14vh;
+        line-height: 10.3vh;
+        letter-spacing: -0.2vh;
+    }
+
+    h2 {
+        position: relative;
+        font-size: 6vh;
+        width: 36%;
+        line-height: 5vh;
+        margin: 2vh 0;
+        color: #637327;
+    }
+
+    p {
+        position: relative;
+        color: #333333;
+        font-size: 3vh;
+
+    }
+
+    .btn-visit {
+        margin: 2vh 0;
+        position: relative;
+        width: 30vh;
+        height: 5vh;
+        border-radius: 2vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 3vh;
+        background-color: #637327;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            color: #637327;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    }
+}

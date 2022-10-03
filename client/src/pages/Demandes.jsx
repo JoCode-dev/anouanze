@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 const Demandes = () => {
   const user = useSelector((state) => state.user.user);
   useEffect(() => {
-    if (user === undefined) {
+    if (isEmpty(user)) {
       window.location.href = "/login";
     }
   }, [user]);

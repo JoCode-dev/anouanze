@@ -1,73 +1,65 @@
-.demande-messes-container {
+.bloc-demande-container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: linear-gradient(90deg, rgb(242, 207, 13), rgb(242, 207, 13), rgba(255, 255, 255, 0));
+}
+
+.bloc-demande-container {
+    position: relative;
     width: 100%;
-    padding: 1vh;
+    height: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 130vh;
+    background-image: url('../assets/provinces/abidjan.jpeg');
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    padding: 15vh;
 
-    .demande-messes-left {
-        width: 45%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        img {
-            width: 70vh;
-        }
-
+    h1 {
+        position: relative;
+        color: white;
+        font-size: 14vh;
+        line-height: 10.3vh;
+        letter-spacing: -0.2vh;
     }
 
-    .demande-messes-right {
-        width: 40%;
+    h2 {
+        position: relative;
+        font-size: 4.5vh;
+        width: 43%;
+        line-height: 5vh;
+        letter-spacing: -0.2vh;
+        margin: 2vh 0;
+        color: #ae8e10;
+    }
+
+
+    .btn-demand {
+        position: relative;
+        width: 40vh;
+        height: 40vh;
+        border-radius: 1vh;
         display: flex;
         justify-content: center;
-        align-items: flex-end;
         flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 3vh;
+        background-color: #ae8e10;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
 
-        .demande-messes-title {
-            display: flex;
-            align-items: flex-end;
-            flex-direction: column;
-            height: 40%;
 
-            h1 {
-                color: $blue-1;
-                font-size: 13vh;
-                line-height: 5vh;
-            }
-
-            h2 {
-                color: $blue-1;
-                font-size: 9vh;
-            }
-        }
-
-        .demande-messes-text {
-            display: flex;
-            align-items: flex-end;
-            flex-direction: column;
-            height: 20%;
-            font-size: 3vh;
-            width: 70%;
-
-        }
-
-        .demande-messes-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 10%;
-            width: 70%;
-            padding: 1vh;
-            background-color: $blue-1;
-            border-radius: 2vh;
-            font-size: 3.4vh;
-            color: $white;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                filter: brightness(120%);
-            }
+        &:hover {
+            color: #ae8e10;
+            background-color: #fff;
+            cursor: pointer;
         }
     }
 }
