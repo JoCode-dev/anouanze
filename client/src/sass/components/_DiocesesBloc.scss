@@ -5,7 +5,7 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-image: linear-gradient(90deg, rgb(168, 200, 43), rgb(168, 200, 43), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(90deg, rgb(168, 200, 43), rgb(168, 200, 43) 37%, rgba(255, 255, 255, 0) 60%);
 
 }
 
@@ -16,7 +16,7 @@
     background-position: right;
     background-repeat: no-repeat;
     background-size: 130vh;
-    background-image: url('../assets/provinces/gagnoa.jpeg');
+    background-image: url('../assets/Blocs/Dicoses.jpg');
     display: flex;
     flex-direction: column;
     justify-content: center;

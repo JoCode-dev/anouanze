@@ -1,0 +1,80 @@
+.bloc-events-container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: linear-gradient(-90deg, #3c86ac, #3c86ac 37%, #652d8b40 60%);
+    mix-blend-mode: color;
+}
+
+.bloc-events-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../assets/Blocs/Events.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15vh;
+
+    h1 {
+        position: relative;
+        color: white;
+        font-size: 14vh;
+        line-height: 20vh;
+        letter-spacing: -0.2vh;
+    }
+
+    h2 {
+        position: relative;
+        font-size: 4.5vh;
+        line-height: 3vh;
+        margin: 2vh 0;
+        color: #fff;
+    }
+
+    .ref {
+        padding: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        color: white;
+        background-color: #3c86ac;
+        width: 13vh;
+        border-radius: 2vh;
+    }
+
+    p {
+        position: relative;
+        color: #333333;
+        font-size: 3vh;
+
+    }
+
+    .btn-visit {
+        margin: 2vh 0;
+        position: relative;
+        width: 30vh;
+        height: 5vh;
+        border-radius: 2vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 3vh;
+        background-color: #3c86ac;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            color: #3c86ac;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    }
+}
