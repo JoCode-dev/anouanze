@@ -57,13 +57,14 @@
     }
 
     .btn-visit {
-        margin: 2vh 0;
         position: relative;
-        width: 30vh;
-        height: 5vh;
-        border-radius: 2vh;
+        margin: 2vh 0;
+        width: 40vh;
+        height: 40vh;
+        border-radius: 1vh;
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
         color: white;
         font-size: 3vh;

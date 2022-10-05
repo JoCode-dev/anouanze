@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { NavLink } from "react-router-dom";
+import SearchBar from "../components/Search/SearchBar";
 
 const Provinces = () => {
   const location = {
@@ -12,17 +13,26 @@ const Provinces = () => {
   return (
     <>
       <NavBar value={"Provinces"} />
+      <SearchBar />
       <div className="provinces-container">
         <div className="provinces-container-head">
-          <h1>Provinces</h1>
+          <div>
+            <h1>Diocèses</h1>
+            <h1>et Paroisses</h1>
+          </div>
         </div>
 
         <div className="provinces-grid">
-          <div className="provinces-grid-abidjan">
+          <div className="provinces-grid-element">
+            <div className="province-image">
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/provinces/abidjan.jpeg"}
+                alt="Province écclésiastique d'Abidjan"
+              />
+            </div>
             <div className="province-details">
               <div className="province-name">
-                <h3>PROVINCE</h3>
-                <h1>D'ABIDJAN</h1>
+                <h1>PROVINCE ÉCCLÉSIASTIQUE D'ABIDJAN</h1>
               </div>
               <div className="province-dioceses">
                 <NavLink to={`/diocese/Abidjan`}>
@@ -40,11 +50,16 @@ const Provinces = () => {
               </div>
             </div>
           </div>
-          <div className="provinces-grid-bouake">
+          <div className="provinces-grid-element">
+            <div className="province-image">
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/provinces/bouake.jpeg"}
+                alt="Province écclésiastique de Bouaké"
+              />{" "}
+            </div>
             <div className="province-details">
               <div className="province-name">
-                <h3>PROVINCE</h3>
-                <h1>DE BOUAKÉ</h1>
+                <h1>PROVINCE ÉCCLÉSIASTIQUE DE BOUAKÉ</h1>
               </div>
               <div className="province-dioceses">
                 <NavLink to={`/diocese/Bouaké`}>
@@ -62,11 +77,16 @@ const Provinces = () => {
               </div>
             </div>
           </div>
-          <div className="provinces-grid-korhogo">
+          <div className="provinces-grid-element">
+            <div className="province-image">
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/provinces/korhogo.jpeg"}
+                alt="Province écclésiastique de Korhogo"
+              />{" "}
+            </div>
             <div className="province-details">
               <div className="province-name">
-                <h3>PROVINCE</h3>
-                <h1>DE KORHOGO</h1>
+                <h1>PROVINCE ÉCCLÉSIASTIQUE DE KORHOGO</h1>
               </div>
               <div className="province-dioceses">
                 <NavLink to={`/diocese/Korhogo`}>
@@ -81,11 +101,16 @@ const Provinces = () => {
               </div>
             </div>
           </div>
-          <div className="provinces-grid-gagnoa">
+          <div className="provinces-grid-element">
+            <div className="province-image">
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/provinces/gagnoa.jpeg"}
+                alt="Province écclésiastique de Gagnoa"
+              />{" "}
+            </div>
             <div className="province-details">
               <div className="province-name">
-                <h3>PROVINCE</h3>
-                <h1>DE GAGNOA</h1>
+                <h1>PROVINCE ÉCCLÉSIASTIQUE DE GAGNOA</h1>
               </div>
               <div className="province-dioceses">
                 <NavLink to={`/diocese/Gagnoa`}>

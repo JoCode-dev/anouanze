@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import SearchBar from "../components/Search/SearchBar";
+import NavBar from "../components/NavBar/NavBar";
 
 const Diocese = (props) => {
   const { name } = useParams();
@@ -28,9 +30,13 @@ const Diocese = (props) => {
   };
 
   return (
-    <div>
-      <h1>{sendName()}</h1>
-    </div>
+    <>
+      <NavBar value={"Paroisses"} />
+      <SearchBar />
+      <div>
+        <h1>{sendName()}</h1>
+      </div>
+    </>
   );
 };
 

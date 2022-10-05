@@ -1,5 +1,5 @@
 .carousel-container {
-    width: 95%;
+    width: 100%;
     padding: 1vh;
 
     .header-carousel {
@@ -38,4 +38,11 @@
         overflow: hidden;
         height: 100vh;
     }
+
+}
+
+.purple-band {
+    background-color: $purple-1;
+    height: 7vh;
+    width: 100%;
 }

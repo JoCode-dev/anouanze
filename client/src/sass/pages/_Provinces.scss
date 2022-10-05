@@ -2,186 +2,109 @@
     width: 100%;
 
 
-    .provinces-container-head {
-        width: 100%;
-        padding: 1vh;
+    .provinces-container-head::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-image: linear-gradient(-90deg, rgb(168, 200, 43), rgb(168, 200, 43) 47%, rgba(255, 255, 255, 0) 60%);
+    }
 
-        h1 {
-            font-size: 6vh;
-            font-family: $sofiaSemiBold;
-            color: $blue-1;
+    .provinces-container-head {
+        position: relative;
+        width: 100%;
+        height: 30vh;
+        background-position: 0% 35%;
+        background-repeat: no-repeat;
+        background-size: 60%;
+        background-image: url('../assets/Blocs/Dicoses.jpg');
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 15vh;
+
+        div {
+            position: relative;
+            width: 50%;
+
+            h1 {
+                position: relative;
+                font-size: 13vh;
+                letter-spacing: -1vh;
+                line-height: 10vh;
+                font-family: $sofiaSemiBold;
+                color: white;
+            }
         }
     }
 
     .provinces-grid {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
-        padding: 1vh;
+        width: 100%;
 
-        .provinces-grid-abidjan::before {
-            content: "";
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            background-color: $green-1;
-            opacity: 0.5;
-        }
-
-        .provinces-grid-abidjan {
-            width: 48.5%;
-            height: 48vh;
-            margin: 1vh;
-            position: relative;
-            background-image: url('../assets/provinces/abidjan.jpeg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                transform: scale(1.04);
-                z-index: 10;
-            }
-        }
-
-        .provinces-grid-bouake::before {
-            content: "";
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            background-color: $yellow;
-            opacity: 0.5;
-        }
-
-        .provinces-grid-bouake {
-            width: 48.5%;
-            height: 48vh;
-            margin: 1vh;
-            position: relative;
-            background-image: url('../assets/provinces/bouake.jpeg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                transform: scale(1.04);
-                z-index: 10;
-            }
-        }
-
-        .provinces-grid-korhogo::before {
-            content: "";
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            background-color: $purple-1;
-            opacity: 0.5;
-        }
-
-        .provinces-grid-korhogo {
-            width: 48.5%;
-            height: 48vh;
-            margin: 1vh;
-            position: relative;
-            background-image: url('../assets/provinces/korhogo.jpeg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                transform: scale(1.04);
-                z-index: 10;
-            }
-        }
-
-        .provinces-grid-gagnoa::before {
-            content: "";
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            background-color: $blue-1;
-            opacity: 0.5;
-
-        }
-
-        .provinces-grid-gagnoa {
-            width: 48.5%;
-            height: 48vh;
-            margin: 1vh;
-            position: relative;
-            background-image: url('../assets/provinces/gagnoa.jpeg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                transform: scale(1.04);
-                z-index: 10;
-            }
-        }
-
-        .province-details {
-            background-image: none;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+        .provinces-grid-element {
             display: flex;
-            justify-content: center;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #dcdde1;
+            margin: 2vh 0;
+            padding: 3vh;
+            transition: all 0.5s ease-in-out;
 
-            .province-name {
-                background-image: none;
-                width: 60%;
-
-                h3 {
-                    font-size: 5vh;
-                    color: $white;
-                    line-height: 0vh;
-                    font-family: $sofiaLight;
-                    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
-                        0px 8px 13px rgba(0, 0, 0, 0.1),
-                        0px 18px 23px rgba(0, 0, 0, 0.1);
-
-                }
-
-                h1 {
-                    font-size: 8vh;
-                    color: $white;
-                    font-family: $sofiaSemiBold;
-                    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
-                        0px 8px 13px rgba(0, 0, 0, 0.1),
-                        0px 18px 23px rgba(0, 0, 0, 0.1);
-                }
+            &:hover {
+                background-color: #f2f7df;
             }
 
-            .province-dioceses {
-                background-image: none;
+            .province-image {
                 width: 40%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                height: 70vh;
 
-                p {
-                    font-size: 2.5vh;
-                    color: $white;
-                    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
-                        0px 8px 13px rgba(0, 0, 0, 0.1),
-                        0px 18px 23px rgba(0, 0, 0, 0.1);
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
 
+            }
+
+            .province-details {
+                width: 40%;
+
+
+                .province-name {
+                    background-color: #aacc26;
+                    width: 100%;
+
+                    h1 {
+                        color: #627206;
+                        font-family: $sofiaBlack;
+                        font-size: 6vh;
+                        letter-spacing: -0.3vh;
+                    }
+                }
+
+                .province-dioceses {
+                    width: 100%;
+                    margin: 2vh 0;
+
+                    p {
+                        font-family: $sofiaSemiBold;
+                        font-size: 2.7vh;
+                        cursor: pointer;
+                        transition: all 0.5s ease-in-out;
+
+
+                        &:hover {
+                            color: #627206;
+                        }
+                    }
+                }
             }
         }
     }

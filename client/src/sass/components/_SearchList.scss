@@ -10,6 +10,12 @@
         width: 100%;
         height: 31.2vh;
         overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .result-element {
             width: 95%;

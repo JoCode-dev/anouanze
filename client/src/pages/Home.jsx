@@ -8,8 +8,11 @@ import Footer from "../components/Footer/Footer";
 import MaParoisse from "../components/MaParoisse/MaParoisse";
 import DemandeMesses from "../components/DemandeMesses/DemandeMesses";
 import SearchBar from "../components/Search/SearchBar";
+
 import DiocesesBloc from "../components/Home/Bloc Dioceses/DiocesesBloc";
 import EventsBloc from "../components/Home/Bloc Events/EventsBloc";
+import SubscribeBloc from "../components/Home/Bloc Subscribe/SubscribeBloc";
+import { isEmpty } from "../components/utils";
 
 const Home = () => {
   const user = useSelector((state) => state.user.user);
@@ -23,6 +26,8 @@ const Home = () => {
       <DiocesesBloc />
       <DemandeMesses />
       <EventsBloc />
+      {isEmpty(user) && <SubscribeBloc />}
+
       <Footer dot="" />
     </div>
   );

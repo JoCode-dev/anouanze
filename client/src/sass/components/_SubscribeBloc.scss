@@ -1,0 +1,69 @@
+.bloc-subscribe-container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: linear-gradient(270deg, #652d8b, rgb(101, 45, 139) 50%, rgba(255, 255, 255, 0) 70%);
+
+}
+
+.bloc-subscribe-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../assets/Blocs/Suscribe.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 15vh;
+
+    h1 {
+        position: relative;
+        color: white;
+        font-size: 14vh;
+        line-height: 20vh;
+        letter-spacing: -0.2vh;
+    }
+
+    h2 {
+        position: relative;
+        font-size: 4.5vh;
+        line-height: 3vh;
+        margin: 2vh 0;
+        color: #fff;
+    }
+
+    p {
+        position: relative;
+        color: #333333;
+        font-size: 3vh;
+
+    }
+
+    .btn-visit {
+        position: relative;
+        width: 40vh;
+        height: 6vh;
+        border-radius: 1vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 3vh;
+        background-color: #3d1657;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            color: #652d8b;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    }
+}

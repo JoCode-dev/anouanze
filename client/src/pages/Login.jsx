@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import LogContainer from "../components/Login/LogContainer";
+import { useSelector } from "react-redux";
+import { isEmpty } from "../components/utils";
 
 const Login = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("jwt")));
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("jwt")));
-
-    if (user) {
+    if (!isEmpty(user)) {
       window.location = "/";
+    }
+    {
+      localStorage.clear();
     }
   }, [user]);
 
