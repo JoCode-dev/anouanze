@@ -1,6 +1,84 @@
 .paroisse-container {
     width: 100%;
 
+    .paroisse-image {
+        margin: 2vh 0;
+        width: 100%;
+        height: 80vh;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .paroisse-infos {
+        padding: 3vh;
+        width: 100%;
+
+        .paroisse-name {
+            width: 50%;
+            margin: 2vh 0;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.9vh;
+            line-height: 10vh;
+            font-size: 10vh;
+            text-transform: uppercase;
+            color: #8f9090;
+        }
+
+        .paroisse-program-head {
+            display: flex;
+            align-items: center;
+            background-color: #8f9090;
+            width: 100%;
+            height: 10vh;
+            font-size: 7vh;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.4vh;
+            color: #fff;
+            padding: 1vh;
+            margin: 2vh auto;
+        }
+
+        .paroisse-program {
+            font-size: 5vh;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.4vh;
+
+        }
+
+        .paroisse-placeholder {
+            color: #d0d0d0;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.3vh;
+            line-height: 8vh;
+            font-size: 6vh;
+        }
+
+        .paroisse-actus {
+            display: flex;
+
+
+            .actu-block {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 40vh;
+                height: 34vh;
+                margin: 0 1vh;
+
+                img {
+                    width: 100%;
+                    height: 64%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+
     & .paroisse-infos-container {
         margin: 0 0px 2vh auto;
         padding: 3vh;
@@ -100,37 +178,12 @@
         padding: 3vh;
         width: 100%;
 
-        & .paroisse-actus-header {
-            margin: 1vh auto;
-            padding: 1vh;
-            display: flex;
-            align-items: center;
-            background-color: $purple-1;
-            width: 100%;
-            height: 5vh;
-            text-transform: uppercase;
-            color: $white;
-            font-size: 2.3vh;
-        }
+        .paroisse-history-container {
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.2vh;
+            font-size: 4vh;
+            color: #8f9090;
 
-        & .paroisse-slide-container {
-            padding: 2vh;
-            width: 100%;
-
-            & .paroisse-actu {
-                margin: 0px 0vh 0px 3vh;
-
-                & .paroisse-actu-img-container {
-                    width: 40vh;
-                    height: 21vh;
-                    overflow: hidden;
-                    border-radius: 3vh;
-
-                    & img {
-                        width: 40vh;
-                    }
-                }
-            }
         }
 
         & .paroisse-clergy-blocks {
@@ -163,7 +216,7 @@
 
                 & .paroisse-priest-role {
                     font-size: 2.7vh;
-                    color: $purple-1;
+                    color: #8f9090;
                     font-weight: 900;
                 }
 
@@ -174,13 +227,13 @@
                     align-items: center;
                     padding: 1vh;
                     color: $white;
-                    background-color: $purple-1;
+                    background-color: #8f9090;
                     border-radius: 0.7vh;
                     cursor: pointer;
                     transition: all 0.3s ease-in-out;
 
                     &:hover {
-                        background-color: $purple-3;
+                        background-color: #d0d0d0;
 
                     }
                 }

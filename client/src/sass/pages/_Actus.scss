@@ -1,0 +1,76 @@
+.actus-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .head {
+        width: 100%;
+
+        img {
+            width: 100%;
+
+        }
+    }
+
+    .paroisse-name {
+        padding: 2vh;
+        width: 95%;
+        margin: 2vh 0;
+        font-family: $sofiaSemiBold;
+        letter-spacing: -0.9vh;
+        line-height: 10vh;
+        font-size: 10vh;
+        text-transform: uppercase;
+        color: #8f9090;
+    }
+
+    .actus-container {
+        width: 100%;
+        padding: 2vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .actu-bloc {
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1vh;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 1vh 0;
+
+            .actu-bloc-left {
+                width: 40%;
+                height: 40vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+
+                }
+            }
+
+            .actu-bloc-right {
+                width: 70%;
+                padding: 1vh;
+                margin: 0 1vh;
+                font-size: 2.6vh;
+                font-family: $sofiaMedium;
+                letter-spacing: -0.1vh;
+
+                & :nth-child(1) {
+                    font-size: 3vh;
+                    font-family: $sofiaSemiBold;
+                }
+            }
+        }
+    }
+}

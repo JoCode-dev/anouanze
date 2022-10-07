@@ -38,6 +38,9 @@ import Actu from "../pages/Actu";
 // Demande de messe
 import Demandes from "../pages/Demandes";
 
+// Actualités
+import Actus from "../pages/Actus";
+
 const index = () => {
   return (
     <BrowserRouter>
@@ -54,6 +57,7 @@ const index = () => {
         <Route path="/paroisses" element={<Paroisses />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/mod-dashboard" element={<ModDashboard />} />
+        <Route path="/actus/:id" element={<Actus />} />
         <Route path="/actu/:id" element={<Actu />} />
         <Route path="/demande" element={<Demandes />} />
       </Routes>

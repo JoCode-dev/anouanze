@@ -1,0 +1,128 @@
+.file-arianne {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .file-ariane-element:nth-child(1) {
+        h1 {
+            color: white;
+            text-transform: none;
+            font-size: 5vh;
+            font-family: $sofiaMedium
+        }
+
+    }
+
+    & .file-ariane-element:nth-child(3) {
+        h1 {
+            text-transform: none;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.3vh;
+        }
+
+    }
+
+    .file-ariane-element {
+        height: 8vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #aacc26;
+        margin: 0.2vh 0;
+
+        h1 {
+            text-transform: uppercase;
+            color: #526002;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.3vh;
+            font-size: 5vh;
+        }
+    }
+}
+
+.diocese-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .table-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin: 0.2vh 0;
+
+        .table-header {
+            background-color: #aacc26;
+            width: 100%;
+            height: 8vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 3vh;
+            color: #465201;
+            font-family: $sofiaSemiBold;
+
+            div {
+                width: 25%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .table-body {
+            width: 99%;
+
+            .table-row {
+                height: 11vh;
+                width: 100%;
+                background-color: #dcdde1;
+                margin: 1vh 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                font-size: 2.5vh;
+                font-family: $sofiaSemiBold;
+                border-radius: 3vh;
+                color: #4c4c4c;
+
+
+                &:hover {
+                    border: none;
+                    background-color: #fff;
+                    border: 2px solid #aacc26;
+                }
+
+                div {
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 2vh;
+                }
+
+                & div:nth-child(1) {
+                    text-transform: uppercase;
+                    letter-spacing: -0.2vh;
+                    justify-content: flex-start;
+                }
+            }
+
+            .paroisse-no-found {
+                border: 1px solid red;
+                width: 100%;
+                font-size: 4vh;
+                text-align: center;
+                margin: 2vh 0;
+                font-family: $sofiaSemiBold;
+                letter-spacing: -0.2vh;
+            }
+        }
+    }
+}

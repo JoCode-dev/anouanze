@@ -39,15 +39,6 @@ const renderParoisses = (arr) => {
   );
 };
 
-function compare_name(a, b) {
-  if (a.name.toLowerCase() < b.name.toLowerCase()) {
-    return -1;
-  }
-  if (a.name.toLowerCase() > b.name.toLowerCase()) {
-    return 1;
-  }
-  return 0;
-}
 
 const List = ({ textSearch }) => {
   const paroisses = useSelector((state) => state.paroisses);
