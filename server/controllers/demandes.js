@@ -3,7 +3,7 @@ import DemandeModel from "../models/DemandeModel.js";
 
 export const addDemande = async (req, res) => {
   const { name, number, textDemand, dayMesse, dayHour, _idParoisse } = req.body;
-  var ObjectId = mongoose.Types.ObjectId(_idParoisse)
+  var ObjectId = mongoose.Types.ObjectId(_idParoisse);
   if (!mongoose.isValidObjectId(ObjectId)) {
     return res.status(500).send(`Invalid id provided`);
   }
@@ -43,14 +43,14 @@ export const updateDemande = async (req, res) => {
 };
 
 export const getDemandsByParoisse = async (req, res) => {
-  const { idParoisse } = req.body;
-  if (!mongoose.isValidObjectId(idParoisse)) {
+  const { id } = req.params;
+  if (!mongoose.isValidObjectId(id)) {
     return res.status(500).send(`Invalid id provided`);
   }
 
   try {
     const demands = await DemandeModel.find({
-      _idParoisse: idParoisse,
+      _idParoisse: id,
     });
     res.status(200).json(demands);
   } catch (error) {

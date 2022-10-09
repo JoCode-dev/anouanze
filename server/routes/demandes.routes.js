@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/", addDemande);
 router.patch("/:id", updateDemande);
-router.get("/paroisse/", getDemandsByParoisse);
+router.get("/paroisse/:id", getDemandsByParoisse);
 router.get("/:id", getDemand);
 
 export default router;

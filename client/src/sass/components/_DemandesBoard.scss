@@ -1,0 +1,48 @@
+.mod-demandes-container {
+    padding: 1vh;
+
+    h1 {
+        color: $purple-1;
+    }
+
+    .list-demandes {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1vh;
+
+        .list-demandes-item {
+            padding: 2vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin: 1vh 0;
+
+            .list-demandes-left {
+                width: 80%;
+
+                h2 {
+                    color: $blue-1;
+                }
+            }
+
+            .list-demandes-right {
+                width: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input[type="checkbox"] {
+                    border: 2px solid $blue-1;
+                    transform: scale(2);
+
+                }
+            }
+        }
+    }
+}

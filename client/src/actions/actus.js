@@ -26,7 +26,7 @@ export const getActu = (id) => async (dispatch) => {
 export const getActuByID = (id) => async (dispatch) => {
   try {
     const { data } = await api.getActusById(id);
-    dispatch({ type: GET_ACTU_BY_ID, payload: data });
+    dispatch({ type: GET_ALL_ACTUS, payload: data });
   } catch (error) {}
 };
 

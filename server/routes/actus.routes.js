@@ -17,7 +17,7 @@ router.get("/:id", getOneActu);
 router.get("/paroisse/:id", getActusById);
 
 //  PATCH
-router.patch("/:id", updateActu);
+router.patch("/:id", upload.single("poster"), updateActu);
 
 // DELETE
 router.delete("/:id", deleteActu);

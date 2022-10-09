@@ -11,15 +11,17 @@
 @import './components/HeadBar.scss';
 @import './components/LeftBar.scss';
 @import './components/ParoisseBoard.scss';
+@import './components/ParoissesBoard.scss';
 @import './components/EventsBoard.scss';
 @import './components/Dashboard.scss';
-@import './components/DemandeMesse.scss';
+@import './components/DemandesBoard.scss';
 @import './components/PriestCard.scss';
 @import './components/SearchBar.scss';
 @import './components/SearchList.scss';
 @import './components/DiocesesBloc.scss';
 @import './components/EventsBloc.scss';
 @import './components/SubscribeBloc.scss';
+@import './components/ActusBoard.scss';
 
 
 @import './pages/Home.scss';
@@ -28,6 +30,7 @@
 @import './pages/Paroisse.scss';
 @import './pages/Paroisses.scss';
 @import './pages/AdminDashboard.scss';
+@import './pages/ModDashboard.scss';
 @import './pages/MaParoisse.scss';
 @import './pages/Actu.scss';
 @import './pages/Demandes.scss';

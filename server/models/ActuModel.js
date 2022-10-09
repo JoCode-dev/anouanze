@@ -16,15 +16,6 @@ const actuSchema = mongoose.Schema(
     address: {
       type: String,
     },
-    startAt: {
-      type: Date,
-    },
-    endAt: {
-      type: Date,
-    },
-    dateEvent: {
-      type: [Date],
-    },
     _paroisseId: {
       type: String,
       required: true,

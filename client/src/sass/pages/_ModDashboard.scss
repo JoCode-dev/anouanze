@@ -1,0 +1,15 @@
+.mod-dashboard-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: #f0f7ff;
+
+    .mod-dashboard-left {
+        width: 17%;
+    }
+
+    .mod-dashboard-center {
+        width: 83%;
+    }
+}

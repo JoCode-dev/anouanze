@@ -66,56 +66,6 @@ const Actu = () => {
             <div className="actu-description">
               <p>{actu.description}</p>
             </div>
-            <div className="actu-address">
-              <p> Lieu: {actu.address}</p>
-            </div>
-
-            <div className="actu-sub-details">
-              <div className="actu-date">
-                <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/agenda.png"}
-                  alt="clock"
-                />
-
-                {isEmpty(actu) ? (
-                  <></>
-                ) : (
-                  <>
-                    {actu?.dateEvent[0] === actu?.dateEvent[1] ? (
-                      <>
-                        <p>
-                          {dayjs(actu.dateEvent[0]).format("dddd DD MMMM YYYY")}
-                        </p>
-                      </>
-                    ) : (
-                      <>
-                        <p>
-                          {dayjs(actu.dateEvent[0]).format("DD MMMM YYYY")} -{" "}
-                          {dayjs(actu.dateEvent[1]).format("DD MMMM YYYY")}
-                        </p>
-                      </>
-                    )}
-                  </>
-                )}
-              </div>
-              <div className="actu-time">
-                <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/clock.png"}
-                  alt="clock"
-                />
-                <p>
-                  {hourParser(actu.startAt) +
-                    "H" +
-                    minuteParser(actu.startAt) +
-                    "min"}{" "}
-                  -{" "}
-                  {hourParser(actu.endAt) +
-                    "H" +
-                    minuteParser(actu.endAt) +
-                    "min"}
-                </p>
-              </div>
-            </div>
           </div>
           <Footer dot="." />
         </div>

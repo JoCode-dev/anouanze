@@ -72,7 +72,9 @@ const NavBar = ({ value }) => {
               </NavLink>
             )}
             {user.moderatorType === true && (
-              <div className="mode-btn">Mode</div>
+              <NavLink to="/mod-dashboard" className="mode-btn">
+                Mode
+              </NavLink>
             )}
 
             <div className="logout-btn" onClick={handleLogout}>

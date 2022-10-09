@@ -33,13 +33,12 @@ export const createActu = async (req, res) => {
   }
 
   const {
-    poster = req.file !== null ? "/uploads/actus/" + fileName : "/uploads/actus/default-actu.jpg",
+    poster = req.file !== null
+      ? "/uploads/actus/" + fileName
+      : "/uploads/actus/default-actu.jpg",
     title,
     description,
     address,
-    startAt,
-    endAt,
-    dateEvent,
     _paroisseId,
   } = req.body;
 
@@ -48,9 +47,6 @@ export const createActu = async (req, res) => {
     title,
     description,
     address,
-    startAt,
-    endAt,
-    dateEvent,
     _paroisseId,
   });
 
@@ -64,19 +60,27 @@ export const createActu = async (req, res) => {
 
 export const updateActu = async (req, res) => {
   const { id } = req.params;
-  let fileName;
+
+  const { title, description, address, _paroisseId } = req.body;
+
+  let poster = req.body.poster;
 
   try {
-    if (req?.file !== null) {
-      if (
-        req?.file.detectedMimeType !== "image/jpeg" &&
-        req?.file.detectedMimeType !== "image/png" &&
-        req?.file.detectedMimeType !== "image/jpg"
-      ) {
-        throw Error("Invalid File");
+    let fileName;
+    if (req.file !== null) {
+      try {
+        if (
+          req.file.detectedMimeType !== "image/jpg" &&
+          req.file.detectedMimeType !== "image/png" &&
+          req.file.detectedMimeType !== "image/jpeg"
+        ) {
+          throw Error("Invalid file detected");
+        }
+      } catch (error) {
+        res.status(500).json(error);
       }
 
-      fileName = req.body.title + Date.now() + ".jpg";
+      fileName = req.body._paroisseId + Date.now() + ".jpg";
 
       await pipeline(
         req.file.stream,
@@ -84,36 +88,26 @@ export const updateActu = async (req, res) => {
           `${__dirname}/../../client/public/uploads/actus/${fileName}`
         )
       );
+    } else {
+      poster = fileName;
     }
-  } catch (error) {}
+    if (req.file !== null) {
+      poster = "/uploads/actus/" + fileName;
+    } else poster = fileName;
 
-  const {
-    poster,
-    title,
-    description,
-    address,
-    startAt,
-    endAt,
-    dateEvent,
-    _paroisseId,
-  } = req.body;
+    const updatedActu = {
+      poster,
+      title,
+      description,
+      address,
+      _paroisseId,
+      _id: id,
+    };
 
-  const updatedActu = {
-    poster: req.file !== null ? "/uploads/actus/" + fileName : "",
-    title,
-    description,
-    address,
-    startAt,
-    endAt,
-    dateEvent,
-    _paroisseId,
-    _id: id,
-  };
-
-  try {
     await ActuModel.findByIdAndUpdate(id, updatedActu, { new: true });
+    res.status(200).json(updatedActu);
   } catch (error) {
-    res.status(404).send(error);
+    res.status(500).json({ error: error });
   }
 };
 
