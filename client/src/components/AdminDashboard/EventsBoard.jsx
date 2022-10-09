@@ -4,15 +4,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../utils/index";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { createEvent } from "../../actions/event";
+import {
+  createEvent,
+  updateEvent,
+  deleteEvent,
+  getPremiumEvents,
+  getAllEvents,
+  getOthersEvents,
+} from "../../actions/event";
+
+import dayjs from "dayjs";
+import "dayjs/locale/fr";
 
 const EventsBoard = () => {
   const dispatch = useDispatch();
-  const events = useSelector((state) => state.events);
+  const allEvents = useSelector((state) => state.events);
+  let events = useSelector((state) => state.premiumEvents);
+  !isEmpty(events) &&
+    events.sort((a, b) => {
+      return b.createdAt.localeCompare(a.createdAt);
+    });
+
+  let otherEvents = useSelector((state) => state.othersEvent);
+  !isEmpty(otherEvents) &&
+    otherEvents.sort((a, b) => {
+      return b.createdAt.localeCompare(a.createdAt);
+    });
   const user = useSelector((state) => state.user.user);
 
   // Afficher / Cacher le formulaire
-  const [toggleForm, setToggleForm] = useState(true);
+  const [toggleForm, setToggleForm] = useState(false);
 
   // Fichiers données
   const [files, setFiles] = useState([]);
@@ -23,6 +44,68 @@ const EventsBoard = () => {
   const [countHours, setCountHours] = useState([1, 2]);
 
   const [isSetForm, setIsSetForm] = useState(false);
+
+  // Mode édition
+  const [isEdit, setIsEdit] = useState(false);
+  const [eventEdit, setEventEdit] = useState(false);
+
+  const editEvent = (idx) => {
+    setIsEdit(true);
+    setCount([1]);
+    const eventFound = allEvents.filter((e) => e._id === idx)[0];
+    setEventEdit(eventFound);
+
+    const begin = dayjs(allEvents.startAt).format("HH:mm");
+    const end = dayjs(allEvents.endAt).format("HH:mm");
+
+    let dateFound = [];
+    eventFound?.dateEvent.forEach((el) => {
+      dateFound.push(dayjs(el).format("YYYY-MM-DD"));
+    });
+
+    dateFound.length === 2 && setCount([1, 2]);
+
+    console.log(dateFound);
+
+    setToggleForm(true);
+
+    setFormData({
+      poster: eventFound.poster,
+      title: eventFound.title,
+      description: eventFound.description,
+      address: eventFound.address,
+      begin: begin,
+      end: end,
+      startAt: eventFound.startAt,
+      endAt: eventFound.endAt,
+      dateEvent: eventFound.dateEvent,
+      dateBegin: dateFound[0],
+      dateEnd: dateFound.length > 1 && dateFound[1],
+      organizer: eventFound.organizer,
+      isPremium: eventFound.isPremium,
+      posterId: eventFound.posterId,
+    });
+
+    files.length = 0;
+    files.push(eventFound.poster);
+  };
+
+  const deleteEvents = async (idx) => {
+    const eventFound = allEvents.filter((e) => e._id === idx)[0];
+    const id = eventFound._id;
+
+    var answer = window.confirm("Are you sure you want to delete this item?");
+    if (answer) {
+      await dispatch(deleteEvent(id))
+        .then(() => {
+          dispatch(getAllEvents());
+          dispatch(getPremiumEvents());
+          dispatch(getOthersEvents());
+        })
+        .catch(() => {});
+      console.log(id);
+    } else console.log("Canceled!");
+  };
 
   const [formData, setFormData] = useState({
     poster: "",
@@ -41,7 +124,7 @@ const EventsBoard = () => {
     posterId: user._id,
   });
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
     setIsOk(true);
 
@@ -57,7 +140,40 @@ const EventsBoard = () => {
     data.append("isPremium", formData.isPremium);
     data.append("posterId", formData.posterId);
 
-    dispatch(createEvent(data));
+    isEdit
+      ? await dispatch(updateEvent(eventEdit._id, data))
+          .then(() => {
+            setIsOk(false);
+            dispatch(getPremiumEvents());
+            dispatch(getOthersEvents());
+            dispatch(getAllEvents());
+
+            cancelForm();
+            setToggleForm(!toggleForm);
+            return true;
+          })
+          .catch((error) => {
+            console.log("====================================");
+            console.log(error);
+            console.log("====================================");
+          })
+      : await dispatch(createEvent(data))
+          .then(() => {
+            setIsOk(false);
+            dispatch(getPremiumEvents());
+            dispatch(getOthersEvents());
+            dispatch(getAllEvents());
+
+            cancelForm();
+            setToggleForm(!toggleForm);
+            return true;
+          })
+          .catch((error) => {
+            console.log("====================================");
+            console.log(error);
+            console.log("====================================");
+          });
+
     setIsOk(false);
   };
 
@@ -141,6 +257,12 @@ const EventsBoard = () => {
       setIsSetForm(false);
     }
   }, [formData]);
+
+  useEffect(() => {
+    dispatch(getPremiumEvents());
+    dispatch(getOthersEvents());
+    dispatch(getAllEvents());
+  }, [dispatch]);
 
   const renderDatesComponent = () => {
     const datesElement = document.querySelectorAll(".datepicker-container");
@@ -323,25 +445,6 @@ const EventsBoard = () => {
                       setFormData({ ...formData, organizer: e.target.value })
                     }
                   />
-                  {/** Premium */}
-                  <div className="form-group-premium">
-                    <label htmlFor="isPremium">Premium</label>
-                    <div className="toogle-premium">
-                      <input
-                        type="checkbox"
-                        name="isPremium"
-                        value={formData.isPremium}
-                        id="isPremium"
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            isPremium: e.target.checked,
-                          })
-                        }
-                      />
-                      <label htmlFor="isPremium"></label>
-                    </div>
-                  </div>
                 </div>
 
                 {/** Picture */}
@@ -388,70 +491,149 @@ const EventsBoard = () => {
           <h1>Évènements</h1>
         </div>
 
-        {/*  <div className="events-container">
-          <div
-            className="event-add-element"
-            onClick={() => setToggleForm(!toggleForm)}
-          >
-            <img
-              src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
-              alt={"add"}
-            />
+        <div className="events-container">
+          <h1>Évènements PREMIUM</h1>
+          <div className="premium-events">
+            <div
+              className="event-add-element"
+              onClick={() => {
+                setToggleForm(!toggleForm);
+                setFormData({ ...formData, isPremium: true });
+              }}
+            >
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
+                alt={"add"}
+              />
+            </div>
+            {!isEmpty(events) &&
+              events.map((element, i) => (
+                <div className="event-element" key={i}>
+                  <div className="event-infos">
+                    <div className="event-infos-image">
+                      {element?.poster ? (
+                        <img
+                          src={process.env.PUBLIC_URL + element.poster}
+                          alt={element.name}
+                        />
+                      ) : (
+                        <img
+                          src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                          alt={element.name}
+                        />
+                      )}{" "}
+                    </div>
+                    <div className="event-infos-name">
+                      <h4>{element.title}</h4>
+                      <h6>{element.organizer}</h6>
+                      <h6>{element.address}</h6>
+                    </div>
+                  </div>
+                  <div className="event-element-footer">
+                    <NavLink
+                      to={`/event/${element._id}`}
+                      className="footer-view"
+                      target="_blank"
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
+                        alt={"eye"}
+                      />
+                    </NavLink>{" "}
+                    <div
+                      className="footer-edit"
+                      onClick={() => editEvent(element._id)}
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
+                        alt={"edit"}
+                      />
+                    </div>
+                    <div
+                      className="footer-delete"
+                      onClick={() => deleteEvents(element._id)}
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
+                        alt={"delete"}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
-          {!isEmpty(events) &&
-            events.map((element, i) => (
-              <div className="event-element" key={i}>
-                <div className="event-infos">
-                  <div className="event-infos-image">
-                    {element?.pictures[0] ? (
-                      <img
-                        src={process.env.PUBLIC_URL + element.pictures[0]}
-                        alt={element.name}
-                      />
-                    ) : (
-                      <img
-                        src={process.env.PUBLIC_URL + "/imgs/icon.png"}
-                        alt={element.name}
-                      />
-                    )}{" "}
+          <h1>Évènements SÉCONDAIRES</h1>
+
+          <div className="others-events">
+            <div
+              className="event-add-element"
+              onClick={() => {
+                setToggleForm(!toggleForm);
+                setFormData({ ...formData, isPremium: false });
+              }}
+            >
+              <img
+                src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
+                alt={"add"}
+              />
+            </div>
+            {!isEmpty(otherEvents) &&
+              otherEvents.map((element, i) => (
+                <div className="event-element" key={i}>
+                  <div className="event-infos">
+                    <div className="event-infos-image">
+                      {element?.poster ? (
+                        <img
+                          src={process.env.PUBLIC_URL + element.poster}
+                          alt={element.name}
+                        />
+                      ) : (
+                        <img
+                          src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                          alt={element.name}
+                        />
+                      )}{" "}
+                    </div>
+                    <div className="event-infos-name">
+                      <h4>{element.title}</h4>
+                      <h6>{element.organizer}</h6>
+                      <h6>{element.address}</h6>
+                    </div>
                   </div>
-                  <div className="event-infos-name">
-                    <h4>{element.name}</h4>
-                    <h6>
-                      {element.diocese} - {element.province}
-                    </h6>
+                  <div className="event-element-footer">
+                    <NavLink
+                      to={`/event/${element._id}`}
+                      className="footer-view"
+                      target="_blank"
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
+                        alt={"edit"}
+                      />
+                    </NavLink>{" "}
+                    <div
+                      className="footer-edit"
+                      onClick={() => editEvent(element._id)}
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
+                        alt={"edit"}
+                      />
+                    </div>
+                    <div
+                      className="footer-delete"
+                      onClick={() => deleteEvents(element._id)}
+                    >
+                      <img
+                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
+                        alt={"delete"}
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="event-element-footer">
-                  <NavLink
-                    to={`/event/${element._id}`}
-                    className="footer-view"
-                    target="_blank"
-                  >
-                    <img
-                      src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
-                      alt={"edit"}
-                    />
-                  </NavLink>{" "}
-                  <div className="footer-edit">
-                    <img
-                      src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
-                      alt={"edit"}
-                    />
-                  </div>
-                  <div
-                    className="footer-delete"
-                  
-                  >
-                    <img
-                      src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
-                      alt={"delete"}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div> */}
+              ))}
+          </div>
+        </div>
       </div>
     </>
   );

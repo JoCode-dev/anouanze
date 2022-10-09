@@ -41,7 +41,7 @@ const NavBar = ({ value }) => {
             <li className={value === "Accueil" && "active"}>Accueil</li>
           </NavLink>
           <NavLink to={requireAuth("events")}>
-            <li className={value === "Évènements" && "active"}>Évènements</li>
+            <li className={value === "Events" && "active"}>Évènements</li>
           </NavLink>
           <NavLink to={requireAuth("provinces")}>
             <li

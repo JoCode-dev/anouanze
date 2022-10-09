@@ -44,123 +44,277 @@
         align-items: center;
         flex-wrap: wrap;
 
-        .paroisse-add-element {
-            height: 45%;
-            width: 17%;
-            border-radius: 3vh;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            background-color: $blue-1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 1vh 1vh;
-            cursor: pointer;
-
-
-            img {
-                width: 50%;
-                filter: brightness(1) invert(1);
-            }
+        h1 {
+            font-family: $sofiaSemiBold;
+            color: $purple-1;
         }
 
-        .paroisse-element {
-            height: 45%;
-            width: 17%;
-            margin: 1vh 1vh;
-            background-color: $white;
-            border-radius: 3vh;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        .premium-events {
             display: flex;
-            justify-content: flex-start;
+            flex-wrap: wrap;
             align-items: center;
-            flex-direction: column;
-            overflow: hidden;
+            justify-content: space-evenly;
+            margin: 2vh 0;
 
-            .paroisse-infos {
-                height: 85%;
-                width: 100%;
+            .event-add-element {
+                height: 45vh;
+                width: 17%;
+                border-radius: 3vh;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                background-color: $blue-1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 1vh 1vh;
+                cursor: pointer;
 
-                .paroisse-infos-image {
-                    height: 60%;
+
+                img {
+                    width: 50%;
+                    filter: brightness(1) invert(1);
+                }
+            }
+
+            .event-element {
+                height: 45vh;
+                width: 17%;
+                margin: 1vh 1vh;
+                background-color: $white;
+                border-radius: 3vh;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-direction: column;
+                overflow: hidden;
+
+                .event-infos {
+                    height: 85%;
                     width: 100%;
-                    border-radius: 3vh;
-                    overflow: hidden;
 
-                    img {
+                    .event-infos-image {
+                        height: 60%;
                         width: 100%;
+                        border-radius: 3vh;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .event-infos-name {
+                        padding: 1vh;
+
+                        h4 {
+                            font-size: 2.1vh;
+                            font-weight: 800;
+                        }
+
+                        h6 {
+                            font-size: 1.4vh;
+                            margin: 1vh 0;
+                        }
                     }
                 }
 
-                .paroisse-infos-name {
+                .event-element-footer {
+                    width: 100%;
+                    height: 15%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
                     padding: 1vh;
 
-                    h4 {
-                        font-size: 2.2vh;
-                        font-weight: 800;
-                    }
-                }
-            }
+                    .footer-view {
+                        width: 5vh;
+                        height: 5vh;
+                        margin-right: 1vh;
+                        border-radius: 100%;
+                        background-color: $blue-1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
 
-            .paroisse-element-footer {
-                width: 100%;
-                height: 15%;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                padding: 1vh;
-
-                .footer-view {
-                    width: 5vh;
-                    height: 5vh;
-                    margin-right: 1vh;
-                    border-radius: 100%;
-                    background-color: $blue-1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-
-                    img {
-                        width: 60%;
-                        filter: brightness(1) invert(1);
-                    }
-                }
-
-                .footer-edit {
-                    width: 5vh;
-                    height: 5vh;
-                    margin-right: 1vh;
-                    border-radius: 100%;
-                    background-color: $blue-1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-
-                    img {
-                        width: 60%;
-                        filter: brightness(1) invert(1);
-                    }
-                }
-
-                .footer-delete {
-                    width: 5vh;
-                    height: 5vh;
-                    border-radius: 100%;
-                    background-color: $red;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-
-                    img {
-                        width: 60%;
-                        filter: brightness(1) invert(1);
+                        img {
+                            width: 60%;
+                            filter: brightness(1) invert(1);
+                        }
                     }
 
+                    .footer-edit {
+                        width: 5vh;
+                        height: 5vh;
+                        margin-right: 1vh;
+                        border-radius: 100%;
+                        background-color: $blue-1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 60%;
+                            filter: brightness(1) invert(1);
+                        }
+                    }
+
+                    .footer-delete {
+                        width: 5vh;
+                        height: 5vh;
+                        border-radius: 100%;
+                        background-color: $red;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 60%;
+                            filter: brightness(1) invert(1);
+                        }
+
+                    }
                 }
             }
         }
+
+        .others-events {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 2vh 0;
+            justify-content: space-evenly;
+
+            .event-add-element {
+                height: 45vh;
+                width: 17%;
+                border-radius: 3vh;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                background-color: $blue-1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 1vh 1vh;
+                cursor: pointer;
+
+
+                img {
+                    width: 50%;
+                    filter: brightness(1) invert(1);
+                }
+            }
+
+            .event-element {
+                height: 45vh;
+                width: 17%;
+                margin: 1vh 1vh;
+                background-color: $white;
+                border-radius: 3vh;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-direction: column;
+                overflow: hidden;
+
+                .event-infos {
+                    height: 85%;
+                    width: 100%;
+
+                    .event-infos-image {
+                        height: 60%;
+                        width: 100%;
+                        border-radius: 3vh;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .event-infos-name {
+                        padding: 1vh;
+
+                        h4 {
+                            font-size: 2.1vh;
+                            font-weight: 800;
+                        }
+
+                        h6 {
+                            font-size: 1.4vh;
+                            margin: 1vh 0;
+                        }
+                    }
+                }
+
+                .event-element-footer {
+                    width: 100%;
+                    height: 15%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    padding: 1vh;
+
+                    .footer-view {
+                        width: 5vh;
+                        height: 5vh;
+                        margin-right: 1vh;
+                        border-radius: 100%;
+                        background-color: $blue-1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 60%;
+                            filter: brightness(1) invert(1);
+                        }
+                    }
+
+                    .footer-edit {
+                        width: 5vh;
+                        height: 5vh;
+                        margin-right: 1vh;
+                        border-radius: 100%;
+                        background-color: $blue-1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 60%;
+                            filter: brightness(1) invert(1);
+                        }
+                    }
+
+                    .footer-delete {
+                        width: 5vh;
+                        height: 5vh;
+                        border-radius: 100%;
+                        background-color: $red;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 60%;
+                            filter: brightness(1) invert(1);
+                        }
+
+                    }
+                }
+            }
+        }
+
     }
 }
 
@@ -262,65 +416,6 @@
 
                     }
 
-                }
-
-                .form-group-premium {
-                    display: flex;
-                    align-items: center;
-                    padding: 1vh;
-                    width: 100%;
-
-                    /* Checkbox Styles */
-                    .toogle-premium {
-                        height: 4vh;
-                        margin: 2vh;
-
-                        input[type="checkbox"] {
-                            display: none;
-                        }
-
-                        input[type="checkbox"]+label {
-                            display: block;
-                            position: relative;
-                            width: 8vh;
-                            height: 4vh;
-                            margin-bottom: 20px;
-                            border-radius: 10em;
-                            background: #e84d4d;
-                            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
-                            cursor: pointer;
-                            -webkit-user-select: none;
-                            -moz-user-select: none;
-                            -ms-user-select: none;
-                            -webkit-transition: background 0.1s ease-in-out;
-                            transition: background 0.1s ease-in-out;
-                        }
-
-                        input[type="checkbox"]+label:before {
-                            content: "";
-                            display: flex;
-                            align-items: center;
-                            width: 3.9vh;
-                            height: 3.9vh;
-                            border-radius: 100%;
-                            background: #fff;
-                            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
-                            position: absolute;
-                            left: 0.01em;
-                            top: 0.01em;
-                            -webkit-transition: all 0.2s ease-in-out;
-                            transition: all 0.2s ease-in-out;
-                        }
-
-                        input[type="checkbox"]:checked+label {
-                            background: #47cf73;
-                        }
-
-                        input[type="checkbox"]:checked+label:before {
-                            box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
-                            left: 1.7em;
-                        }
-                    }
                 }
 
                 .dates-group {

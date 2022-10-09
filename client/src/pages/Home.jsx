@@ -22,7 +22,7 @@ const Home = () => {
       <SearchBar />
       <Carousel />
       <MapComponent />
-      {user?._paroisse !== "" && <MaParoisse id={user?._paroisse} />}
+      {/*user?._paroisse !== "" && <MaParoisse id={user?._paroisse} /> */}
       <DiocesesBloc />
       <DemandeMesses />
       <EventsBloc />

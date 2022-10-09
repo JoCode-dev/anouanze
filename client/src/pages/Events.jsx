@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllEvents } from "../actions/event";
 import { NavLink } from "react-router-dom";
 import { isEmpty } from "../components/utils";
+import NavBar from "../components/NavBar/NavBar";
 
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
@@ -14,13 +15,20 @@ const Events = () => {
 
   const [onLoading, setOnLoading] = useState(true);
   const [onPlaceholder, setOnPlaceholder] = useState(true);
+  const events = useSelector((state) => state.events);
   useEffect(() => {
     if (onLoading) {
       dispatch(getAllEvents());
     }
   }, [dispatch, onLoading]);
 
-  const events = useSelector((state) => state.events);
+  const newArr = !isEmpty(events)
+    ? events.sort((a, b) => {
+        return Number(b.isPremium) - Number(a.isPremium);
+      })
+    : [];
+  console.log("====================================");
+  console.log(newArr);
 
   dayjs.locale("fr");
   const hourParser = (date) => {
@@ -54,6 +62,7 @@ const Events = () => {
         </>
       ) : (
         <>
+          <NavBar value={"Events"} />
           <div className="events-container">
             <header className="event-header">
               <NavLink to="/">
@@ -77,8 +86,9 @@ const Events = () => {
                   ))
                 : events.map((event) => (
                     <>
-                      <NavLink
-                        to={`/event/${event._id}`}
+                      <a
+                        href={event.poster}
+                        target="_blank"
                         className="event-card"
                       >
                         <div className="event-poster">
@@ -91,11 +101,19 @@ const Events = () => {
 
                           <div className="event-description">
                             <p>{event.description}</p>
+                            <p>Lieu : {event.address}</p>
                           </div>
 
                           <div className="event-sub">
                             <div className="event-date">
-                              {event?.dateEvent[0] === event?.dateEvent[1] ? (
+                              <img
+                                src={
+                                  process.env.PUBLIC_URL +
+                                  "/imgs/icons/calendar.png"
+                                }
+                                alt="calendar "
+                              />
+                              {event?.dateEvent.length === 1 ? (
                                 <>
                                   <p>
                                     {dayjs(event.dateEvent[0]).format(
@@ -118,15 +136,15 @@ const Events = () => {
                               )}
                             </div>
                             <div className="event-time">
-                              {hourParser(event.startAt) +
-                                "H" +
-                                minuteParser(event.startAt) +
-                                "min"}{" "}
-                              -{" "}
-                              {hourParser(event.endAt) +
-                                "H" +
-                                minuteParser(event.endAt) +
-                                "min"}
+                              <img
+                                src={
+                                  process.env.PUBLIC_URL +
+                                  "/imgs/icons/clock.png"
+                                }
+                                alt="calendar "
+                              />
+                              {hourParser(event.startAt) + "H"} -{" "}
+                              {hourParser(event.endAt) + "H"}
                             </div>
                             <div className="event-organizer">
                               <p>Organisateur :</p>
@@ -134,7 +152,7 @@ const Events = () => {
                             </div>
                           </div>
                         </div>
-                      </NavLink>
+                      </a>
                     </>
                   ))}
             </div>

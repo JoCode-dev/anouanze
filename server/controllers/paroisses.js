@@ -123,16 +123,26 @@ export const getParoisse = async (req, res) => {
 
 // UPDATE
 export const updateParoisse = async (req, res) => {
-  
   const { id } = req.params;
-  
+
   if (!mongoose.isValidObjectId(id))
     return res.status(500).json({ message: `Invalid ${id}` });
 
   let fileName;
   let filesNames = [];
 
-  if (req.files !== null) {
+  const {
+    name,
+    province,
+    diocese,
+    pictures,
+    address,
+    contact,
+    email,
+    history,
+  } = req.body;
+
+  if (req.files.length > 0) {
     try {
       req.files.map(async (file) => {
         if (
@@ -158,23 +168,14 @@ export const updateParoisse = async (req, res) => {
           )
         );
       });
-     // res.status(200).json({ message: "OK" });
+      // res.status(200).json({ message: "OK" });
     } catch (error) {
       res.status(404).json({ message: error });
       console.log(error);
     }
+  } else {
+    pictures && pictures.forEach((e) => filesNames.push(e));
   }
-
-  const {
-    name,
-    province,
-    diocese,
-    pictures,
-    address,
-    contact,
-    email,
-    history,
-  } = req.body;
 
   let location = req.body.location;
   location.coordinates = location.coordinates.split(",").map(function (item) {
@@ -193,12 +194,7 @@ export const updateParoisse = async (req, res) => {
       province,
       diocese,
       location,
-      pictures:
-        req.files !== null
-          ? filesNames.map((e) => {
-              return e;
-            })
-          : "",
+      pictures: filesNames,
       address,
       contact,
       email,

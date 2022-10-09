@@ -1,7 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { isEmpty } from "../../utils";
+import { useSelector } from "react-redux";
 
 const DiocesesBloc = () => {
+  const user = useSelector((state) => state.user.user);
+
+  const requireAuth = () => {
+    return !isEmpty(user) ? "/provinces" : "/login";
+  };
   return (
     <div className="bloc-diocese-container">
       <div>
@@ -17,7 +24,7 @@ const DiocesesBloc = () => {
         <p>Messes, Confessions, Vie de la paroisse, Activités paroissiale...</p>
       </div>
 
-      <NavLink to="/provinces" className="btn-visit">
+      <NavLink to={requireAuth()} className="btn-visit">
         Visiter
       </NavLink>
     </div>

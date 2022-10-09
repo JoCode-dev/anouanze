@@ -130,7 +130,6 @@ export const updateEvent = async (req, res) => {
     return res.status(500).json({ message: `Invalid ${id}` });
 
   const {
-    poster,
     title,
     description,
     address,
@@ -140,6 +139,8 @@ export const updateEvent = async (req, res) => {
     organizer,
     posterId,
   } = req.body;
+
+  let poster = req.body.poster;
 
   try {
     let fileName;
@@ -164,10 +165,15 @@ export const updateEvent = async (req, res) => {
           `${__dirname}/../../client/public/uploads/events/${fileName}`
         )
       );
+    } else {
+      poster = fileName;
     }
+    if (req.file !== null) {
+      poster = "/uploads/events/" + fileName;
+    } else poster = fileName;
 
     const updatedEvent = {
-      poster: req.file !== null ? "/uploads/events/" + fileName : "",
+      poster,
       title,
       description,
       address,

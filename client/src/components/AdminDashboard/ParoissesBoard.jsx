@@ -405,7 +405,7 @@ const ParoissesBoard = () => {
 
     setFiles([]);
 
-    setToggleForm(!toggleForm);
+    setToggleForm(false);
   };
 
   const convertArray = (arr) => {
@@ -423,8 +423,6 @@ const ParoissesBoard = () => {
 
   const editParoisse = (idx) => {
     setParoisseEdit(paroisses[idx]);
-
-    const newDatas = {};
 
     setFormData({
       name: paroisses[idx].name,
