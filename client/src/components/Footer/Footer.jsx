@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = ({ dot }) => {
   return (
-    <div className="footer-container">
+    <footer className="footer-container">
       <div className="footer-left-part">
         <NavLink to="/">
           <img src={`${dot}./imgs/icon.png`} alt="logo" />
@@ -30,7 +30,7 @@ const Footer = ({ dot }) => {
           </li>
         </ul>
       </div>
-    </div>
+    </footer>
   );
 };
 

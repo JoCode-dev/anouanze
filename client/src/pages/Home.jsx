@@ -17,7 +17,7 @@ import { isEmpty } from "../components/utils";
 const Home = () => {
   const user = useSelector((state) => state.user.user);
   return (
-    <div className="home-container">
+    <main className="home-container">
       <NavBar value={"Accueil"} />
       <SearchBar />
       <Carousel />
@@ -29,7 +29,7 @@ const Home = () => {
       {isEmpty(user) && <SubscribeBloc />}
 
       <Footer dot="" />
-    </div>
+    </main>
   );
 };
 
