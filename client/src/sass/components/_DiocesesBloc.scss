@@ -96,3 +96,87 @@
         }
     }
 }
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {
+    .bloc-diocese-container {
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-visit {
+            width: 5vh;
+            font-size: 3vh;
+        }
+    }
+}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1024px) {
+    .bloc-diocese-container {
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-visit {
+            width: 5vh;
+            font-size: 3vh;
+        }
+    }
+}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {
+    .bloc-diocese-container {
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-visit {
+            width: 5vh;
+            font-size: 3vh;
+        }
+    }
+}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {
+    .bloc-diocese-container {
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-visit {
+            width: 5vh;
+            font-size: 3vh;
+        }
+    }
+}

@@ -91,3 +91,91 @@
         }
     }
 }
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {
+    .bloc-demande-container {
+
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-demand {
+            font-size: 3vh;
+            width: 2vh;
+        }
+    }
+}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1024px) {
+    .bloc-demande-container {
+
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-demand {
+            font-size: 3vh;
+            width: 2vh;
+        }
+    }
+}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {
+    .bloc-demande-container {
+
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-demand {
+            font-size: 3vh;
+            width: 2vh;
+        }
+    }
+}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {
+    .bloc-demande-container {
+
+
+        h1 {
+            font-size: 3vh;
+        }
+
+        h2 {
+            font-size: 2vh;
+        }
+
+        p {}
+
+        .btn-demand {
+            font-size: 3vh;
+            width: 2vh;
+        }
+    }
+}

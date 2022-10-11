@@ -7,6 +7,7 @@ import { isEmpty } from "../utils";
 
 const NavBar = ({ value }) => {
   const user = useSelector((state) => state.user.user);
+  const [menuIcon, setMenuIcon] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -24,8 +25,16 @@ const NavBar = ({ value }) => {
     return isEmpty(user) ? "/login" : `/${el}`;
   };
 
+  const toggleMenu = () => {
+    let toggle = document.querySelector(".menu-burger");
+
+    toggle.addEventListener("click", () => {
+      setMenuIcon(!menuIcon);
+    });
+  };
+
   return (
-    <nav className="navbar-container">
+    <nav className={`navbar-container ${!menuIcon && "active-nav"}`}>
       <div className="navbar-left-part">
         <NavLink to="/">
           <img
@@ -33,6 +42,15 @@ const NavBar = ({ value }) => {
             alt="logo-anouanze"
           />
         </NavLink>
+        <div className="menu-burger" onClick={() => toggleMenu()}>
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              `/imgs/icons/${menuIcon ? "menu-burger.png" : "close.png"}`
+            }
+            alt="menu-burger"
+          />
+        </div>
       </div>
 
       <div className="navbar-center-part">
@@ -72,8 +90,12 @@ const NavBar = ({ value }) => {
               </NavLink>
             )}
             {user.moderatorType === true && (
-              <NavLink to="/mod-dashboard" className="mode-btn">
-                Mode
+              <NavLink to="/mod-dashboard" className="mod-btn">
+                <img
+                  src={process.env.PUBLIC_URL + "/imgs/icons/mod.png"}
+                  alt="Moderator"
+                />
+                <h1>Espace d'administration</h1>
               </NavLink>
             )}
 
@@ -82,6 +104,7 @@ const NavBar = ({ value }) => {
                 src={process.env.PUBLIC_URL + "/imgs/icons/logout.png"}
                 alt="logout"
               />
+              <h1>Déconnexion</h1>
             </div>
           </>
         ) : (
