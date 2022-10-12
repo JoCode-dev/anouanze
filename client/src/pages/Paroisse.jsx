@@ -35,7 +35,7 @@ const Paroisse = () => {
   paroisse = useSelector((state) => state.paroisse);
 
   let actus = {};
-  actus = useSelector((state) => state.actu);
+  actus = useSelector((state) => state.actus);
 
   const putDashes = (hours) => {
     const arrayLength = hours.length;
@@ -189,7 +189,8 @@ const Paroisse = () => {
                     informations qui permettrons aux paroissiens d'être informés
                   </div>
 
-                  {renderActus(actus.data, paroisse._id)}
+                  {!isEmpty(actus.data) &&
+                    renderActus(actus.data, paroisse._id)}
 
                   <div className="paroisse-program-head">
                     Présentation de la paroisse

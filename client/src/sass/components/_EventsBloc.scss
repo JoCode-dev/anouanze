@@ -45,7 +45,7 @@
         position: relative;
         color: white;
         background-color: #3c86ac;
-        width: 13vh;
+        width: 13%;
         border-radius: 2vh;
     }
 
@@ -88,110 +88,156 @@
 
 /* Mobile devices */
 @media (min-width : 220px) and (max-width : 480px) {
-    .bloc-events-container {
+    .bloc-events-container::before {
+        background-image: linear-gradient(0deg, #3c86ac, #3c86ac 37%, #652d8b40 60%);
 
+    }
+
+    .bloc-events-container {
+        background-position: center;
+        background-size: cover;
+        height: 60vh;
+        padding: 0;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 1vh;
 
         h1 {
-            font-size: 3vh;
+            font-size: 6vh;
+            line-height: 0.8;
+            letter-spacing: -0.2vh;
         }
 
         h2 {
-            font-size: 2vh;
+            font-size: 2.2vh;
+            width: 100%;
+            margin: 0;
+            text-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
         }
 
-        p {}
+        .ref {
+            width: 30%;
+            font-size: 1.6vh;
+            height: 7%;
+        }
+
+        p {
+            font-size: 2vh;
+            line-height: 1;
+        }
 
         .btn-visit {
-            width: 2vh;
+            width: 100%;
+            height: 6vh;
             font-size: 3vh;
+            margin: 1vh 0;
+
         }
     }
 }
 
 /* iPads, Tablets */
 @media (min-width : 481px) and (max-width : 768px) {
-    .bloc-events-container {
+    .bloc-events-container::before {
+        background-image: linear-gradient(0deg, #3c86ac, #3c86ac 37%, #652d8b40 60%);
 
+    }
+
+    .bloc-events-container {
+        background-position: center;
+        background-size: cover;
+        height: 60vh;
+        padding: 0;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 1vh;
 
         h1 {
-            font-size: 3vh;
+            font-size: 6vh;
+            line-height: 0.8;
+            letter-spacing: -0.2vh;
         }
 
         h2 {
-            font-size: 2vh;
+            font-size: 2.2vh;
+            width: 100%;
+            margin: 0;
+            text-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
         }
 
-        p {}
+        .ref {
+            width: 30%;
+            font-size: 1.6vh;
+            height: 7%;
+        }
+
+        p {
+            font-size: 2vh;
+            line-height: 1;
+        }
 
         .btn-visit {
-            width: 2vh;
+            width: 100%;
+            height: 6vh;
             font-size: 3vh;
+            margin: 1vh 0;
+
         }
     }
 }
 
 /* Small screens, laptops */
-@media (min-width : 769px) and (max-width : 1024px) {
-    .bloc-events-container {
+@media (min-width : 769px) and (max-width : 1020px) {
+    .bloc-events-container::before {
+        background-image: linear-gradient(0deg, #3c86ac, #3c86ac 37%, #652d8b40 60%);
 
+    }
+
+    .bloc-events-container {
+        background-position: center;
+        background-size: cover;
+        height: 60vh;
+        padding: 0;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 1vh;
 
         h1 {
-            font-size: 3vh;
+            font-size: 6vh;
+            line-height: 0.8;
+            letter-spacing: -0.2vh;
         }
 
         h2 {
-            font-size: 2vh;
+            font-size: 2.2vh;
+            width: 100%;
+            margin: 0;
+            text-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
         }
 
-        p {}
+        .ref {
+            width: 30%;
+            font-size: 1.6vh;
+            height: 7%;
+        }
+
+        p {
+            font-size: 2vh;
+            line-height: 1;
+        }
 
         .btn-visit {
-            width: 2vh;
+            width: 100%;
+            height: 6vh;
             font-size: 3vh;
+            margin: 1vh 0;
+
         }
     }
 }
 
 /* Desktops, large screens */
-@media (min-width : 1025px) and (max-width : 1200px) {
-    .bloc-events-container {
-
-
-        h1 {
-            font-size: 3vh;
-        }
-
-        h2 {
-            font-size: 2vh;
-        }
-
-        p {}
-
-        .btn-visit {
-            width: 2vh;
-            font-size: 3vh;
-        }
-    }
-}
+@media (min-width : 1025px) and (max-width : 1200px) {}
 
 /* Extra large screens, TV */
-@media (min-width : 1201px) {
-    .bloc-events-container {
-
-
-        h1 {
-            font-size: 3vh;
-        }
-
-        h2 {
-            font-size: 2vh;
-        }
-
-        p {}
-
-        .btn-visit {
-            width: 2vh;
-            font-size: 3vh;
-        }
-    }
-}
+@media (min-width : 1201px) {}

@@ -109,3 +109,144 @@
         }
     }
 }
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
+
+/* Mobile devices */
+@media (min-width : 220px) and (max-width : 480px) {
+    .provinces-container-head {
+        padding: 1vh !important;
+        height: 12vh !important;
+
+        div {
+            width: 50% !important;
+
+            h1 {
+                font-size: 3.5vh !important;
+                width: 100% !important;
+                letter-spacing: 0px !important;
+                line-height: 1 !important;
+            }
+        }
+
+    }
+
+    .provinces-grid-element {
+        flex-direction: column;
+        padding: 1vh !important;
+
+        .province-image {
+            width: 100% !important;
+            height: 30% !important;
+        }
+
+        .province-details {
+            padding: 0.5vh !important;
+            width: 93% !important;
+
+            .province-name {
+                h1 {
+                    font-size: 2.5vh !important;
+                    letter-spacing: -0.2vh !important;
+                }
+            }
+        }
+
+    }
+}
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {
+    .provinces-container-head {
+        padding: 1vh !important;
+        height: 12vh !important;
+
+        div {
+            width: 50% !important;
+
+            h1 {
+                font-size: 3.5vh !important;
+                width: 100% !important;
+                letter-spacing: 0px !important;
+                line-height: 1 !important;
+            }
+        }
+
+    }
+
+    .provinces-grid-element {
+        flex-direction: column;
+        padding: 1vh !important;
+
+        .province-image {
+            width: 100% !important;
+            height: 30% !important;
+        }
+
+        .province-details {
+            padding: 0.5vh !important;
+            width: 93% !important;
+
+            .province-name {
+                h1 {
+                    font-size: 3.4vh !important;
+                    letter-spacing: -0.2vh !important;
+                }
+            }
+        }
+
+    }
+}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1020px) {
+    .provinces-container-head {
+        padding: 1vh !important;
+        height: 12vh !important;
+
+        div {
+            width: 50% !important;
+
+            h1 {
+                font-size: 3.5vh !important;
+                width: 100% !important;
+                letter-spacing: 0px !important;
+                line-height: 1 !important;
+            }
+        }
+
+    }
+
+    .provinces-grid-element {
+        flex-direction: column;
+        padding: 1vh !important;
+
+        .province-image {
+            width: 100% !important;
+            height: 30% !important;
+        }
+
+        .province-details {
+            padding: 0.5vh !important;
+            width: 93% !important;
+
+            .province-name {
+                h1 {
+                    font-size: 3.4vh !important;
+                    letter-spacing: -0.2vh !important;
+                }
+            }
+        }
+
+    }
+}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {}

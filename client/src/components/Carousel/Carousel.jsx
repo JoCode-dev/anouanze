@@ -25,9 +25,6 @@ const Carousel = () => {
 
   useEffect(() => {
     dispatch(getPremiumEvents());
-    console.log("====================================");
-    console.log(events);
-    console.log("====================================");
   }, []);
 
   const user = useSelector((state) => state.user);
@@ -35,10 +32,6 @@ const Carousel = () => {
 
   const requireAuth = () => {
     return isEmpty(user) ? "/login" : "/events";
-  };
-
-  const requireAuthV2 = (id) => {
-    return isEmpty(user) ? "/login" : `/event/${id}`;
   };
 
   return (
@@ -68,14 +61,13 @@ const Carousel = () => {
             pagination={{
               clickable: true,
             }}
-            navigation={true}
             keyboard={true}
             modules={[Autoplay, Pagination, Navigation, Keyboard]}
           >
             {events.length >= 1 ? (
               events.map((event) => (
                 <SwiperSlide key={event._id}>
-                  <NavLink to={requireAuthV2(event._id)}>
+                  <NavLink to={requireAuth()}>
                     <img src={event.poster} alt="" width="1310vh" />
                   </NavLink>
                 </SwiperSlide>

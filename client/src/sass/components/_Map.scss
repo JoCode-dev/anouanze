@@ -90,3 +90,94 @@
         }
     }
 }
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
+
+/* Mobile devices */
+@media (min-width : 220px) and (max-width : 480px) {
+    .map-container {
+        width: 100%;
+        padding: 0;
+        flex-direction: column;
+
+        .map-list-container {
+            width: 100%;
+            z-index: 3;
+            height: auto;
+            margin: 1vh auto;
+
+            h1 {
+                font-size: 3vh;
+            }
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {
+    .map-container {
+        width: 100%;
+        padding: 0;
+        flex-direction: column;
+
+        .map-list-container {
+            width: 100%;
+            z-index: 3;
+            height: auto;
+            margin: 1vh auto;
+            font-size: 2.3vh;
+
+
+            h1 {
+                font-size: 3vh;
+            }
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1023px) {
+    .map-container {
+        width: 100%;
+        padding: 0;
+        flex-direction: column;
+
+        .map-list-container {
+            width: 100%;
+            z-index: 3;
+            height: auto;
+            margin: 1vh auto;
+            font-size: 2.3vh;
+
+
+            h1 {
+                font-size: 3vh;
+            }
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {}

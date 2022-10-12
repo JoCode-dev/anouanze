@@ -1,4 +1,4 @@
-.user-marker-container{
+.user-marker-container {
     width: 8vh;
     height: 8vh;
     display: flex;
@@ -6,12 +6,12 @@
     align-items: center;
     overflow: hidden;
 
-    & img{
+    & img {
         width: 3vh
     }
 }
 
-.paroisse-marker-container{
+.paroisse-marker-container {
     width: 8vh;
     height: 8vh;
     display: flex;
@@ -19,7 +19,28 @@
     align-items: center;
     overflow: hidden;
 
-    & img{
+    & img {
         width: 4vh
     }
 }
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
+
+/* Mobile devices */
+@media (min-width : 220px) and (max-width : 480px) {}
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1024px) {}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {}

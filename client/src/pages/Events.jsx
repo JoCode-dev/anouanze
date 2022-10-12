@@ -4,6 +4,7 @@ import { getAllEvents } from "../actions/event";
 import { NavLink } from "react-router-dom";
 import { isEmpty } from "../components/utils";
 import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer/Footer";
 
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
@@ -64,12 +65,6 @@ const Events = () => {
         <>
           <NavBar value={"Events"} />
           <div className="events-container">
-            <header className="event-header">
-              <NavLink to="/">
-                <img src="../imgs/icon.png" alt="logo" />
-              </NavLink>
-              <h1>Évènements</h1>
-            </header>
 
             <div className="events-blocks-container">
               {isEmpty(events) || onPlaceholder
@@ -157,6 +152,8 @@ const Events = () => {
                   ))}
             </div>
           </div>
+         {/* <Footer /> */}
+
         </>
       )}
     </>

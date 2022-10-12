@@ -229,6 +229,13 @@
             width: 100%;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+            img {
+                &:hover {
+                    transform: scale(1);
+                    transition: all 0.2s ease-in-out;
+                }
+            }
+
             & :nth-child(1) {
                 display: flex;
                 justify-content: flex-start;
@@ -239,6 +246,8 @@
                     width: 70%;
                     height: 60%;
                     object-fit: cover;
+
+
                 }
             }
 
@@ -485,11 +494,13 @@
             width: 100%;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+
             & :nth-child(1) {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
                 width: 50%;
+                padding: 0.3vh;
 
                 img {
                     width: 40%;

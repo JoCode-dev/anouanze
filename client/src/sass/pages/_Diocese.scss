@@ -125,3 +125,252 @@
         }
     }
 }
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
+
+/* Mobile devices */
+@media (min-width : 220px) and (max-width : 480px) {
+    .file-arianne {
+        .file-ariane-element {
+            height: 4.6vh !important;
+        }
+
+        & .file-ariane-element:nth-child(1) {
+            h1 {
+                font-size: 4vh;
+            }
+
+        }
+
+        & .file-ariane-element:nth-child(2) {
+            text-align: center;
+
+            h1 {
+                font-size: 2.6vh;
+                letter-spacing: -0.2vh !important;
+            }
+
+        }
+
+        & .file-ariane-element:nth-child(3) {
+            text-align: center;
+
+            h1 {
+                font-size: 3.5vh;
+            }
+
+        }
+    }
+
+    .diocese-container {
+        .table-container {
+
+            .table-header {
+                font-size: 2vh !important;
+
+                & :nth-child(2) {
+                    display: none;
+                }
+
+                & :nth-child(4) {
+                    display: none;
+                }
+
+                & :nth-child(3) {
+                    display: none;
+                }
+            }
+
+            .table-body {
+
+                .table-row {
+                    font-size: 1.7vh;
+
+                    div {
+                        width: 100%;
+                    }
+
+                    & :nth-child(3) {
+                        display: none;
+                    }
+
+                    & :nth-child(2) {
+                        display: none;
+                    }
+
+                    & :nth-child(4) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {
+    .file-arianne {
+        .file-ariane-element {
+            height: 4.6vh !important;
+        }
+
+        & .file-ariane-element:nth-child(1) {
+            h1 {
+                font-size: 4vh;
+            }
+
+        }
+
+        & .file-ariane-element:nth-child(2) {
+            text-align: center;
+
+            h1 {
+                font-size: 2.6vh;
+                letter-spacing: -0.2vh !important;
+            }
+
+        }
+
+        & .file-ariane-element:nth-child(3) {
+            text-align: center;
+
+            h1 {
+                font-size: 3.5vh;
+            }
+
+        }
+    }
+
+    .diocese-container {
+        .table-container {
+
+            .table-header {
+                font-size: 2vh !important;
+
+                & :nth-child(2) {
+                    display: none;
+                }
+
+                & :nth-child(4) {
+                    display: none;
+                }
+
+                & :nth-child(3) {
+                    display: none;
+                }
+            }
+
+            .table-body {
+
+                .table-row {
+                    font-size: 1.7vh;
+
+                    div {
+                        width: 100%;
+                    }
+
+                    & :nth-child(3) {
+                        display: none;
+                    }
+
+                    & :nth-child(2) {
+                        display: none;
+                    }
+
+                    & :nth-child(4) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1020px) {
+    .file-arianne {
+        .file-ariane-element {
+            height: 4.6vh !important;
+        }
+
+        & .file-ariane-element:nth-child(1) {
+            h1 {
+                font-size: 4vh;
+            }
+
+        }
+
+        & .file-ariane-element:nth-child(2) {
+            text-align: center;
+
+            h1 {
+                font-size: 2.6vh;
+                letter-spacing: -0.2vh !important;
+            }
+
+        }
+
+        & .file-ariane-element:nth-child(3) {
+            text-align: center;
+
+            h1 {
+                font-size: 3.5vh;
+            }
+
+        }
+    }
+
+    .diocese-container {
+        .table-container {
+
+            .table-header {
+                font-size: 2vh !important;
+
+                & :nth-child(2) {
+                    display: none;
+                }
+
+                & :nth-child(4) {
+                    display: none;
+                }
+
+                & :nth-child(3) {
+                    display: none;
+                }
+            }
+
+            .table-body {
+
+                .table-row {
+                    font-size: 1.7vh;
+
+                    div {
+                        width: 100%;
+                    }
+
+                    & :nth-child(3) {
+                        display: none;
+                    }
+
+                    & :nth-child(2) {
+                        display: none;
+                    }
+
+                    & :nth-child(4) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {}

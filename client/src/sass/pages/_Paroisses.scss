@@ -18,26 +18,6 @@
         }
     }
 
-    .search-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1vh;
-        transition: all 0.3s ease-in-out;
-
-        input {
-            height: 4vh;
-            width: 96%;
-            background-color: $white;
-            border: 1px solid $blue-1;
-            border-radius: 2vh;
-            padding: 1vh;
-            transition: all 0.3s ease-in-out;
-            font-size: 2vh;
-        }
-    }
-
     & .paroisses-blocks-container {
         display: flex;
         flex-direction: column;
@@ -167,3 +147,24 @@
         }
     }
 }
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV */
+
+/* Mobile devices */
+@media (min-width : 220px) and (max-width : 480px) {}
+
+/* iPads, Tablets */
+@media (min-width : 481px) and (max-width : 768px) {}
+
+/* Small screens, laptops */
+@media (min-width : 769px) and (max-width : 1020px) {}
+
+/* Desktops, large screens */
+@media (min-width : 1025px) and (max-width : 1200px) {}
+
+/* Extra large screens, TV */
+@media (min-width : 1201px) {}
