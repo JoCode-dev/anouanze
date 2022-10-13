@@ -1,3 +1,17 @@
+.paroisse-program-head {
+    display: flex;
+    align-items: center;
+    background-color: #8f9090;
+    width: 100%;
+    height: 10vh;
+    font-size: 7vh;
+    font-family: $sofiaSemiBold;
+    letter-spacing: -0.4vh;
+    color: #fff;
+    padding: 1vh;
+    margin: 2vh auto;
+}
+
 .paroisse-container {
     width: 100%;
 
@@ -28,19 +42,6 @@
             color: #8f9090;
         }
 
-        .paroisse-program-head {
-            display: flex;
-            align-items: center;
-            background-color: #8f9090;
-            width: 100%;
-            height: 10vh;
-            font-size: 7vh;
-            font-family: $sofiaSemiBold;
-            letter-spacing: -0.4vh;
-            color: #fff;
-            padding: 1vh;
-            margin: 2vh auto;
-        }
 
         .paroisse-program {
             font-size: 5vh;
@@ -251,6 +252,12 @@
 
 /* Mobile devices */
 @media (min-width : 220px) and (max-width : 480px) {
+    .paroisse-program-head {
+        height: 9vh !important;
+        font-size: 3.3vh !important;
+        letter-spacing: -0.1vh !important;
+    }
+
     .paroisse-image {
         margin: 1vh 0 !important;
         height: 30vh !important;
@@ -271,11 +278,7 @@
             font-size: 5vh !important;
         }
 
-        .paroisse-program-head {
-            height: 9vh !important;
-            font-size: 3.3vh !important;
-            letter-spacing: -0.1vh !important;
-        }
+
 
         .paroisse-program {
             font-size: 3.3vh !important;
@@ -296,16 +299,11 @@
 
 
             .actu-block {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 40vh;
-                height: 34vh;
-                margin: 0 1vh;
+                width: 100% !important;
 
                 img {
                     width: 100%;
-                    height: 64%;
+                    height: 70% !important;
                     object-fit: cover;
                 }
             }
@@ -314,10 +312,126 @@
 }
 
 /* iPads, Tablets */
-@media (min-width : 481px) and (max-width : 768px) {}
+@media (min-width : 481px) and (max-width : 768px) {
+    .paroisse-program-head {
+        height: 9vh !important;
+        font-size: 3.3vh !important;
+        letter-spacing: -0.1vh !important;
+    }
+
+    .paroisse-image {
+        margin: 1vh 0 !important;
+        height: 30vh !important;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .paroisse-infos {
+
+        .paroisse-name {
+            width: 100% !important;
+            letter-spacing: -0.2vh !important;
+            line-height: 1 !important;
+            font-size: 5vh !important;
+        }
+
+
+
+        .paroisse-program {
+            font-size: 3.3vh !important;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.4vh;
+
+        }
+
+        .paroisse-placeholder {
+            letter-spacing: -0.3vh;
+            line-height: 1 !important;
+            font-size: 3vh !important;
+        }
+
+        .paroisse-actus {
+            display: flex;
+            flex-wrap: wrap;
+
+
+            .actu-block {
+                width: 100% !important;
+
+                img {
+                    width: 100%;
+                    height: 70% !important;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
 
 /* Small screens, laptops */
-@media (min-width : 769px) and (max-width : 1020px) {}
+@media (min-width : 769px) and (max-width : 1020px) {
+    .paroisse-program-head {
+        height: 9vh !important;
+        font-size: 3.3vh !important;
+        letter-spacing: -0.1vh !important;
+    }
+
+    .paroisse-image {
+        margin: 1vh 0 !important;
+        height: 30vh !important;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .paroisse-infos {
+
+        .paroisse-name {
+            width: 100% !important;
+            letter-spacing: -0.2vh !important;
+            line-height: 1 !important;
+            font-size: 5vh !important;
+        }
+
+
+
+        .paroisse-program {
+            font-size: 3.3vh !important;
+            font-family: $sofiaSemiBold;
+            letter-spacing: -0.4vh;
+
+        }
+
+        .paroisse-placeholder {
+            letter-spacing: -0.3vh;
+            line-height: 1 !important;
+            font-size: 3vh !important;
+        }
+
+        .paroisse-actus {
+            display: flex;
+            flex-wrap: wrap;
+
+
+            .actu-block {
+                width: 100% !important;
+
+                img {
+                    width: 100%;
+                    height: 70% !important;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
 
 /* Desktops, large screens */
 @media (min-width : 1025px) and (max-width : 1200px) {}

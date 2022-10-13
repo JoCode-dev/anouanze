@@ -56,22 +56,28 @@ const NavBar = ({ value }) => {
       <div className="navbar-center-part">
         <ul>
           <NavLink to="/">
-            <li className={value === "Accueil" && "active"}>Accueil</li>
+            <li className={value === "Accueil" ? "active" : undefined}>
+              Accueil
+            </li>
           </NavLink>
           <NavLink to={requireAuth("events")}>
-            <li className={value === "Events" && "active"}>Évènements</li>
+            <li className={value === "Events" ? "active" : undefined}>
+              Évènements
+            </li>
           </NavLink>
           <NavLink to={requireAuth("provinces")}>
             <li
               className={
-                (value === "Paroisses" || value === "Provinces") && "active"
+                value === "Paroisses" || value === "Provinces"
+                  ? "active"
+                  : undefined
               }
             >
               Paroisses
             </li>
           </NavLink>
           <NavLink to={requireAuth("demande")}>
-            <li className={value === "Demande" && "active"}>
+            <li className={value === "Demande" ? "active" : undefined}>
               Demande de messe
             </li>
           </NavLink>

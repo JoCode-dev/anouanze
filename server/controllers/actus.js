@@ -11,7 +11,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const createActu = async (req, res) => {
-  let fileName;
+  let fileName = "/uploads/actus/default-actu.jpg";
+  let trimName = "";
 
   if (req?.file !== null) {
     if (
@@ -23,6 +24,7 @@ export const createActu = async (req, res) => {
     }
 
     fileName = req.body.title + Date.now() + ".jpg";
+    trimName = "/uploads/actus/" + fileName;
 
     await pipeline(
       req.file.stream,
@@ -32,18 +34,12 @@ export const createActu = async (req, res) => {
     );
   }
 
-  const {
-    poster = req.file !== null
-      ? "/uploads/actus/" + fileName
-      : "/uploads/actus/default-actu.jpg",
-    title,
-    description,
-    address,
-    _paroisseId,
-  } = req.body;
+  console.log(trimName);
+
+  const { poster, title, description, address, _paroisseId } = req.body;
 
   const newActu = new ActuModel({
-    poster,
+    poster: trimName,
     title,
     description,
     address,

@@ -275,6 +275,9 @@ const Paroisse = () => {
                   </>
                 )}
               </div>
+
+              <div className="paroisse-program-head">Clergé</div>
+
               <div className="paroisse-clergy-container">
                 {!isEmpty(paroisse?.clergy) ? (
                   <>

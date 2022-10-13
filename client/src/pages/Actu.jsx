@@ -45,17 +45,9 @@ const Actu = () => {
         <Loader />
       ) : (
         <div className="actu-container">
-          <header className="actu-header">
-            <NavLink to="/">
-              <img src={process.env.PUBLIC_URL + "/imgs/icon.png"} alt="logo" />
-            </NavLink>
-            <NavLink to="/events">
-              <h1>Évènements</h1>
-            </NavLink>
-          </header>
           <div className="actu-details-container">
             <img
-              src={process.env.PUBLIC_URL + actu.poster}
+              src={process.env.PUBLIC_URL + actu?.poster}
               alt="actu-poster"
               width="500px"
             />

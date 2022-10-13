@@ -24,7 +24,11 @@ const Actus = () => {
   }, [dispatch, id, onLoading]);
 
   const paroisse = useSelector((state) => state.paroisse);
-  const actus = useSelector((state) => state.actu.data);
+  const actus = useSelector((state) => state.actus.data);
+  !isEmpty(actus) &&
+    actus.sort((a, b) => {
+      return b.createdAt.localeCompare(a.createdAt);
+    });
   console.log(actus);
 
   return (

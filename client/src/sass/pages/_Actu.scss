@@ -114,13 +114,76 @@
 1201px and more —  Extra large screens, TV */
 
 /* Mobile devices */
-@media (min-width : 220px) and (max-width : 480px) {}
+@media (min-width : 220px) and (max-width : 480px) {
+    .actu-details-container {
+        padding: 1vh !important;
+
+        img {
+            width: 100% !important;
+        }
+
+        .actu-title {
+            width: 100% !important;
+            font-size: 4vh !important;
+        }
+
+        .actu-description {
+            width: 100% !important;
+        }
+
+        .actu-address {
+            width: 100% !important;
+        }
+    }
+}
 
 /* iPads, Tablets */
-@media (min-width : 481px) and (max-width : 768px) {}
+@media (min-width : 481px) and (max-width : 768px) {
+    .actu-details-container {
+        padding: 1vh !important;
+
+        img {
+            width: 100% !important;
+        }
+
+        .actu-title {
+            width: 100% !important;
+            font-size: 4vh !important;
+        }
+
+        .actu-description {
+            width: 100% !important;
+        }
+
+        .actu-address {
+            width: 100% !important;
+        }
+    }
+}
 
 /* Small screens, laptops */
-@media (min-width : 769px) and (max-width : 1020px) {}
+@media (min-width : 769px) and (max-width : 1020px) {
+    .actu-details-container {
+        padding: 1vh !important;
+
+        img {
+            width: 100% !important;
+        }
+
+        .actu-title {
+            width: 100% !important;
+            font-size: 4vh !important;
+        }
+
+        .actu-description {
+            width: 100% !important;
+        }
+
+        .actu-address {
+            width: 100% !important;
+        }
+    }
+}
 
 /* Desktops, large screens */
 @media (min-width : 1025px) and (max-width : 1200px) {}
