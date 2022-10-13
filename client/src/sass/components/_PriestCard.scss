@@ -35,7 +35,6 @@
 
     .priest-card-body {
         display: flex;
-        flex-wrap: wrap;
         padding: 1vh;
         width: 80%;
         background-color: $white;
@@ -100,7 +99,26 @@
 1201px and more —  Extra large screens, TV */
 
 /* Mobile devices */
-@media (min-width : 220px) and (max-width : 480px) {}
+@media (min-width : 220px) and (max-width : 480px) {
+    .priest-card-head {
+        width: 96% !important;
+        font-size: 1.6vh !important;
+    }
+
+    .priest-card-body {
+        width: 96% !important;
+        flex-direction: column;
+
+        .priest-card-left {
+            width: 96% !important;
+            display: none;
+        }
+
+        .priest-card-right {
+            width: 100% !important;
+        }
+    }
+}
 
 /* iPads, Tablets */
 @media (min-width : 481px) and (max-width : 768px) {}

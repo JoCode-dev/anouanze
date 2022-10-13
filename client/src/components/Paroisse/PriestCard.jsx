@@ -8,7 +8,7 @@ const PriestCard = ({ priestData, paroisseName, setIsCardVisible }) => {
     <div className="priest-card-container">
       <div className="priest-card-head">
         <h2>Père {priestData?.priestName}</h2>
-        <button onClick={close}>Close</button>
+        <button onClick={close}>Fermer</button>
       </div>
 
       <div className="priest-card-body">
