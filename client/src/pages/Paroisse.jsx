@@ -80,13 +80,11 @@ const Paroisse = () => {
 
   const checkPriest = (priest) => {
     setIsCardVisible(true);
-    console.log("====================================");
     setPriestData(priest);
-    console.log("====================================");
   };
 
-  const name = paroisse.diocese;
-  const provinceName = paroisse.province;
+  const name = !isEmpty(paroisse) && paroisse.diocese;
+  const provinceName = !isEmpty(paroisse) && paroisse.province;
 
   const sendName = () => {
     const voy = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
@@ -200,62 +198,6 @@ const Paroisse = () => {
                     Histoire de la paroisse - Clergé - Autres
                   </div>
                 </div>
-
-                {/*  <div className="paroisse-infos-container">
-                  <div className="paroisse-infos-left">
-                    {paroisse?.pictures[0] ? (
-                      <img
-                        src={process.env.PUBLIC_URL + paroisse.pictures[0]}
-                        alt={paroisse.name}
-                      />
-                    ) : (
-                      <img
-                        src={process.env.PUBLIC_URL + "/imgs/icon.png"}
-                        alt={paroisse.name}
-                      />
-                    )}
-                  </div>
-
-                  <div className="paroisse-infos-right">
-                    <div className="paroisse-name">
-                      <h1>{paroisse.name}</h1>
-                    </div>
-
-                    <div className="paroisse-contacts">
-                      {paroisse?.address && paroisse?.contact ? (
-                        <p>
-                          {paroisse?.address} - {paroisse?.contact}
-                        </p>
-                      ) : (
-                        <>{paroisse?.address && <p>{paroisse?.address}</p>}</>
-                      )}
-                    </div>
-
-                    <div className="paroisse-program">
-                      <div className="paroisse-program-header">
-                        <h2>PROGRAMME DES MESSES : </h2>
-                      </div>
-                      <div className="paroisse-program-content">
-                        {!isEmpty(paroisse?.messes[0]?.dayHour) &&
-                          paroisse?.messes.map((messe, idx) => (
-                            <>
-                              <div key={idx}>
-                                {messe.dayName} : {putDashes(messe?.dayHour)}
-                              </div>
-                            </>
-                          ))}
-                      </div>
-                    </div>
-
-                    <div className="paroisse-confessions">
-                      <div className="paroisse-confessions-header">
-                        <h2>PROGRAMME DES CONFESSIONS : </h2>
-                      </div>
-                    </div>
-
-                    <ChooseButton paroisse={paroisse} />
-                  </div>
-                </div> */}
               </>
             ) : (
               <>
@@ -342,8 +284,8 @@ const renderActus = (actus, idParoisse) => {
   return (
     <div className="paroisse-actus">
       {!isEmpty(newArr)
-        ? newArr.map((actu) => (
-            <NavLink to={`/actu/${actu._id}`} className="actu-block">
+        ? newArr.map((actu, idx) => (
+            <NavLink to={`/actu/${actu._id}`} className="actu-block" key={idx}>
               <img
                 src={process.env.PUBLIC_URL + actu.poster}
                 alt={actu.title}

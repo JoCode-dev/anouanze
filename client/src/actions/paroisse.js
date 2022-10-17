@@ -9,14 +9,12 @@ import {
   UNCHOOSE_PAROISSE,
   REMOVE_PRIEST,
   REMOVE_MESSE,
-  REMOVE_CONFESSION,
 } from "../constants/reducers";
 
 export const createParoisse = (data) => async (dispatch) => {
   try {
     await api.createParoisse(data);
-  } catch (error) {
-  }
+  } catch (error) {}
 };
 
 export const getAllParoisse = (num) => async (dispatch) => {
@@ -30,7 +28,6 @@ export const getAllParoisse = (num) => async (dispatch) => {
 export const getParoisse = (id) => async (dispatch) => {
   try {
     const { data } = await api.getParoisse(id);
-    console.log(data);
     dispatch({ type: GET_PAROISSE, payload: data });
   } catch (error) {}
 };

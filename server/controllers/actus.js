@@ -34,7 +34,6 @@ export const createActu = async (req, res) => {
     );
   }
 
-  console.log(trimName);
 
   const { poster, title, description, address, _paroisseId } = req.body;
 

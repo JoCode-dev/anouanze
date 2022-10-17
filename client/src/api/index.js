@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const url = `http://localhost:5000`;
+const url = `https://anouanze.herokuapp.com`;
 
 axios.interceptors.request.use((req) => {
   if (localStorage.getItem("jwt")) {

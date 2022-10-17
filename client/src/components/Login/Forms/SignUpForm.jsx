@@ -21,7 +21,6 @@ const SignUpForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signup(userData));
-    console.log(userData);
   };
 
   const googleSuccess = async (res) => {
@@ -49,11 +48,6 @@ const SignUpForm = () => {
     dispatch(signup(googleUser, bool));
   };
   const googleFailure = (error) => {
-    console.log("====================================");
-    console.log(error);
-    console.log("====================================");
-
-    console.log("Google Sign In was unsuccessful. Try Again later.");
   };
 
   return (

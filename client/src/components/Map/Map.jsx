@@ -24,21 +24,11 @@ const Map = () => {
   const paroisses = useSelector((state) => state.nearParoisses);
   const apiKey = shistApi && "AIzaSyBwwRjHA3A4j64wjjtRgKfhviBkvz9psYE";
 
-  const [paroisseCoords, setParoisseCoords] = useState({
-    lat: !isEmpty(paroisses)
-      ? paroisses?.result[0]?.location.coordinates[0]
-      : null,
-    lng: !isEmpty(paroisses)
-      ? paroisses?.result[0]?.location.coordinates[1]
-      : null,
-  });
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
         setCoordinates({ lat: latitude, lng: longitude });
         setUserCoords({ lat: latitude, lng: longitude });
-        console.log(coordinates);
       }
     );
 
@@ -52,10 +42,6 @@ const Map = () => {
     coords = coordinates.lat + ";" + coordinates.lng;
     dispatch(getNearParoisses(coords));
   }, [coordinates]);
-
-  const handleParoisseCoords = (coords) => {
-    setParoisseCoords({ lat: coords[0], lng: coords[1] });
-  };
 
   return (
     <div className="map-container">
@@ -90,7 +76,6 @@ const Map = () => {
               styles: mapStyles,
             }}
             onChange={(e) => {
-              console.log(e);
               setCoordinates({ lat: e.center.lat, lng: e.center.lng });
             }}
             //onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}

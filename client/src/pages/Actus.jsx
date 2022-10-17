@@ -29,7 +29,6 @@ const Actus = () => {
     actus.sort((a, b) => {
       return b.createdAt.localeCompare(a.createdAt);
     });
-  console.log(actus);
 
   return (
     <>
@@ -55,8 +54,8 @@ const renderActus = (arr) => {
   return (
     <div className="actus-container">
       {!isEmpty(arr)
-        ? arr.map((el) => (
-            <NavLink to={`/actu/${el._id}`} className="actu-bloc">
+        ? arr.map((el, idx) => (
+            <NavLink to={`/actu/${el._id}`} className="actu-bloc" key={idx}>
               <div className="actu-bloc-left">
                 <img src={process.env.PUBLIC_URL + el.poster} alt={el.title} />
               </div>

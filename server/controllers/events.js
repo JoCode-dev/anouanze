@@ -73,7 +73,6 @@ export const createEvent = async (req, res) => {
   });
   try {
     await newEvent.save();
-    console.log(poster);
     res.status(200).json(newEvent);
   } catch (error) {
     res.status(404).send(error);

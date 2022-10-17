@@ -34,11 +34,6 @@ const SignInForm = () => {
     dispatch(login(googleUser, bool));
   };
   const googleFailure = (error) => {
-    console.log("====================================");
-    console.log(error);
-    console.log("====================================");
-
-    console.log("Google Sign In was unsuccessful. Try Again later.");
   };
 
   return (

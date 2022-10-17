@@ -18,7 +18,6 @@ const ChooseButton = ({ paroisse }) => {
     await dispatch(chooseParoisse(Pid, uid));
     setIsChoosen(true);
     setOnLoading(false);
-    console.log(uid);
     window.location.reload();
   };
 
@@ -27,7 +26,6 @@ const ChooseButton = ({ paroisse }) => {
     await dispatch(unchooseParoisse(Pid, uid));
     setIsChoosen(false);
     setOnLoading(false);
-    console.log(uid);
     window.location.reload();
   };
 
@@ -35,7 +33,6 @@ const ChooseButton = ({ paroisse }) => {
     if (paroisse?.paroissiens.includes(uid)) {
       setIsChoosen(true);
       setIsParoissed(true);
-      console.log(isChoosen);
     }
 
     if (user?._paroisse !== undefined && !paroisse.paroissiens.includes(uid)) {
@@ -46,7 +43,6 @@ const ChooseButton = ({ paroisse }) => {
     if (user?._paroisse === "" || user?._paroisse === undefined) {
       setIsChoosen(false);
       setIsParoissed(false);
-      console.log(isChoosen);
     }
   }, [paroisse]);
 

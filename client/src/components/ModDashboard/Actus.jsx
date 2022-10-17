@@ -70,7 +70,7 @@ const Actus = () => {
           dispatch(getActuByID(user._paroisse));
         })
         .catch(() => {});
-    } else console.log("Canceled!");
+    }
   };
 
   const submitForm = async (e) => {

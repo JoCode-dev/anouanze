@@ -343,9 +343,6 @@ const ParoisseBoard = () => {
     editParoisse();
   }, []);
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   const renderArrFinal = (arr, i) => {
     if (!isEmpty(arr)) {

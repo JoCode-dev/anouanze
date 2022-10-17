@@ -8,10 +8,6 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const [onType, setOnType] = useState(false);
   const [text, setTest] = useState("");
-  /* 
-  useEffect(() => {
-    console.log(onType);
-  }, [onType]); */
 
   useEffect(() => {
     dispatch(getAllParoisse());

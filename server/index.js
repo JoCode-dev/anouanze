@@ -32,6 +32,11 @@ app.use("/event", eventRoutes);
 app.use("/actus", actuRoutes);
 app.use("/demandes", demandesRoutes);
 
+// Heroku Deployment
+app.get("/", (req, res) => {
+  res.send("Hello to Anouanze");
+});
+
 mongoose
   .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,

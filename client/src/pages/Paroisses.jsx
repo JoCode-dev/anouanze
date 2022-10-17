@@ -59,7 +59,6 @@ const Paroisses = () => {
 
     setParoissesGroupe(res);
 
-    console.log(res);
   };
 
   return (

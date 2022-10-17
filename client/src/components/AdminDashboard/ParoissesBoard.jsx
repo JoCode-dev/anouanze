@@ -347,8 +347,6 @@ const ParoissesBoard = () => {
       data.append("messes", JSON.stringify(formData.messes));
       data.append("confessions", JSON.stringify(formData.confessions));
 
-      console.log(...data);
-
       isEdit
         ? await dispatch(updateParoisse(paroisseEdit._id, data))
             .then(() => {
@@ -359,11 +357,7 @@ const ParoissesBoard = () => {
               setToggleForm(!toggleForm);
               return true;
             })
-            .catch((error) => {
-              console.log("====================================");
-              console.log(error);
-              console.log("====================================");
-            })
+            .catch((error) => {})
         : await dispatch(createParoisse(data))
             .then(() => {
               setIsOk(false);
@@ -373,11 +367,7 @@ const ParoissesBoard = () => {
               setToggleForm(!toggleForm);
               return true;
             })
-            .catch((error) => {
-              console.log("====================================");
-              console.log(error);
-              console.log("====================================");
-            });
+            .catch((error) => {});
     } else {
       alert("Veuillez entrer le nom de la paroisse !");
     }
@@ -485,11 +475,8 @@ const ParoissesBoard = () => {
       newArr2.push(convertArray(e));
     });
 
-    console.log("*************");
     setArrFinal(newArr);
     setArrConfFinal(newArr2);
-    console.log(newArr2);
-    console.log(dayOptions[0]);
     setToggleForm(!toggleForm);
   };
 
@@ -527,8 +514,7 @@ const ParoissesBoard = () => {
           dispatch(getAllParoisse());
         })
         .catch(() => {});
-      console.log(id);
-    } else console.log("Canceled!");
+    }
   };
 
   return (

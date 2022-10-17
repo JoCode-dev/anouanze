@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7a620161.css",
+    "main.js": "/static/js/main.a1782aee.js",
+    "static/media/Dicoses.jpg": "/static/media/Dicoses.e29a2e32032027441543.jpg",
+    "static/media/Suscribe.jpg": "/static/media/Suscribe.6a7a056a3b772196f06a.jpg",
+    "static/media/Sofia-Pro-Black.ttf": "/static/media/Sofia-Pro-Black.2db6bdfa7833d3951d7a.ttf",
+    "static/media/Sofia-Pro-ExtraLight.ttf": "/static/media/Sofia-Pro-ExtraLight.9223290194b703657760.ttf",
+    "static/media/Sofia-Pro-Semi-Bold.ttf": "/static/media/Sofia-Pro-Semi-Bold.5eb08d3951517d78b3f2.ttf",
+    "static/media/Sofia-Pro-Medium.ttf": "/static/media/Sofia-Pro-Medium.507ac867a433b302cd76.ttf",
+    "static/media/Sofia-Pro-Regular.ttf": "/static/media/Sofia-Pro-Regular.074a2b13e000b4663250.ttf",
+    "static/media/Sofia-Pro-Light.ttf": "/static/media/Sofia-Pro-Light.207be6bc77ec046b1597.ttf",
+    "static/media/Demandes.jpeg": "/static/media/Demandes.0b393da397772388ffff.jpeg",
+    "static/media/Events.jpg": "/static/media/Events.da18b024aa6d56906510.jpg",
+    "index.html": "/index.html",
+    "main.7a620161.css.map": "/static/css/main.7a620161.css.map",
+    "main.a1782aee.js.map": "/static/js/main.a1782aee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a620161.css",
+    "static/js/main.a1782aee.js"
+  ]
+}

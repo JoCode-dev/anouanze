@@ -28,8 +28,6 @@ const Events = () => {
         return Number(b.isPremium) - Number(a.isPremium);
       })
     : [];
-  console.log("====================================");
-  console.log(newArr);
 
   dayjs.locale("fr");
   const hourParser = (date) => {

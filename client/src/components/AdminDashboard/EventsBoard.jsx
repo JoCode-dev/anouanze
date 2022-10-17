@@ -65,7 +65,6 @@ const EventsBoard = () => {
 
     dateFound.length === 2 && setCount([1, 2]);
 
-    console.log(dateFound);
 
     setToggleForm(true);
 
@@ -103,8 +102,7 @@ const EventsBoard = () => {
           dispatch(getOthersEvents());
         })
         .catch(() => {});
-      console.log(id);
-    } else console.log("Canceled!");
+    }
   };
 
   const [formData, setFormData] = useState({
@@ -153,9 +151,6 @@ const EventsBoard = () => {
             return true;
           })
           .catch((error) => {
-            console.log("====================================");
-            console.log(error);
-            console.log("====================================");
           })
       : await dispatch(createEvent(data))
           .then(() => {
@@ -169,9 +164,7 @@ const EventsBoard = () => {
             return true;
           })
           .catch((error) => {
-            console.log("====================================");
-            console.log(error);
-            console.log("====================================");
+        
           });
 
     setIsOk(false);
@@ -247,7 +240,6 @@ const EventsBoard = () => {
   };
 
   useEffect(() => {
-    console.log(formData);
     setIsSetForm(true);
 
     if (isSetForm) {

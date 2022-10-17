@@ -29,12 +29,6 @@ const Demandes = () => {
     paroisseName: "",
   });
 
-  useEffect(() => {
-    console.log("====================================");
-    console.log(paroisseChoosen);
-    console.log("====================================");
-  }, [paroisseChoosen]);
-
   const [isValid, setIsvalid] = useState(false);
 
   const dispatch = useDispatch();

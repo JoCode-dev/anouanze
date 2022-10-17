@@ -11,10 +11,6 @@ const NavBar = ({ value }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(user);
-  }, []);
-
   const handleLogout = async () => {
     dispatch(logout());
     localStorage.clear();

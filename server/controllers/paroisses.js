@@ -89,7 +89,6 @@ export const createParoisse = async (req, res) => {
   try {
     await newParoisse.save();
     res.status(201).json({ result: newParoisse });
-    console.log(newParoisse);
   } catch (error) {
     res.status(401).json({ message: error });
     console.log("====================================");
@@ -376,10 +375,8 @@ export const getNearParoisses = async (req, res) => {
       },
     });
 
-    console.log(coord);
     res.status(200).json({ result: paroisses });
   } catch (error) {
-    console.log(coord);
     console.log(error);
     res.status(400).send({ message: error });
   }

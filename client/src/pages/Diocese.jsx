@@ -45,11 +45,6 @@ const Diocese = (props) => {
 
   const paroisses = useSelector((state) => state.paroisses);
   const paroissesFounded = sortParoisses(paroisses, name);
-  useEffect(() => {
-    console.log("====================================");
-    console.log(paroissesFounded);
-    console.log("====================================");
-  }, [paroisses]);
 
   const sendName = () => {
     const voy = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
