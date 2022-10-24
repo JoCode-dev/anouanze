@@ -10,7 +10,6 @@
         margin-top: 1vh;
         justify-content: center;
         align-items: center;
-        border-radius: 2vh;
         box-shadow: 0 1px 25px hsla(258, 89%, 41%, 0.2);
         cursor: pointer;
 
@@ -31,7 +30,9 @@
             overflow: hidden;
 
             & img {
-                width: calc(100% + 2vh);
+                width: 70%;
+                height: 70%;
+                object-fit: cover;
             }
         }
     }

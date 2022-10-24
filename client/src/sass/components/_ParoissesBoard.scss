@@ -15,7 +15,7 @@
         h1 {
             font-size: 5vh;
             color: $purple-1;
-            font-family: $sofiaMedium;
+            font-family: $arialBoldMt;
         }
     }
 
@@ -212,7 +212,7 @@
 
                     label {
                         font-size: 2.5vh;
-                        font-family: $sofiaMedium;
+                        font-family: $arialBoldMt;
                         margin-bottom: 1vh;
                     }
 
@@ -233,7 +233,7 @@
                     textarea {
                         border: 1.8px solid #cdcdcd;
                         background-color: transparent;
-                        font-family: $sofiaRegular;
+                        font-family: $arialBoldMt;
                         padding: 1vh;
                         height: 50vh;
                         border-radius: 1vh;
@@ -255,7 +255,7 @@
                     .form-group {
                         label {
                             font-size: 2.5vh;
-                            font-family: $sofiaMedium;
+                            font-family: $arialBoldMt;
                             margin-bottom: 1vh;
                         }
 
@@ -322,7 +322,7 @@
                                 align-items: center;
 
                                 .day-title {
-                                    font-family: $sofiaRegular;
+                                    font-family: $arialBoldMt;
                                     width: 25%;
                                 }
 

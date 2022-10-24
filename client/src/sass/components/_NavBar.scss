@@ -45,19 +45,20 @@
 
             li {
                 cursor: pointer;
-                color: lighten($color: $purple-1, $amount: 25);
-                font-family: $sofiaRegular;
+                color: lighten($color: $purple-2, $amount: 23);
+                font-family: $arialBoldMt;
                 height: 3vh;
 
                 &:hover {
                     transition: all 0.2s ease-in-out;
+                    color: lighten($color: $purple-2, $amount: 3);
                     transform: scale(1.2);
                     border-bottom: 2px solid $purple-1;
                 }
 
                 &.active {
                     color: $purple-1;
-                    font-family: $sofiaMedium;
+                    font-family: $arialBoldMt;
                     font-weight: 1000;
                 }
             }
@@ -72,22 +73,40 @@
         align-items: center;
 
         .admin-btn {
-            img {
-                width: 8vh;
-                filter: invert(44%) sepia(95%) saturate(420%) hue-rotate(145deg) brightness(101%) contrast(93%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 30vh;
+            margin: 0 1vh;
 
-            }
-        }
-
-        .mod-btn {
             img {
-                width: 8vh;
+                width: 4.5vh;
                 filter: invert(44%) sepia(95%) saturate(420%) hue-rotate(145deg) brightness(101%) contrast(93%);
 
             }
 
             h1 {
-                display: none;
+                font-size: 1.7vh;
+                color: $blue-1;
+            }
+        }
+
+        .mod-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 30vh;
+            margin: 0 1vh;
+
+            img {
+                width: 4.5vh;
+                filter: invert(44%) sepia(95%) saturate(420%) hue-rotate(145deg) brightness(101%) contrast(93%);
+
+            }
+
+            h1 {
+                font-size: 1.7vh;
+                color: $blue-1;
             }
         }
 
@@ -101,8 +120,7 @@
             transition: all 0.3s ease-in-out;
             border-radius: 2vh;
             background: linear-gradient(225deg, #8a20e1, #741bbd);
-            box-shadow: -5px 6px 32px #541489,
-                7px -6px 32px #ae29ff;
+            box-shadow: 0 0 10px #541489;
 
             &:hover {
                 background-color: $purple-2;
@@ -114,7 +132,7 @@
             cursor: pointer;
 
             img {
-                width: 5vh;
+                width: 4vh;
             }
 
             h1 {

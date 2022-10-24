@@ -1,44 +1,10 @@
 // Fonts
 @font-face {
-    font-family: "Sofia-Pro-Black";
-    src: url(./assets/fonts/Sofia-Pro-Black.ttf);
+    font-family: "Arial-MT-Bold";
+    src: url(./assets/fonts/Arial-BoldMT.otf);
 }
 
-
-@font-face {
-    font-family: "Sofia-Pro-ExtraLight";
-    src: url(./assets/fonts/Sofia-Pro-ExtraLight.ttf);
-}
-
-
-@font-face {
-    font-family: "Sofia-Pro-Light";
-    src: url(./assets/fonts/Sofia-Pro-Light.ttf);
-}
-
-
-@font-face {
-    font-family: "Sofia-Pro-Medium";
-    src: url(./assets/fonts/Sofia-Pro-Medium.ttf);
-}
-
-
-@font-face {
-    font-family: "Sofia-Pro-Regular";
-    src: url(./assets/fonts/Sofia-Pro-Regular.ttf);
-}
-
-@font-face {
-    font-family: "Sofia-Pro-Semi-Bold";
-    src: url(./assets/fonts/Sofia-Pro-Semi-Bold.ttf);
-}
-
-$sofiaBlack: "Sofia-Pro-Black";
-$sofiaMedium: "Sofia-Pro-Medium";
-$sofiaRegular: "Sofia-Pro-Regular";
-$sofiaSemiBold: "Sofia-Pro-Semi-Bold";
-$sofiaLight: "Sofia-Pro-Light";
-$sofiaExtraLight: "Sofia-Pro-ExtraLight";
+$arialBoldMt: 'Arial-MT-Bold';
 
 
 //  COLORS
@@ -79,7 +45,7 @@ $blue-1: #16A2C8;
 }
 
 body {
-    font-family: $sofiaRegular;
+    font-family: $arialBoldMt;
 }
 
 .error {
@@ -120,7 +86,7 @@ button,
 input[type="submit"] {
     background-color: $purple-1;
     color: $white;
-    font-family: $sofiaMedium;
+    font-family: $arialBoldMt;
     cursor: pointer;
     transition: 0.2s ease-in-out;
     margin: 0;

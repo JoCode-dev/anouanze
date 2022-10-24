@@ -24,9 +24,9 @@
     h1 {
         position: relative;
         color: white;
-        font-size: 14vh;
+        font-size: 13vh;
         line-height: 10.3vh;
-        letter-spacing: -0.2vh;
+        letter-spacing: -1.1vh;
     }
 
     h2 {
@@ -43,7 +43,9 @@
     .btn-demand {
         position: relative;
         width: 40vh;
-        height: 40vh;
+        margin: 1vh 0;
+        padding: 0.4vh;
+        width: 40vh;
         border-radius: 1vh;
         display: flex;
         justify-content: center;

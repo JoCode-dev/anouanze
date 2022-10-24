@@ -24,29 +24,30 @@
     h1 {
         position: relative;
         color: white;
-        font-size: 14vh;
-        line-height: 20vh;
-        letter-spacing: -0.2vh;
+        font-size: 13vh;
+        line-height: 10.3vh;
+        letter-spacing: -1.1vh;
+        margin: 3vh 0;
     }
 
     h2 {
         position: relative;
-        font-size: 4.5vh;
-        line-height: 3vh;
+        font-size: 4vh;
+        line-height: 2vh;
         margin: 2vh 0;
         color: #fff;
     }
 
     .ref {
-        padding: 1;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
         color: white;
         background-color: #3c86ac;
-        width: 13%;
-        border-radius: 2vh;
+        width: 10%;
+        padding: 0.3vh;
+        border-radius: 10px;
     }
 
     p {
@@ -58,9 +59,10 @@
 
     .btn-visit {
         position: relative;
-        margin: 2vh 0;
         width: 40vh;
-        height: 40vh;
+        margin: 1vh 0;
+        padding: 0.4vh;
+        width: 40vh;
         border-radius: 1vh;
         display: flex;
         justify-content: center;

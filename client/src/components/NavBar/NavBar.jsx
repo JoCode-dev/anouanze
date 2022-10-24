@@ -89,6 +89,7 @@ const NavBar = ({ value }) => {
                   src={process.env.PUBLIC_URL + "/imgs/icons/community.png"}
                   alt="admin"
                 />
+                <h1>Espace d'administration</h1>
               </NavLink>
             )}
             {user.moderatorType === true && (

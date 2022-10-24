@@ -1,11 +1,11 @@
 .carousel-container {
     width: 100%;
-    padding: 1vh;
 
     .header-carousel {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 1vh;
 
         & h3 {
             color: $blue-1
@@ -26,17 +26,13 @@
     }
 
     & img {
-        width: 100%;
+        width: 1960px;
         object-fit: cover;
-        border-radius: 2vh;
-        height: 100vh;
+        height: 1080px;
     }
 
     .swiper-container {
-        margin: 2vh auto;
-        border-radius: 2vh;
-        overflow: hidden;
-        height: 100vh;
+        margin: 0 auto;
     }
 
 }

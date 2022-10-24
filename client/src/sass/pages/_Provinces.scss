@@ -9,14 +9,14 @@
         left: 0px;
         right: 0px;
         bottom: 0px;
-        background-image: linear-gradient(-90deg, rgb(168, 200, 43), rgb(168, 200, 43) 47%, rgba(255, 255, 255, 0) 60%);
+        background-image: linear-gradient(-90deg, rgb(168, 200, 43), rgb(168, 200, 43) 47%, rgba(255, 255, 255, 0) 90%);
     }
 
     .provinces-container-head {
         position: relative;
         width: 100%;
         height: 30vh;
-        background-position: 0% 35%;
+        background-position: 0% 30%;
         background-repeat: no-repeat;
         background-size: 60%;
         background-image: url('../assets/Blocs/Dicoses.jpg');
@@ -32,10 +32,10 @@
 
             h1 {
                 position: relative;
-                font-size: 13vh;
+                font-size: 12vh;
                 letter-spacing: -1vh;
                 line-height: 10vh;
-                font-family: $sofiaSemiBold;
+                font-family: $arialBoldMt;
                 color: white;
             }
         }
@@ -79,22 +79,26 @@
 
                 .province-name {
                     background-color: #aacc26;
-                    width: 100%;
+                    width: 82%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 1vh;
 
                     h1 {
                         color: #627206;
-                        font-family: $sofiaBlack;
-                        font-size: 6vh;
-                        letter-spacing: -0.3vh;
+                        font-family: $arialBoldMt;
+                        font-size: 5vh;
+                        letter-spacing: -0.4vh;
                     }
                 }
 
                 .province-dioceses {
                     width: 100%;
-                    margin: 2vh 0;
+                    margin: 4vh 0;
 
                     p {
-                        font-family: $sofiaSemiBold;
+                        font-family: $arialBoldMt;
                         font-size: 2.7vh;
                         cursor: pointer;
                         transition: all 0.5s ease-in-out;
@@ -128,7 +132,7 @@
             h1 {
                 font-size: 3.5vh !important;
                 width: 100% !important;
-                letter-spacing: 0px !important;
+                letter-spacing: -2px !important;
                 line-height: 1 !important;
             }
         }
@@ -138,6 +142,8 @@
     .provinces-grid-element {
         flex-direction: column;
         padding: 1vh !important;
+        margin: 0.4vh 0 !important;
+
 
         .province-image {
             width: 100% !important;
@@ -146,12 +152,14 @@
 
         .province-details {
             padding: 0.5vh !important;
-            width: 93% !important;
+            width: 95% !important;
 
             .province-name {
+                width: 100% !important;
+
                 h1 {
-                    font-size: 2.5vh !important;
-                    letter-spacing: -0.2vh !important;
+                    font-size: 2.7vh !important;
+                    letter-spacing: -0.1vh !important;
                 }
             }
         }
@@ -169,9 +177,9 @@
             width: 50% !important;
 
             h1 {
-                font-size: 3.5vh !important;
+                font-size: 4vh !important;
                 width: 100% !important;
-                letter-spacing: 0px !important;
+                letter-spacing: -2px !important;
                 line-height: 1 !important;
             }
         }
@@ -181,6 +189,8 @@
     .provinces-grid-element {
         flex-direction: column;
         padding: 1vh !important;
+        margin: 0.4vh 0 !important;
+
 
         .province-image {
             width: 100% !important;
@@ -189,12 +199,14 @@
 
         .province-details {
             padding: 0.5vh !important;
-            width: 93% !important;
+            width: 95% !important;
 
             .province-name {
+                width: 100% !important;
+
                 h1 {
                     font-size: 3.4vh !important;
-                    letter-spacing: -0.2vh !important;
+                    letter-spacing: -0.1vh !important;
                 }
             }
         }
@@ -212,9 +224,9 @@
             width: 50% !important;
 
             h1 {
-                font-size: 3.5vh !important;
+                font-size: 3.9vh !important;
                 width: 100% !important;
-                letter-spacing: 0px !important;
+                letter-spacing: -2px !important;
                 line-height: 1 !important;
             }
         }
@@ -224,6 +236,8 @@
     .provinces-grid-element {
         flex-direction: column;
         padding: 1vh !important;
+        margin: 0.4vh 0 !important;
+
 
         .province-image {
             width: 100% !important;
@@ -232,12 +246,14 @@
 
         .province-details {
             padding: 0.5vh !important;
-            width: 93% !important;
+            width: 95% !important;
 
             .province-name {
+                width: 100% !important;
+
                 h1 {
-                    font-size: 3.4vh !important;
-                    letter-spacing: -0.2vh !important;
+                    font-size: 2.9vh !important;
+                    letter-spacing: -0.1vh !important;
                 }
             }
         }

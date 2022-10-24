@@ -9,7 +9,7 @@
             color: white;
             text-transform: none;
             font-size: 5vh;
-            font-family: $sofiaMedium
+            font-family: $arialBoldMt;
         }
 
     }
@@ -17,7 +17,7 @@
     & .file-ariane-element:nth-child(3) {
         h1 {
             text-transform: none;
-            font-family: $sofiaSemiBold;
+            font-family: $arialBoldMt;
             letter-spacing: -0.3vh;
         }
 
@@ -36,7 +36,7 @@
         h1 {
             text-transform: uppercase;
             color: #526002;
-            font-family: $sofiaSemiBold;
+            font-family: $arialBoldMt;
             letter-spacing: -0.3vh;
             font-size: 5vh;
         }
@@ -66,7 +66,7 @@
             justify-content: space-around;
             font-size: 3vh;
             color: #465201;
-            font-family: $sofiaSemiBold;
+            font-family: $arialBoldMt;
 
             div {
                 width: 25%;
@@ -88,7 +88,7 @@
                 align-items: center;
                 justify-content: space-around;
                 font-size: 2.5vh;
-                font-family: $sofiaSemiBold;
+                font-family: $arialBoldMt;
                 border-radius: 3vh;
                 color: #4c4c4c;
 
@@ -119,7 +119,7 @@
                 font-size: 4vh;
                 text-align: center;
                 margin: 2vh 0;
-                font-family: $sofiaSemiBold;
+                font-family: $arialBoldMt;
                 letter-spacing: -0.2vh;
             }
         }

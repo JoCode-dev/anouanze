@@ -7,9 +7,11 @@ form {
     justify-content: center;
 
 
+
     .inputs-group {
         width: 100%;
         margin: 1vh auto;
+
 
         .input-form {
             border: 1px solid $gray;
@@ -41,7 +43,7 @@ form {
 }
 
 .sign-in-container {
-    width: 70vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 1vh;
@@ -79,10 +81,11 @@ form {
 }
 
 .sign-up-container {
-    width: 70vh;
-    height: auto;
-    // height: 78vh;
+    width: 100%;
+    height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     padding: 1vh;
 
@@ -118,11 +121,11 @@ form {
     .sign-in-container {
         width: 100%;
 
-        h1{
+        h1 {
             font-size: 170%;
         }
 
-        p{
+        p {
             font-size: 1.7vh;
         }
     }
@@ -130,11 +133,11 @@ form {
     .sign-up-container {
         width: 100%;
 
-        h1{
+        h1 {
             font-size: 4vh;
         }
 
-        p{
+        p {
             font-size: 1.7vh;
         }
 
