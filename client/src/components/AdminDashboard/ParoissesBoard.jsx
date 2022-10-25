@@ -732,7 +732,7 @@ const ParoissesBoard = () => {
                           type="file"
                           name="file"
                           onChange={(e) => fileSelectedHandler(e)}
-                          accept=".jpg, .jpeg, .png"
+                          accept=".jpg, .jpeg, .webp"
                         />
                         <i className="fa fa-arrow-up"></i>
                       </div>
@@ -767,7 +767,7 @@ const ParoissesBoard = () => {
             onClick={() => setToggleForm(!toggleForm)}
           >
             <img
-              src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
+              src={process.env.PUBLIC_URL + "/imgs/icons/add.webp"}
               alt={"add"}
             />
           </div>
@@ -783,7 +783,7 @@ const ParoissesBoard = () => {
                       />
                     ) : (
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
                         alt={element.name}
                       />
                     )}{" "}
@@ -802,13 +802,13 @@ const ParoissesBoard = () => {
                     target="_blank"
                   >
                     <img
-                      src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
+                      src={process.env.PUBLIC_URL + "/imgs/icons/eye.webp"}
                       alt={"edit"}
                     />
                   </NavLink>{" "}
                   <div className="footer-edit" onClick={() => editParoisse(i)}>
                     <img
-                      src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
+                      src={process.env.PUBLIC_URL + "/imgs/icons/edit.webp"}
                       alt={"edit"}
                     />
                   </div>
@@ -817,7 +817,7 @@ const ParoissesBoard = () => {
                     onClick={() => deleteParoisses(i)}
                   >
                     <img
-                      src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
+                      src={process.env.PUBLIC_URL + "/imgs/icons/trash.webp"}
                       alt={"delete"}
                     />
                   </div>

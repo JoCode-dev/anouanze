@@ -221,7 +221,7 @@ const Actus = () => {
                             type="file"
                             name="file"
                             onChange={(e) => fileSelectedHandler(e)}
-                            accept=".jpg, .jpeg, .png"
+                            accept=".jpg, .jpeg, .webp"
                           />
                           <i className="fa fa-arrow-up"></i>
                         </div>
@@ -259,7 +259,7 @@ const Actus = () => {
               }}
             >
               <img
-                src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
+                src={process.env.PUBLIC_URL + "/imgs/icons/add.webp"}
                 alt={"add"}
               />
             </div>
@@ -275,7 +275,7 @@ const Actus = () => {
                         />
                       ) : (
                         <img
-                          src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                          src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
                           alt={element.name}
                         />
                       )}{" "}
@@ -293,7 +293,7 @@ const Actus = () => {
                       target="_blank"
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.webp"}
                         alt={"eye"}
                       />
                     </NavLink>{" "}
@@ -302,7 +302,7 @@ const Actus = () => {
                       onClick={() => editActu(element._id)}
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.webp"}
                         alt={"edit"}
                       />
                     </div>
@@ -311,7 +311,7 @@ const Actus = () => {
                       onClick={() => deleteActuAction(element._id)}
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.webp"}
                         alt={"delete"}
                       />
                     </div>

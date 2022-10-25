@@ -317,7 +317,7 @@ const EventsBoard = () => {
           setCount(a);
         }}
       >
-        <img src={process.env.PUBLIC_URL + "/imgs/icons/plus.png"} alt="Plus" />
+        <img src={process.env.PUBLIC_URL + "/imgs/icons/plus.webp"} alt="Plus" />
       </div>
     );
     switch (count.length) {
@@ -454,7 +454,7 @@ const EventsBoard = () => {
                             type="file"
                             name="file"
                             onChange={(e) => fileSelectedHandler(e)}
-                            accept=".jpg, .jpeg, .png"
+                            accept=".jpg, .jpeg, .webp"
                           />
                           <i className="fa fa-arrow-up"></i>
                         </div>
@@ -494,7 +494,7 @@ const EventsBoard = () => {
               }}
             >
               <img
-                src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
+                src={process.env.PUBLIC_URL + "/imgs/icons/add.webp"}
                 alt={"add"}
               />
             </div>
@@ -510,7 +510,7 @@ const EventsBoard = () => {
                         />
                       ) : (
                         <img
-                          src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                          src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
                           alt={element.name}
                         />
                       )}{" "}
@@ -528,7 +528,7 @@ const EventsBoard = () => {
                       target="_blank"
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.webp"}
                         alt={"eye"}
                       />
                     </NavLink>{" "}
@@ -537,7 +537,7 @@ const EventsBoard = () => {
                       onClick={() => editEvent(element._id)}
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.webp"}
                         alt={"edit"}
                       />
                     </div>
@@ -546,7 +546,7 @@ const EventsBoard = () => {
                       onClick={() => deleteEvents(element._id)}
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.webp"}
                         alt={"delete"}
                       />
                     </div>
@@ -565,7 +565,7 @@ const EventsBoard = () => {
               }}
             >
               <img
-                src={process.env.PUBLIC_URL + "/imgs/icons/add.png"}
+                src={process.env.PUBLIC_URL + "/imgs/icons/add.webp"}
                 alt={"add"}
               />
             </div>
@@ -581,7 +581,7 @@ const EventsBoard = () => {
                         />
                       ) : (
                         <img
-                          src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                          src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
                           alt={element.name}
                         />
                       )}{" "}
@@ -599,7 +599,7 @@ const EventsBoard = () => {
                       target="_blank"
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/eye.webp"}
                         alt={"edit"}
                       />
                     </NavLink>{" "}
@@ -608,7 +608,7 @@ const EventsBoard = () => {
                       onClick={() => editEvent(element._id)}
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/edit.webp"}
                         alt={"edit"}
                       />
                     </div>
@@ -617,7 +617,7 @@ const EventsBoard = () => {
                       onClick={() => deleteEvents(element._id)}
                     >
                       <img
-                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.png"}
+                        src={process.env.PUBLIC_URL + "/imgs/icons/trash.webp"}
                         alt={"delete"}
                       />
                     </div>

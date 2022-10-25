@@ -31,7 +31,7 @@ const LeftBar = ({ userName }) => {
     <div className="left-bar-container">
       <div className="left-bar-header">
         <img
-          src={process.env.PUBLIC_URL + "/imgs/icons/church.png"}
+          src={process.env.PUBLIC_URL + "/imgs/icons/church.webp"}
           alt={"logo"}
           onClick={() => handleHome()}
         />
@@ -67,7 +67,7 @@ const LeftBar = ({ userName }) => {
 
       <div className="left-bar-footer" onClick={() => handleLogout()}>
         <img
-          src={process.env.PUBLIC_URL + "/imgs/icons/logout.png"}
+          src={process.env.PUBLIC_URL + "/imgs/icons/logout.webp"}
           alt={"logo"}
         />
 

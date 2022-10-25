@@ -27,7 +27,7 @@ const renderParoisses = (arr, idUser) => {
                   />
                 ) : (
                   <img
-                    src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+                    src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
                     alt={elem.name}
                   />
                 )}

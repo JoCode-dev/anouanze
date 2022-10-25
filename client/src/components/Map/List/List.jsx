@@ -25,7 +25,7 @@ const List = ({ paroisses }) => {
                   src={
                     paroisse.pictures.length > 0
                       ? paroisse.pictures[0]
-                      : "./imgs/icons/church.png"
+                      : "./imgs/icons/church.webp"
                   }
                   alt="church"
                 />

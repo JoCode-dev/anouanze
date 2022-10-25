@@ -55,7 +55,7 @@ const ChooseButton = ({ paroisse }) => {
         >
           <p>Une autre paroisse a déja été choisie</p>{" "}
           <img
-            src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
+            src={process.env.PUBLIC_URL + "/imgs/icons/love.webp"}
             alt="heart"
           />
           {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
@@ -73,7 +73,7 @@ const ChooseButton = ({ paroisse }) => {
         >
           <p>Paroisse choisie</p>{" "}
           <img
-            src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
+            src={process.env.PUBLIC_URL + "/imgs/icons/love.webp"}
             alt="heart"
           />
           {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}
@@ -85,7 +85,7 @@ const ChooseButton = ({ paroisse }) => {
         <button className="choose-paroisse-container" onClick={() => choose()}>
           <p>Choisir comme ma paroisse</p>{" "}
           <img
-            src={process.env.PUBLIC_URL + "/imgs/icons/love.png"}
+            src={process.env.PUBLIC_URL + "/imgs/icons/love.webp"}
             alt="heart"
           />
           {onLoading === true && <i className="fa fa-spinner fa-spin"></i>}

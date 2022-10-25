@@ -34,7 +34,7 @@ const NavBar = ({ value }) => {
       <div className="navbar-left-part">
         <NavLink to="/">
           <img
-            src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+            src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
             alt="logo-anouanze"
           />
         </NavLink>
@@ -42,7 +42,7 @@ const NavBar = ({ value }) => {
           <img
             src={
               process.env.PUBLIC_URL +
-              `/imgs/icons/${menuIcon ? "menu-burger.png" : "close.png"}`
+              `/imgs/icons/${menuIcon ? "menu-burger.webp" : "close.webp"}`
             }
             alt="menu-burger"
           />
@@ -86,7 +86,7 @@ const NavBar = ({ value }) => {
             {user.adminType === true && (
               <NavLink to="/admin-dashboard" className="admin-btn">
                 <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/community.png"}
+                  src={process.env.PUBLIC_URL + "/imgs/icons/community.webp"}
                   alt="admin"
                 />
                 <h1>Espace d'administration</h1>
@@ -95,7 +95,7 @@ const NavBar = ({ value }) => {
             {user.moderatorType === true && (
               <NavLink to="/mod-dashboard" className="mod-btn">
                 <img
-                  src={process.env.PUBLIC_URL + "/imgs/icons/mod.png"}
+                  src={process.env.PUBLIC_URL + "/imgs/icons/mod.webp"}
                   alt="Moderator"
                 />
                 <h1>Espace d'administration</h1>
@@ -104,7 +104,7 @@ const NavBar = ({ value }) => {
 
             <div className="logout-btn" onClick={handleLogout}>
               <img
-                src={process.env.PUBLIC_URL + "/imgs/icons/logout.png"}
+                src={process.env.PUBLIC_URL + "/imgs/icons/logout.webp"}
                 alt="logout"
               />
               <h1>Déconnexion</h1>

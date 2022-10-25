@@ -109,7 +109,7 @@ const Events = () => {
                               <img
                                 src={
                                   process.env.PUBLIC_URL +
-                                  "/imgs/icons/calendar.png"
+                                  "/imgs/icons/calendar.webp"
                                 }
                                 alt="calendar "
                               />
@@ -139,7 +139,7 @@ const Events = () => {
                               <img
                                 src={
                                   process.env.PUBLIC_URL +
-                                  "/imgs/icons/clock.png"
+                                  "/imgs/icons/clock.webp"
                                 }
                                 alt="calendar "
                               />
@@ -150,7 +150,7 @@ const Events = () => {
                               <img
                                 src={
                                   process.env.PUBLIC_URL +
-                                  "/imgs/icons/orator.png"
+                                  "/imgs/icons/orator.webp"
                                 }
                                 alt="calendar "
                               />

@@ -47,7 +47,7 @@ const Event = () => {
         <div className="event-container">
           <header className="event-header">
             <NavLink to="/">
-              <img src={process.env.PUBLIC_URL + "/imgs/icon.png"} alt="logo" />
+              <img src={process.env.PUBLIC_URL + "/imgs/icon.webp"} alt="logo" />
             </NavLink>
             <NavLink to="/events">
               <h1>Évènements</h1>

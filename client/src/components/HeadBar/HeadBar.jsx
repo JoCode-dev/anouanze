@@ -6,7 +6,7 @@ const HeadBar = ({ headerName }) => {
     <div className="HeadBar-container">
       <NavLink to="/" className="HeadBar-left-part">
         <img
-          src={process.env.PUBLIC_URL + "/imgs/icon.png"}
+          src={process.env.PUBLIC_URL + "/imgs/icon.webp"}
           alt="logo-anouanze"
         />
       </NavLink>
@@ -14,7 +14,7 @@ const HeadBar = ({ headerName }) => {
       <NavLink to="/paroisses" className="HeadBar-right-part">
         <h1>{headerName}</h1>
         <img
-          src={process.env.PUBLIC_URL + "/imgs/icons/arrow-right.png"}
+          src={process.env.PUBLIC_URL + "/imgs/icons/arrow-right.webp"}
           alt="arrow-right"
         />
       </NavLink>

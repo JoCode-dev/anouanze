@@ -45,7 +45,7 @@ const Carousel = () => {
           <NavLink to={requireAuth()} className="header-see-more">
             <h3>Voir +&nbsp;</h3>
             <img
-              src={process.env.PUBLIC_URL + "/imgs/icons/arrow-right.png"}
+              src={process.env.PUBLIC_URL + "/imgs/icons/arrow-right.webp"}
               alt="arrow-right"
             />
           </NavLink>

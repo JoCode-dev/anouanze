@@ -585,7 +585,7 @@ const ParoisseBoard = () => {
                     type="file"
                     name="file"
                     onChange={(e) => fileSelectedHandler(e)}
-                    accept=".jpg, .jpeg, .png"
+                    accept=".jpg, .jpeg, .webp"
                   />
                   <i className="fa fa-arrow-up"></i>
                 </div>

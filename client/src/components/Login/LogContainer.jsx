@@ -25,7 +25,7 @@ const LogContainer = () => {
     <div className="Log-container">
       <div className="log-logo-container">
         <NavLink to="/">
-          <img src={process.env.PUBLIC_URL + "/imgs/icon.png"} alt="logo-anouanze" />
+          <img src={process.env.PUBLIC_URL + "/imgs/icon.webp"} alt="logo-anouanze" />
         </NavLink>
       </div>
       <div className="test">

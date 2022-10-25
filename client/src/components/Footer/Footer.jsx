@@ -6,7 +6,7 @@ const Footer = ({ dot }) => {
     <footer className="footer-container">
       <div className="footer-left-part">
         <NavLink to="/">
-          <img src={`${dot}./imgs/icon.png`} alt="logo" />
+          <img src={`${dot}./imgs/icon.webp`} alt="logo" />
         </NavLink>
         <p>Plateforme de recherche de paroisse à proximité et d'actualités</p>
       </div>
