@@ -17,7 +17,6 @@
             box-shadow: 0 1px 25px #0a002033;
             padding: 1vh;
             margin-top: 2vh;
-            border-radius: 1vh;
 
         }
 
@@ -26,16 +25,15 @@
             justify-content: center;
             align-items: center;
             width: 50%;
-            height: 98%;
+            height: 78.4%;
             overflow: hidden;
-            border-radius: 2vh;
             margin-right: 1vh;
             box-shadow: 0 1px 25px hsla(258, 89%, 41%, 0.2);
 
             & img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                object-fit: contain;
             }
         }
 
@@ -45,7 +43,7 @@
             height: 90%;
 
             & .event-title {
-                color: $blue-1;
+                color: $black-2;
                 padding: 1vh;
                 font-weight: bold;
                 font-size: 3vh;
@@ -58,6 +56,7 @@
                 padding: 1vh;
                 width: 80%;
                 height: 60%;
+                color: $black-2;
             }
 
             & .event-sub {
@@ -65,10 +64,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
-                width: 90%;
+                width: 100%;
                 background-color: #dcf1f7;
-                height: 30%;
-                color: #16a2c8;
+                height: 25%;
+                color: $blue-2;
                 font-family: $arialBoldMt;
 
                 & .event-date {
@@ -76,13 +75,16 @@
                     align-items: center;
                     justify-content: space-evenly;
                     border-right: 3px solid $blue-1;
-                    width: 35%;
+                    width: 33%;
                     height: 80%;
+                    font-size: 2.8vh;
 
                     img {
-                        width: 20%;
-                        height: 100%;
+                        width: 3vh;
+                        height: 3vh;
                         object-fit: cover;
+                        filter: invert(44%) sepia(95%) saturate(400%) hue-rotate(145deg) brightness(101%) contrast(90%);
+
                     }
 
                 }
@@ -90,20 +92,36 @@
                 & .event-time {
                     display: flex;
                     align-items: center;
-                    justify-content: space-around;
+                    justify-content: center;
                     border-right: 3px solid $blue-1;
-                    width: 20%;
+                    width: 33%;
                     height: 80%;
+                    font-size: 3vh;
+
 
                     img {
-                        width: 25%;
-                        height: 80%;
+                        width: 3vh;
+                        height: 3vh;
                         object-fit: cover;
+                        filter: invert(44%) sepia(95%) saturate(400%) hue-rotate(145deg) brightness(101%) contrast(90%);
+                        margin: 0 2vh;
                     }
                 }
 
                 & .event-organizer {
-                    width: 35%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    width: 33%;
+                    font-size: 2.5vh;
+
+                    img {
+                        width: 5vh;
+                        height: 5vh;
+                        object-fit: cover;
+                        filter: invert(44%) sepia(95%) saturate(400%) hue-rotate(145deg) brightness(101%) contrast(90%);
+
+                    }
                 }
 
             }
@@ -236,50 +254,47 @@
                 padding: 0 !important;
                 width: 100% !important;
                 height: 17% !important;
-                font-size: 0.9vh;
+                font-size: 0.9vh !important;
                 align-items: center !important;
 
                 & .event-date {
                     border-right: 1px solid $blue-1  !important;
-                    width: 35%;
                     height: 100% !important;
-                    font-size: 80%;
+                    font-size: 0.9vh !important;
 
                     img {
-                        width: 20% !important;
-                        height: 100%;
+                        width: 1vh !important;
+                        height: 1vh;
                         object-fit: contain !important;
+                        display: none;
+
                     }
 
                 }
 
                 & .event-time {
                     border-right: 1px solid $blue-1  !important;
-                    width: 35%;
-                    height: 100% !important;
-                    font-size: 60%;
+                    font-size: 1vh !important;
+                    flex: 1;
 
                     img {
-                        width: 40% !important;
-                        height: 100%;
-                        object-fit: contain !important;
+                        display: none;
                     }
                 }
 
                 & .event-organizer {
                     flex-direction: column;
+                    padding: 1px;
                     display: flex;
-                    align-items: flex-start !important;
                     justify-content: center;
                     width: 35%;
                     height: 100% !important;
-                    font-size: 80%;
+                    font-size: 0.9vh !important;
+                    flex: 2;
 
 
                     img {
-                        width: 20% !important;
-                        height: 100%;
-                        object-fit: contain !important;
+                        display: none;
                     }
                 }
 
@@ -296,7 +311,7 @@
     }
 
     .card_load {
-        width: 40% !important;
+        width: 20% !important;
         height: 65% !important;
         margin: 0 1vh;
     }
@@ -341,18 +356,16 @@
                 padding: 0 !important;
                 width: 100% !important;
                 height: 17% !important;
-                font-size: 0.9vh;
                 align-items: center !important;
 
                 & .event-date {
                     border-right: 1px solid $blue-1  !important;
-                    width: 35%;
                     height: 100% !important;
-                    font-size: 80%;
+                    font-size: 1.3vh !important;
 
                     img {
-                        width: 20% !important;
-                        height: 100%;
+                        width: 1.5vh !important;
+                        height: 1.5vh;
                         object-fit: contain !important;
                     }
 
@@ -360,31 +373,30 @@
 
                 & .event-time {
                     border-right: 1px solid $blue-1  !important;
-                    width: 35%;
-                    height: 100% !important;
-                    font-size: 60%;
+                    font-size: 1.4vh !important;
+                    flex: 1;
 
                     img {
-                        width: 40% !important;
-                        height: 100%;
+                        width: 1.6vh !important;
+                        height: 1.6vh;
+                        margin: 0 !important;
                         object-fit: contain !important;
                     }
                 }
 
                 & .event-organizer {
-                    flex-direction: column;
+                    padding: 1px;
                     display: flex;
-                    align-items: flex-start !important;
                     justify-content: center;
                     width: 35%;
                     height: 100% !important;
-                    font-size: 80%;
+                    font-size: 1.3vh !important;
+                    flex: 2;
 
 
                     img {
-                        width: 20% !important;
-                        height: 100%;
-                        object-fit: contain !important;
+                        width: 3vh !important;
+                        height: 3vh !important;
                     }
                 }
 
@@ -401,7 +413,7 @@
     }
 
     .card_load {
-        width: 40% !important;
+        width: 20% !important;
         height: 65% !important;
         margin: 0 1vh;
     }
@@ -432,7 +444,7 @@
             .event-title {
                 display: flex;
                 align-items: center;
-                font-size: 1.5vh !important;
+                font-size: 1vh !important;
                 line-height: 0.8;
                 height: 4vh;
             }
@@ -446,18 +458,16 @@
                 padding: 0 !important;
                 width: 100% !important;
                 height: 17% !important;
-                font-size: 1.3vh;
                 align-items: center !important;
 
                 & .event-date {
                     border-right: 1px solid $blue-1  !important;
-                    width: 35%;
                     height: 100% !important;
-                    font-size: 80%;
+                    font-size: 1.2vh !important;
 
                     img {
-                        width: 20% !important;
-                        height: 100%;
+                        width: 1.5vh !important;
+                        height: 1.5vh;
                         object-fit: contain !important;
                     }
 
@@ -465,31 +475,30 @@
 
                 & .event-time {
                     border-right: 1px solid $blue-1  !important;
-                    width: 35%;
-                    height: 100% !important;
-                    font-size: 70%;
+                    font-size: 1.4vh !important;
+                    flex: 1;
 
                     img {
-                        width: 40% !important;
-                        height: 100%;
+                        width: 1.6vh !important;
+                        height: 1.6vh;
+                        margin: 0 !important;
                         object-fit: contain !important;
                     }
                 }
 
                 & .event-organizer {
-                    flex-direction: column;
+                    padding: 1px;
                     display: flex;
-                    align-items: flex-start !important;
                     justify-content: center;
                     width: 35%;
                     height: 100% !important;
-                    font-size: 60%;
+                    font-size: 1.1vh !important;
+                    flex: 2;
 
 
                     img {
-                        width: 20% !important;
-                        height: 100%;
-                        object-fit: contain !important;
+                        width: 3vh !important;
+                        height: 3vh !important;
                     }
                 }
 

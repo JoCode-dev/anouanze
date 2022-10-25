@@ -3,14 +3,18 @@ import { useSelector } from "react-redux";
 import { isEmpty } from "../utils";
 import { NavLink } from "react-router-dom";
 
-const renderParoisses = (arr) => {
+const renderParoisses = (arr, idUser) => {
+  console.log(idUser);
+  const requireAuth = (el) => {
+    return idUser ? el : "/login";
+  };
   return (
     <div className="result-container">
       {!isEmpty(arr) ? (
         arr.map((elem, index) => {
           return (
             <NavLink
-              to={`/paroisse/${elem._id}`}
+              to={requireAuth(`/paroisse/${elem._id}`)}
               key={elem._id}
               value={elem._id}
               className="result-element"
@@ -39,10 +43,11 @@ const renderParoisses = (arr) => {
   );
 };
 
-
 const List = ({ textSearch }) => {
   const paroisses = useSelector((state) => state.paroisses);
-  const paroissesNameSorted = paroisses.sort((a, b) =>
+  const user = useSelector((state) => state?.user?.user);
+
+  const paroissesNameSorted = paroisses?.sort((a, b) =>
     a.name.localeCompare(b.name)
   );
   const newArr = paroissesNameSorted.filter(
@@ -52,7 +57,11 @@ const List = ({ textSearch }) => {
       paroiss.province.toLowerCase().includes(textSearch.toLowerCase())
   );
 
-  return <div className="search-list-container">{renderParoisses(newArr)}</div>;
+  return (
+    <div className="search-list-container">
+      {renderParoisses(newArr, user?._id)}
+    </div>
+  );
 };
 
 export default List;

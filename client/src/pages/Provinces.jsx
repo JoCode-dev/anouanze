@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { NavLink } from "react-router-dom";
 import SearchBar from "../components/Search/SearchBar";
+import { useSelector } from "react-redux";
 
 const Provinces = () => {
+  const user = (useSelector = (state) => state.user?.user);
+
+  useEffect(() => {
+    if (!user) {
+      window.location.href = "/login";
+    }
+  }, [user]);
+
   const location = {
     pathname: "/diocese",
     state: {
       title: "Abidjan",
     },
   };
+
   return (
     <>
       <NavBar value={"Provinces"} />

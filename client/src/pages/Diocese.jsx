@@ -26,6 +26,7 @@ const renderParoisses = (paroissesFounded) => {
             >
               <div>{el.name}</div>
               <div>{el?.address}</div>
+              <div>{el?.region}</div>
               <div>{el?.contact}</div>
               <div>{el?.email}</div>
             </NavLink>
@@ -44,6 +45,7 @@ const Diocese = (props) => {
   const { name } = useParams();
 
   const paroisses = useSelector((state) => state.paroisses);
+  const user = useSelector((state) => state.user?.user);
   const paroissesFounded = sortParoisses(paroisses, name);
 
   const sendName = () => {
@@ -80,6 +82,12 @@ const Diocese = (props) => {
       : `de ${paroissesFounded[0]?.province}`;
   };
 
+  useEffect(() => {
+    if (!user) {
+      window.location.href = "/login";
+    }
+  }, [user]);
+
   return (
     <>
       <NavBar value={"Paroisses"} />
@@ -101,6 +109,7 @@ const Diocese = (props) => {
           <div className="table-header">
             <div>Nom</div>
             <div>Adresse Postale</div>
+            <div>Region</div>
             <div>Contact</div>
             <div>Email</div>
           </div>

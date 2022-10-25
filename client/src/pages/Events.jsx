@@ -17,6 +17,14 @@ const Events = () => {
   const [onLoading, setOnLoading] = useState(true);
   const [onPlaceholder, setOnPlaceholder] = useState(true);
   const events = useSelector((state) => state.events);
+  const user = useSelector((state) => state?.user?.user);
+
+  useEffect(() => {
+    if (!user) {
+      window.location.href = "/login";
+    }
+  }, [user]);
+
   useEffect(() => {
     if (onLoading) {
       dispatch(getAllEvents());
@@ -63,7 +71,6 @@ const Events = () => {
         <>
           <NavBar value={"Events"} />
           <div className="events-container">
-
             <div className="events-blocks-container">
               {isEmpty(events) || onPlaceholder
                 ? events.map((event) => (
@@ -140,8 +147,14 @@ const Events = () => {
                               {hourParser(event.endAt) + "H"}
                             </div>
                             <div className="event-organizer">
-                              <p>Organisateur :</p>
-                              {event.organizer}
+                              <img
+                                src={
+                                  process.env.PUBLIC_URL +
+                                  "/imgs/icons/orator.png"
+                                }
+                                alt="calendar "
+                              />
+                              <p>Organisateur : {event.organizer}</p>
                             </div>
                           </div>
                         </div>
@@ -150,8 +163,7 @@ const Events = () => {
                   ))}
             </div>
           </div>
-         {/* <Footer /> */}
-
+          {/* <Footer /> */}
         </>
       )}
     </>

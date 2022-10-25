@@ -8,6 +8,13 @@ import { getActuByID } from "../actions/actus";
 
 const Actus = () => {
   const [onLoading, setOnLoading] = useState(true);
+  const user = (useSelector = (state) => state.user?.user);
+
+  useEffect(() => {
+    if (!user) {
+      window.location.href = "/login";
+    }
+  }, [user]);
 
   const { id } = useParams();
   const dispatch = useDispatch();

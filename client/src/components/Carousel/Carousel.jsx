@@ -66,9 +66,9 @@ const Carousel = () => {
           >
             {events.length >= 1 ? (
               events.map((event) => (
-                <SwiperSlide key={event._id}>
+                <SwiperSlide key={event._id} className="swiper">
                   <NavLink to={requireAuth()}>
-                    <img src={event.poster} alt="" width="1310vh" />
+                    <img src={event.poster} alt="" />
                   </NavLink>
                 </SwiperSlide>
               ))

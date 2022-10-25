@@ -16,6 +16,10 @@ const paroisseSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    region: {
+      type: String,
+      required: true,
+    },
     location: {
       type: {
         type: String,

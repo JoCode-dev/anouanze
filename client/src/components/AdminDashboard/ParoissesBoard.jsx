@@ -108,6 +108,7 @@ const ParoissesBoard = () => {
     name: "",
     province: "",
     diocese: "",
+    region: "",
     address: "",
     contact: "",
     email: "",
@@ -333,6 +334,7 @@ const ParoissesBoard = () => {
       const data = new FormData();
       data.append("name", formData.name);
       data.append("province", formData.province);
+      data.append("region", formData.region);
       data.append("diocese", formData.diocese);
       data.append("location[type]", formData.location.type);
       data.append("location[coordinates]", formData.location.coordinates);
@@ -379,6 +381,7 @@ const ParoissesBoard = () => {
       ...formData,
       name: "",
       province: "",
+      region: "",
       diocese: "",
       address: "",
       contact: "",
@@ -417,6 +420,7 @@ const ParoissesBoard = () => {
     setFormData({
       name: paroisses[idx].name,
       province: paroisses[idx].province,
+      region: paroisses[idx].region,
       diocese: paroisses[idx].diocese,
       address: paroisses[idx].address,
       contact: paroisses[idx].contact,
@@ -556,6 +560,17 @@ const ParoissesBoard = () => {
                       value={formData.province}
                       onChange={(e) =>
                         setFormData({ ...formData, province: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="region">Region</label>
+                    <input
+                      htmlFor="region"
+                      placeholder="region"
+                      value={formData.region}
+                      onChange={(e) =>
+                        setFormData({ ...formData, region: e.target.value })
                       }
                     />
                   </div>
